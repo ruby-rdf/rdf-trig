@@ -2,7 +2,7 @@
 [TriG][] reader/writer for [RDF.rb][RDF.rb] .
 
 ## Description
-This is a [Ruby][] implementation of a [TriG][] parser for [RDF.rb][].
+This is a [Ruby][] implementation of a [TriG][] reader and writer for [RDF.rb][].
 
 ## Features
 RDF::TriG parses [TriG][Turtle] into statements or quads. It also serializes to TriG.
@@ -16,7 +16,7 @@ Install with `gem install rdf-trig`
 ## Usage
 Instantiate a reader from a local file:
 
-    graph = RDF::Graph.load("etc/doap.trig", :format => :trig)
+    repo = RDF::Repository.load("etc/doap.trig", :format => :trig)
 
 Define `@base` and `@prefix` definitions, and use for serialization using `:base_uri` an `:prefixes` options.
 
@@ -25,11 +25,11 @@ Canonicalize and validate using `:canonicalize` and `:validate` options.
 Write a graph to a file:
 
     RDF::TriG::Writer.open("etc/test.trig") do |writer|
-       writer << graph
+       writer << repo
     end
 
 ## Documentation
-Full documentation available on [Rubydoc.info][TriG doc]
+Full documentation available on [Rubydoc.info][TriG doc].
 
 ### Principle Classes
 * {RDF::TriG::Format}
@@ -58,38 +58,13 @@ In some cases, the specification is unclear on certain issues:
   library suite is brought up to date.
 
 ## Implementation Notes
-The reader uses a generic LL1 parser {RDF::LL1::Parser} and lexer {RDF::LL1::Lexer}. The parser takes branch and follow
-tables generated from the original [TriG EBNF Grammar][TriG EBNF] described in the [specification][TriG]. Branch and Follow tables are specified in {RDF::TriG::Meta}, which is in turn
-generated using etc/gramLL1.
-
-The branch rules indicate productions to be taken based on a current production. Terminals are denoted
-through a set of regular expressions used to match each type of terminal, described in {RDF::TriG::Terminals}.
-
-etc/trig.bnf is used to to generate a Notation3 representation of the grammar, a transformed LL1 representation and ultimately {RDF::TriG::Meta}.
-
-Using SWAP utilities, this is done as follows:
-
-    python http://www.w3.org/2000/10/swap/grammar/ebnf2turtle.py \
-      etc/trig.bnf \
-      trig language \
-      'http://www.w3.org/ns/formats/TriG#' > |
-    sed -e 's/^  ".*"$/  g:seq (&)/'  > etc/trig.n3
-      
-    python http://www.w3.org/2000/10/swap/cwm.py etc/trig.n3 \
-      http://www.w3.org/2000/10/swap/grammar/ebnf2bnf.n3 \
-      http://www.w3.org/2000/10/swap/grammar/first_follow.n3 \
-      --think --data > etc/trig-bnf.n3
-    
-    script/gramLL1 \
-      --grammar etc/trig-ll1.n3 \
-      --lang 'http://www.w3.org/ns/formats/TriG#language' \
-      --output lib/rdf/trig/meta.rb
-    
+The reader uses the Turtle parser, which is based on the LL1::Parser with minor updates for the TriG grammar. The writer also is based on the Turtle writer.
       
 ## Dependencies
 
 * [Ruby](http://ruby-lang.org/) (>= 1.8.7) or (>= 1.8.1 with [Backports][])
 * [RDF.rb](http://rubygems.org/gems/rdf) (>= 0.3.4)
+* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 0.1.1)
 
 ## Installation
 

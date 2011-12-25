@@ -1,0 +1,52 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+{
+  <https://github.com/gkellogg/rdf-trig> a doap:GitRepository;
+     dc:title "rdf-trig";
+     doap:browse <https://github.com/gkellogg/rdf-trig> .
+
+   _:proj a doap:Project;
+      dc:created "2011-12-22T09:53:17-08:00"^^xsd:dateTime;
+      dc:creator <http://greggkellogg.net/foaf#me>;
+      doap:developer <http://greggkellogg.net/foaf#me>;
+      doap:documenter <http://greggkellogg.net/foaf#me>;
+      foaf:maker <http://greggkellogg.net/foaf#me> .
+      doap:maintainer <http://greggkellogg.net/foaf#me>;
+      doap:bug-database <https://github.com/gkellogg/rdf-trig/issues>;
+      doap:description "TriG reader/writer for RDF.rb";
+      doap:name "rdf-trig";
+      doap:shortdesc "TriG reader/writer for Ruby."@en;
+      doap:programming-language "Ruby";
+      doap:repository <https://github.com/gkellogg/rdf-trig>;
+      doap:mailing-list <http://lists.w3.org/Archives/Public/public-rdf-ruby/>;
+      doap:category <http://dbpedia.org/resource/Resource_Description_Framework>,
+        <http://dbpedia.org/resource/Ruby_(programming_language)>;
+      doap:homepage <http://github.com/gkellogg/rdf-trig>;
+      doap:license <http://creativecommons.org/licenses/publicdomain/>;
+      doap:wiki <https://github.com/gkellogg/rdf-trig/wiki> .
+
+  <http://github.com/gkellogg> a foaf:OnlineAccount;
+     dc:created "2009-01-13T08:58:46-08:00"^^xsd:dateTime;
+     doap:homepage <http://github.com/gkellogg>;
+     foaf:accountName "gkellogg";
+     foaf:accountServiceHomepage <http://github.com/>;
+     foaf:name "GitHub";
+     foaf:page <http://github.com/gkellogg> .
+}
+
+<http://greggkellogg.net/foaf#me> {
+  <http://greggkellogg.net/foaf> a foaf:Person;
+    foaf:mbox <mailto:gregg@kellogg-assoc.com>;
+    foaf:mbox_sha1sum "35bc44e6d0070e5ad50ccbe0d24403c96af2b9bd";
+    foaf:name "Gregg Kellogg";
+    foaf:nick "gkellogg";
+    foaf:developer _:proj;
+    foaf:account <http://github.com/gkellogg>;
+    foaf:based_near "San Rafael, CA";
+    foaf:depiction <http://www.gravatar.com/avatar/42f948adff3afaa52249d963117af7c8>;
+    foaf:weblog <http://kellogg-assoc.com> .
+}
