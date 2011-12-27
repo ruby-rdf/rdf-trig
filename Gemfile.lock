@@ -5,12 +5,6 @@ PATH
       rdf (>= 0.3.4)
       rdf-turtle (>= 0.1.1)
 
-PATH
-  remote: ../rdf-turtle
-  specs:
-    rdf-turtle (0.1.1)
-      rdf (>= 0.3.4)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -26,6 +20,8 @@ GEM
       rdf (>= 0.3.4)
     rdf-spec (0.3.4)
       rspec (>= 2.6.0)
+    rdf-turtle (0.1.1)
+      rdf (>= 0.3.4)
     rspec (2.7.0)
       rspec-core (~> 2.7.0)
       rspec-expectations (~> 2.7.0)
@@ -42,6 +38,7 @@ GEM
     yard (0.7.4)
 
 PLATFORMS
+  java
   ruby
 
 DEPENDENCIES
@@ -50,7 +47,6 @@ DEPENDENCIES
   rdf-n3 (>= 0.3.5)
   rdf-spec (>= 0.3.4)
   rdf-trig!
-  rdf-turtle!
   rspec (>= 2.5.0)
   spira (>= 0.0.12)
   wirble
