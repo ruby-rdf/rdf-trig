@@ -4,9 +4,9 @@ module RDF::TriG
   ##
   # A TriG serialiser
   #
-  # Note that the natural interface is to write a whole graph at a time.
-  # Writing statements or Triples will create a graph to add them to
-  # and then serialize the graph.
+  # Note that the natural interface is to write a whole repository at a time.
+  # Writing statements or Triples will create a repository to add them to
+  # and then serialize the repository.
   #
   # @example Obtaining a TriG writer class
   #   RDF::Writer.for(:trig)         #=> RDF::TriG::Writer
@@ -15,21 +15,21 @@ module RDF::TriG
   #   RDF::Writer.for(:file_extension => "trig")
   #   RDF::Writer.for(:content_type   => "application/trig")
   #
-  # @example Serializing RDF graph into an TriG file
+  # @example Serializing RDF repo into an TriG file
   #   RDF::TriG::Writer.open("etc/test.trig") do |writer|
-  #     writer << graph
+  #     writer << repo
   #   end
   #
   # @example Serializing RDF statements into an TriG file
   #   RDF::TriG::Writer.open("etc/test.trig") do |writer|
-  #     graph.each_statement do |statement|
+  #     repo.each_statement do |statement|
   #       writer << statement
   #     end
   #   end
   #
   # @example Serializing RDF statements into an TriG string
   #   RDF::TriG::Writer.buffer do |writer|
-  #     graph.each_statement do |statement|
+  #     repo.each_statement do |statement|
   #       writer << statement
   #     end
   #   end
@@ -41,7 +41,7 @@ module RDF::TriG
   #       nil => "http://example.com/ns#",
   #       :foaf => "http://xmlns.com/foaf/0.1/"}
   #   ) do |writer|
-  #     graph.each_statement do |statement|
+  #     repo.each_statement do |statement|
   #       writer << statement
   #     end
   #   end
@@ -136,7 +136,7 @@ module RDF::TriG
 
       reset
 
-      debug {"\nserialize: graph: #{@graph.size}"}
+      debug {"\nserialize: repo: #{@repo.size}"}
 
       preprocess
       start_document
@@ -170,11 +170,11 @@ module RDF::TriG
     protected
     # Order contexts for output
     def order_contexts
-      debug("order_contexts") {graph.contexts.to_a.inspect}
-      contexts = graph.contexts.to_a.sort
+      debug("order_contexts") {repo.contexts.to_a.inspect}
+      contexts = repo.contexts.to_a.sort
       
       # include default context, if necessary
-      contexts.unshift(nil) unless graph.query(:context => false).to_a.empty?
+      contexts.unshift(nil) unless repo.query(:context => false).to_a.empty?
       
       contexts
     end

@@ -35,12 +35,12 @@ module RDF::TriG
       !!sample.match(%r(
         (?:
           (?:\s*(?:(?:<[^>]*>) | (?:\w*:\w+) | (?:"[^"]*")))?           # IRIref
-          \s*{                                                          # Graph Start
+          \s*\{                                                         # Graph Start
           (?:
             (?:\s*(?:(?:<[^>]*>) | (?:\w*:\w+) | (?:"[^"]*"))\s*[,;]) ||
             (?:\s*(?:(?:<[^>]*>) | (?:\w*:\w+) | (?:["']+[^"']*["']+))){3}
           )*                                                            # triples
-          [\s\.]*}\s*                                                  # Graph end
+          [\s\.]*\}\s*                                                  # Graph end
         )
       )mx) && !(
         sample.match(%r(@keywords|=)) ||                                # N3

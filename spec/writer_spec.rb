@@ -27,14 +27,14 @@ describe RDF::TriG::Writer do
   describe "simple tests" do
     it "should use full URIs without base" do
       input = %({<http://a/b> <http://a/c> <http://a/d> .})
-      serialize(input, nil, [%r({\s*<http://a/b> <http://a/c> <http://a/d> \.\s*}$)m])
+      serialize(input, nil, [%r(\{\s*<http://a/b> <http://a/c> <http://a/d> \.\s*\}$)m])
     end
 
     it "should use relative URIs with base" do
       input = %({<http://a/b> <http://a/c> <http://a/d> .})
       serialize(input, "http://a/",
        [ %r(^@base <http://a/> \.$),
-        %r(^{\s*<b> <c> <d> \.\s*}$)m]
+        %r(^\{\s*<b> <c> <d> \.\s*\}$)m]
       )
     end
 
@@ -42,7 +42,7 @@ describe RDF::TriG::Writer do
       input = %({<http://xmlns.com/foaf/0.1/b> <http://xmlns.com/foaf/0.1/c> <http://xmlns.com/foaf/0.1/d> .})
       serialize(input, nil,
         [%r(^@prefix foaf: <http://xmlns.com/foaf/0.1/> \.$),
-        %r(^{\s*foaf:b foaf:c foaf:d \.$\s*})m],
+        %r(^\{\s*foaf:b foaf:c foaf:d \.$\s*\})m],
         :prefixes => { :foaf => RDF::FOAF}
       )
     end
@@ -51,7 +51,7 @@ describe RDF::TriG::Writer do
       input = %({<http://xmlns.com/foaf/0.1/b> <http://xmlns.com/foaf/0.1/c> <http://xmlns.com/foaf/0.1/d> .})
       serialize(input, nil,
         [%r(^@prefix : <http://xmlns.com/foaf/0.1/> \.$),
-        %r(^{\s*:b :c :d \.$\s*})m],
+        %r(^\{\s*:b :c :d \.$\s*\})m],
         :prefixes => { "" => RDF::FOAF}
       )
     end
@@ -61,7 +61,7 @@ describe RDF::TriG::Writer do
       input = %({<http://xmlns.com/foaf/0.1/> <http://xmlns.com/foaf/0.1/> <http://xmlns.com/foaf/0.1/> .})
       serialize(input, nil,
         [%r(^@prefix foaf: <http://xmlns.com/foaf/0.1/> \.$),
-        %r(^{\s*foaf: foaf: foaf: \.\s*}$)m],
+        %r(^\{\s*foaf: foaf: foaf: \.\s*\}$)m],
         :prefixes => { "foaf" => RDF::FOAF}
       )
     end
@@ -80,11 +80,11 @@ describe RDF::TriG::Writer do
       )
       serialize(input, nil,
         [
-          %r(^{\s*:b)m,
+          %r(^\{\s*:b)m,
           %r(^\s+:b a :class;$)m,
           %r(\s+:class;\s+rdfs:label "label";)m,
           %r(\s+"label";\s+dc:title "title";)m,
-          %r(\s+"title";\s+:c :d \.\s*}$)m
+          %r(\s+"title";\s+:c :d \.\s*\}$)m
         ],
         :prefixes => { "" => RDF::FOAF, :dc => "http://purl.org/dc/elements/1.1/", :rdfs => RDF::RDFS}
       )
@@ -95,7 +95,7 @@ describe RDF::TriG::Writer do
       serialize(input, nil,
         [
           %r(^@prefix : <http://xmlns.com/foaf/0.1/> \.$),
-          %r(^{\s*:b)m,
+          %r(^\{\s*:b)m,
           %r(^\s+:b :c :d,$),
           %r(^\s+:e \.$)
         ],
@@ -108,9 +108,9 @@ describe RDF::TriG::Writer do
       serialize(input, nil,
         [
           %r(^@prefix : <http://xmlns.com/foaf/0.1/> \.$),
-          %r(^{\s+:b :c :d;$)m,
+          %r(^\{\s+:b :c :d;$)m,
           %r(:d;\s+:e :f \.)m,
-          %r(:f \.\s+}$)m,
+          %r(:f \.\s+\}$)m,
         ],
         :prefixes => { "" => RDF::FOAF}
       )
@@ -122,13 +122,13 @@ describe RDF::TriG::Writer do
       "default" => [
         %q({<a> <b> <c> .}),
         [
-          %r({\s*<a> <b> <c> .\s*})m
+          %r(\{\s*<a> <b> <c> .\s*\})m
         ]
       ],
       "named" => [
         %q(<C> {<a> <b> <c> .}),
         [
-          %r(<C> {\s*<a> <b> <c> .\s*})m
+          %r(<C> \{\s*<a> <b> <c> .\s*\})m
         ]
       ],
       "combo" => [
@@ -137,8 +137,8 @@ describe RDF::TriG::Writer do
           <C> {<A> <b> <c> .}
         ),
         [
-          %r(^{\s*<a> <b> <c> .\s*})m,
-          %r(^<C> {\s*<A> <b> <c> .\s*})m
+          %r(^\{\s*<a> <b> <c> .\s*\})m,
+          %r(^<C> \{\s*<A> <b> <c> .\s*\})m
         ]
       ],
       "combo with duplicated statement" => [
@@ -147,8 +147,8 @@ describe RDF::TriG::Writer do
           <C> {<a> <b> <c> .}
         ),
         [
-          %r(^{\s*<a> <b> <c> .\s*})m,
-          %r(^<C> {\s*<a> <b> <c> .\s*})m
+          %r(^\{\s*<a> <b> <c> .\s*\})m,
+          %r(^<C> \{\s*<a> <b> <c> .\s*\})m
         ]
       ],
     }.each_pair do |title, (input, matches)|

@@ -103,10 +103,11 @@ module RDF::TriG
     ##
     # Iterates the given block for each RDF quad in the input.
     #
-    # @yield  [subject, predicate, object]
+    # @yield  [subject, predicate, object, context]
     # @yieldparam [RDF::Resource] subject
     # @yieldparam [RDF::URI]      predicate
     # @yieldparam [RDF::Value]    object
+    # @yieldparam [RDF::URI]      context
     # @return [void]
     def each_quad(&block)
       each_statement do |statement|
