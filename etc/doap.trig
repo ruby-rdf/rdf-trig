@@ -39,7 +39,7 @@
 }
 
 <http://greggkellogg.net/foaf#me> {
-  <http://greggkellogg.net/foaf> a foaf:Person;
+  <http://greggkellogg.net/foaf#me> a foaf:Person;
     foaf:mbox <mailto:gregg@kellogg-assoc.com>;
     foaf:mbox_sha1sum "35bc44e6d0070e5ad50ccbe0d24403c96af2b9bd";
     foaf:name "Gregg Kellogg";
