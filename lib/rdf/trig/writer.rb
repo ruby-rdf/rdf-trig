@@ -170,11 +170,11 @@ module RDF::TriG
     protected
     # Order contexts for output
     def order_contexts
-      debug("order_contexts") {repo.contexts.to_a.inspect}
-      contexts = repo.contexts.to_a.sort
+      debug("order_contexts") {@repo.contexts.to_a.inspect}
+      contexts = @repo.contexts.to_a.sort
       
       # include default context, if necessary
-      contexts.unshift(nil) unless repo.query(:context => false).to_a.empty?
+      contexts.unshift(nil) unless @repo.query(:context => false).to_a.empty?
       
       contexts
     end
