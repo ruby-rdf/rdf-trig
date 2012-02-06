@@ -16,6 +16,7 @@ describe RDF::TriG::Format do
       {:file_name      => 'etc/doap.trig'},
       {:file_extension => 'trig'},
       {:content_type   => 'application/trig'},
+      {:content_type   => 'application/x-trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
         RDF::Format.for(arg).should == @format_class
