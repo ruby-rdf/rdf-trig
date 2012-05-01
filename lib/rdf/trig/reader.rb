@@ -25,7 +25,7 @@ module RDF::TriG
     # Productions
     # [3g] graph defines the basic creation of context
     production(:graph) do |reader, phase, input, current, callback|
-      current[:context] = nil
+      callback.call(:context, "graph", nil)
     end
     
     # [4g] graphIri
@@ -35,45 +35,10 @@ module RDF::TriG
       # If input contains set_graph_iri, use the returned value to set @context
       if phase == :finish
         callback.call(:trace, "graphIri", lambda {"Set graph context to #{current[:resource]}"})
-        input[:context] = current[:resource]
+        callback.call(:context, "graphIri", current[:resource])
       end
     end
     
-    # [12] object ::= IRIref | blank | literal
-    production(:object) do |reader, phase, input, current, callback|
-      next unless phase == :finish
-      if input[:object_list]
-        # Part of an rdf:List collection
-        input[:object_list] << current[:resource]
-      else
-        callback.call(:trace, "object", lambda {"current: #{current.inspect}"})
-        callback.call(:statement, "object", input[:subject], input[:predicate], current[:resource], input[:context])
-      end
-    end
-
-    # [16] collection ::= "(" object* ")"
-    production(:collection) do |reader, phase, input, current, callback|
-      if phase == :start
-        current[:object_list] = []  # Tells the object production to collect and not generate statements
-      else
-        # Create an RDF list
-        bnode = reader.bnode
-        objects = current[:object_list]
-        list = RDF::List.new(bnode, nil, objects)
-        list.each_statement do |statement|
-          # Spec Confusion, referenced section "Collection" is missing from the spec.
-          # Anicdodal evidence indicates that some expect each node to be of type rdf:list,
-          # but existing Notation3 and Turtle tests (http://www.w3.org/2001/sw/DataAccess/df1/tests/manifest.ttl) do not.
-          next if statement.predicate == RDF.type && statement.object == RDF.List
-          callback.call(:statement, "collection", statement.subject, statement.predicate, statement.object, input[:context])
-        end
-        bnode = RDF.nil if list.empty?
-
-        # Return bnode as resource
-        input[:resource] = bnode
-      end
-    end
-
     ##
     # Iterates the given block for each RDF statement in the input.
     #
@@ -89,7 +54,11 @@ module RDF::TriG
       ) do |context, *data|
         loc = data.shift
         case context
+        when :context
+          @context = data[0]
         when :statement
+          data << @context if @context
+          debug("each_statement") {"data: #{data.inspect}, context: #{@context.inspect}"}
           add_statement(loc, RDF::Statement.from(data))
         when :trace
           debug(loc, *data)

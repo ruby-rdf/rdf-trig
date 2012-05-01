@@ -528,6 +528,39 @@ describe "RDF::TriG::Reader" do
         parse(trig).should be_equivalent_graph(nq, :trace => @debug)
       end
     end
+    
+    describe "RDF Collection" do
+      it "empty collection" do
+        trig = %(
+          @prefix a: <http://foo/a#> .
+
+          a:U {
+            a:b a:p0 () .
+          }
+        )
+        nq = %(
+          <http://foo/a#b> <http://foo/a#p0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
+        )
+        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+      end
+
+      it "Single entry" do
+        trig = %(
+          @prefix a: <http://foo/a#> .
+
+          a:U {
+            a:b a:p0 ("123") .
+          }
+        )
+        nq = %(
+          <http://foo/a#b> <http://foo/a#p0> _:a <http://foo/a#U> .
+          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "123" <http://foo/a#U> .
+          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> "123" <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+        )
+        g = parse(trig)
+        g.each_statement {|s| s.context.should produce(RDF::URI("http://foo/a#U"), @debug)}
+      end
+    end
   end
 
   describe "validation" do
