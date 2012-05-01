@@ -1,3 +1,6 @@
+### 0.1.2
+* Fixed bug causing context to be ignored when generating list statements.
+
 ### 0.1.1
 * Detect application/x-trig in addition to application/trig.
 

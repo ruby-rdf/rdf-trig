@@ -334,8 +334,20 @@ describe "RDF::TriG::Reader" do
         parse(trig).should be_equivalent_graph(nq, :trace => @debug)
       end
 
-      it "duplicated named graphs" do
-        
+      it "alternating graphs" do
+        trig = %(
+          {:a :b :c}
+          :G {:a :b :d}
+          {:a :b :e}
+          :G {:a :b :f}
+        )
+        nq = %(
+          <a> <b> <c> .
+          <a> <b> <d> <G> .
+          <a> <b> <e> .
+          <a> <b> <f> <G> .
+        )
+        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
       end
     end
 
