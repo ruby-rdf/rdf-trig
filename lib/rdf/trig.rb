@@ -18,7 +18,7 @@ module RDF
   # @see http://rubydoc.info/github/gkellogg/rdf/master/frames
   # @see http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html
   #
-  # @author [Gregg Kellogg](http://kellogg-assoc.com/)
+  # @author [Gregg Kellogg](http://greggkellogg.net/)
   module TriG
     require  'rdf/trig/format'
     autoload :Reader,     'rdf/trig/reader'

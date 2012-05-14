@@ -5,9 +5,9 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 {
-  <https://github.com/gkellogg/rdf-trig> a doap:GitRepository;
-     dc:title "rdf-trig";
-     doap:browse <https://github.com/gkellogg/rdf-trig> .
+  <https://github.com/ruby-rdf/rdf-trig> a doap:GitRepository;
+     dc:title "RDF::TriG";
+     doap:browse <https://github.com/ruby-rdf/rdf-trig> .
 
    <http://rubygems.org/gems/rdf-trig> a doap:Project;
       dc:created "2011-12-22T09:53:17-08:00"^^xsd:dateTime;
@@ -16,18 +16,19 @@
       doap:documenter <http://greggkellogg.net/foaf#me>;
       foaf:maker <http://greggkellogg.net/foaf#me> ;
       doap:maintainer <http://greggkellogg.net/foaf#me>;
-      doap:bug-database <https://github.com/gkellogg/rdf-trig/issues>;
+      doap:bug-database <https://github.com/ruby-rdf/rdf-trig/issues>;
       doap:description "TriG reader/writer for RDF.rb";
       doap:name "rdf-trig";
       doap:shortdesc "TriG reader/writer for Ruby."@en;
       doap:programming-language "Ruby";
-      doap:repository <https://github.com/gkellogg/rdf-trig>;
+      doap:repository <https://github.com/ruby-rdf/rdf-trig>;
       doap:mailing-list <http://lists.w3.org/Archives/Public/public-rdf-ruby/>;
+      doap:implements <http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html> ;
       doap:category <http://dbpedia.org/resource/Resource_Description_Framework>,
         <http://dbpedia.org/resource/Ruby_(programming_language)>;
-      doap:homepage <http://github.com/gkellogg/rdf-trig>;
+      doap:homepage <http://github.com/ruby-rdf/rdf-trig>;
       doap:license <http://creativecommons.org/licenses/publicdomain/>;
-      doap:wiki <https://github.com/gkellogg/rdf-trig/wiki> .
+      doap:wiki <https://github.com/ruby-rdf/rdf-trig/wiki> .
 
   <http://github.com/gkellogg> a foaf:OnlineAccount;
      dc:created "2009-01-13T08:58:46-08:00"^^xsd:dateTime;
@@ -40,7 +41,7 @@
 
 <http://greggkellogg.net/foaf#me> {
   <http://greggkellogg.net/foaf#me> a foaf:Person;
-    foaf:mbox <mailto:gregg@kellogg-assoc.com>;
+    foaf:mbox <mailto:gregg@greggkellogg.net>;
     foaf:mbox_sha1sum "35bc44e6d0070e5ad50ccbe0d24403c96af2b9bd";
     foaf:name "Gregg Kellogg";
     foaf:nick "gkellogg";
@@ -48,5 +49,5 @@
     foaf:account <http://github.com/gkellogg>;
     foaf:based_near "San Rafael, CA";
     foaf:depiction <http://www.gravatar.com/avatar/42f948adff3afaa52249d963117af7c8>;
-    foaf:weblog <http://kellogg-assoc.com> .
+    foaf:weblog <http://greggkellogg.net> .
 }

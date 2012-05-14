@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.date                  = File.mtime('VERSION').strftime('%Y-%m-%d')
 
   gem.name                  = "rdf-trig"
-  gem.homepage              = "http://github.com/gkellogg/rdf-trig"
+  gem.homepage              = "http://github.com/ruby-rdf/rdf-trig"
   gem.license               = 'Public Domain' if gem.respond_to?(:license=)
   gem.summary               = "TriG reader/writer for Ruby."
   gem.description           = %q{RDF::TriG is an TriG reader/writer for the RDF.rb library suite.}

@@ -71,7 +71,7 @@ To install the latest official release of the `RDF::TriG` gem, do:
 * <http://lists.w3.org/Archives/Public/public-rdf-ruby/>
 
 ## Author
-* [Gregg Kellogg](http://github.com/gkellogg) - <http://kellogg-assoc.com/>
+* [Gregg Kellogg](http://github.com/gkellogg) - <http://greggkellogg.net/>
 
 ## Contributing
 * Do your best to adhere to the existing coding conventions and idioms.
@@ -100,4 +100,4 @@ see <http://unlicense.org/> or the accompanying {file:UNLICENSE} file.
 [TriG]:         http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html
 [TriG doc]:     http://rubydoc.info/github/gkellogg/rdf-trig/master/file/README.markdown
 [TriG EBNF]:    http://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf
-[Turtle doc]:   http://rubydoc.info/github/gkellogg/rdf-turtle/master/file/README.markdown
+[Turtle doc]:   http://rubydoc.info/github/ruby-rdf/rdf-turtle/master/file/README.markdown
