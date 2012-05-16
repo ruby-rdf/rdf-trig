@@ -14,8 +14,8 @@ module RDF
   #     end
   #   end
   #
-  # @see http://rubydoc.info/github/gkellogg/rdf-turtle/master/frames
-  # @see http://rubydoc.info/github/gkellogg/rdf/master/frames
+  # @see http://rubydoc.info/github/ruby-rdf/rdf-turtle/
+  # @see http://rubydoc.info/github/ruby-rdf/rdf/master/
   # @see http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html
   #
   # @author [Gregg Kellogg](http://greggkellogg.net/)
