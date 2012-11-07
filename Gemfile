@@ -2,6 +2,8 @@ source "http://rubygems.org"
 
 gemspec :name => ""
 
-group :development do
+gem "sxp", :git => "git://github.com/gkellogg/sxp-ruby.git"
+
+group :debug do
   gem "wirble"
 end

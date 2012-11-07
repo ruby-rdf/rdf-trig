@@ -57,8 +57,8 @@ The writer also is based on the Turtle writer.
 ## Dependencies
 
 * [Ruby](http://ruby-lang.org/) (>= 1.8.7) or (>= 1.8.1 with [Backports][])
-* [RDF.rb](http://rubygems.org/gems/rdf) (>= 0.3.4)
-* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 0.1.1)
+* [RDF.rb](http://rubygems.org/gems/rdf) (>= 0.3.9)
+* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 0.3.0)
 
 ## Installation
 
