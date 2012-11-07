@@ -180,7 +180,7 @@ describe RDF::TriG::Writer do
     end
     
     regexps.each do |re|
-      result.should match_re(re, :about => base, :trace => @debug, :inputDocument => ntstr)
+      result.should match_re(re, :about => base, :trace => @debug, :input => ntstr)
     end
     
     result

@@ -9,10 +9,7 @@ require 'rdf/nquads'
 require 'rdf/spec'
 require 'rdf/spec/matchers'
 require 'rdf/isomorphic'
-require 'yaml'    # XXX should be in open-uri/cached
 require 'open-uri/cached'
-
-include Matchers
 
 # Create and maintain a cache of downloaded URIs
 URI_CACHE = File.expand_path(File.join(File.dirname(__FILE__), "uri-cache"))
@@ -31,6 +28,5 @@ end
   c.exclusion_filter = {
     :ruby => lambda { |version| !(RUBY_VERSION.to_s =~ /^#{version.to_s}/) },
   }
-  c.include(Matchers)
   c.include(RDF::Spec::Matchers)
 end
