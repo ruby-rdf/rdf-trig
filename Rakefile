@@ -68,21 +68,8 @@ file "etc/trig-ll1.n3" => "etc/trig.n3" do
   }
 end
 
-file "etc/trig-bnf.n3" => "etc/trig.n3" do
-  sh %{
-  ( cd ../swap/grammar;
-    PYTHONPATH=../.. python ../cwm.py #{TRIG_DIR}/etc/trig.n3 \
-      ebnf2bnf.n3 \
-      --think --data
-  ) > etc/trig-bnf.n3
-  }
-end
-
 file "etc/trig.n3" => "etc/trig.bnf" do
   sh %{
-  ( cd ../swap/grammar;
-    PYTHONPATH=../.. python ebnf2turtle.py #{TRIG_DIR}/etc/trig.bnf \
-      trig language 'http://www.w3.org/ns/formats/TriG#'
-  ) | sed -e 's/^  ".*"$/  g:seq (&)/'  > etc/trig.n3
+    script/ebnf2ttl -f ttl -o etc/trig.n3 etc/trig.bnf
   }
 end
