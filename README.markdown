@@ -1,4 +1,4 @@
-# RDF::TriG reader/writer
+# RDF::TriG reader/writer [![Build Status](https://secure.travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](http://travis-ci.org/ruby-rdf/rdf-trig)
 [TriG][] reader/writer for [RDF.rb][RDF.rb] .
 
 ## Description
