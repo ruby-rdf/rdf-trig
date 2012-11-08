@@ -13,34 +13,41 @@
     :graph_statement .
 
 :graph_statement rdfs:label "graph_statement"; rdf:value "2g";
-  rdfs:comment "[2g] graph_statement ::= directive \".\" | graph";
+  rdfs:comment "[2g] graph_statement ::= directive | graph";
   g:alt (
-    [ g:seq (
-      :directive
-      "."
-     ) ]
+    :directive
     :graph
    ) .
 
 :graph rdfs:label "graph"; rdf:value "3g";
-  rdfs:comment "[3g] graph ::= graphIri? \"{\" (triples \".\")* \"}\\\"";
-  g:seq (
-    [ g:opt 
+  rdfs:comment "[3g] graph ::= graphIri \"{\" (triples \".\")* \"}\" | \"{\" (triples \".\")* \"}\\\"";
+  g:alt (
+    [ g:seq (
       :graphIri
-      ]
-    "{"
-    [ g:star 
-      [ g:seq (
-        :triples
-        "."
-       ) ]
-      ]
-    "}"
+      "{"
+      [ g:star 
+        [ g:seq (
+          :triples
+          "."
+         ) ]
+        ]
+      "}"
+     ) ]
+    [ g:seq (
+      "{"
+      [ g:star 
+        [ g:seq (
+          :triples
+          "."
+         ) ]
+        ]
+      "}"
+     ) ]
    ) .
 
 :graphIri rdfs:label "graphIri"; rdf:value "4g";
-  rdfs:comment "[4g] graphIri ::= IRIref";
-  g:seq ( :IRIref ) .
+  rdfs:comment "[4g] graphIri ::= iri";
+  g:seq ( :iri ) .
 
 :directive rdfs:label "directive"; rdf:value "3";
   rdfs:comment "[3] directive ::= prefixID | base | sparqlPrefix | sparqlBase";

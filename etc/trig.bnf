@@ -1,11 +1,10 @@
 [1g] trigDoc ::= (graph_statement)* 
  
-[2g] graph_statement ::= directive "." 
- | graph
+[2g] graph_statement ::= directive | graph
 
-[3g] graph ::= graphIri? "{" (triples ".")* "}"
+[3g] graph ::= graphIri "{" (triples ".")* "}" | "{" (triples ".")* "}"
 
-[4g] graphIri ::= IRIref
+[4g] graphIri ::= iri
 
 /* Remaining from Turtle */
 

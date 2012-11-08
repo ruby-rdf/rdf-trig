@@ -39,13 +39,10 @@ RSpec::Matchers.define :be_equivalent_graph do |expected, info|
           trace.join("\n")
         end
       end
-      i = Info.new(identifier, info[:comment] || "", trace)
-      i.format = info[:format]
-      i
+      Info.new(identifier, info[:comment] || "", trace)
     else
       Info.new(expected.is_a?(RDF::Queryable) ? expected.context : info, info.to_s)
     end
-    @info.format ||= :ntriples
     @expected = normalize(expected)
     @actual = normalize(actual)
     @actual.isomorphic_with?(@expected) rescue false

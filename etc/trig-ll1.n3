@@ -22,19 +22,17 @@
                 <#_g8>,
                 <#_g9>,
                 <#_g10>,
-                <#_g11> .
+                <#_g11>,
+                <#_g12>,
+                <#_g13> .
     
     "."     g:follow "(",
-                "@base",
-                "@prefix",
                 "[",
                 :ANON,
                 :BLANK_NODE_LABEL,
                 :IRIREF,
                 :PNAME_LN,
-                :PNAME_NS,
-                :SPARQL_BASE,
-                :SPARQL_PREFIX .
+                :PNAME_NS .
     
     "a"     g:follow "(",
                 "[",
@@ -91,6 +89,10 @@
     
     "{"     g:follow "@base",
                 "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
                 :SPARQL_BASE,
                 :SPARQL_PREFIX .
     
@@ -469,10 +471,13 @@ i.e. rewrite ?, +, * operators using alt and seq
          rdfs:label "IRIREF";
          g:follow "(",
                 ",",
+                "@base",
+                "@prefix",
                 "[",
                 "a",
                 "false",
                 "true",
+                "{",
                 :ANON,
                 :BLANK_NODE_LABEL,
                 :DECIMAL,
@@ -481,6 +486,8 @@ i.e. rewrite ?, +, * operators using alt and seq
                 :IRIREF,
                 :PNAME_LN,
                 :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX,
                 :STRING_LITERAL_LONG_QUOTE,
                 :STRING_LITERAL_LONG_SINGLE_QUOTE,
                 :STRING_LITERAL_QUOTE,
@@ -868,7 +875,7 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:nonTerminal :language;
          g:seq  (
         :String
-        <#_g10> ) .
+        <#_g12> ) .
     
     :SPARQL_BASE     a re:Regex;
          rdf:value "29t";
@@ -1078,6 +1085,14 @@ i.e. rewrite ?, +, * operators using alt and seq
          rdfs:comment "[5] base ::= '@base' IRIREF \".\\\"";
          rdfs:label "base";
          g:first "@base";
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
          g:nonTerminal :language;
          g:seq  (
         "@base"
@@ -1169,7 +1184,7 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:nonTerminal :language;
          g:seq  (
         "("
-        <#_g9>
+        <#_g11>
         ")" ) .
     
     :directive     a g:Production;
@@ -1185,64 +1200,102 @@ i.e. rewrite ?, +, * operators using alt and seq
                 "@prefix",
                 :SPARQL_BASE,
                 :SPARQL_PREFIX;
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
          g:nonTerminal :language .
     
     :graph     a g:Production;
          rdf:value "3g";
-         rdfs:comment "[3g] graph ::= graphIri? \"{\" (triples \".\")* \"}\\\"";
+         rdfs:comment "[3g] graph ::= graphIri \"{\" (triples \".\")* \"}\" | \"{\" (triples \".\")* \"}\\\"";
          rdfs:label "graph";
-         g:first g:eps;
-         g:follow "@base",
-                "@prefix",
-                :SPARQL_BASE,
-                :SPARQL_PREFIX;
-         g:nonTerminal :language;
-         g:seq  (
-           [ a g:Production;
-             g:alt  (g:empty :graphIri);
-             g:first g:eps;
-             g:nonTerminal :language;
-             g:opt :graphIri ]
-           "{"
-           <#_g0>
-           "}"
-         ) .
-    
-    :graphIri     a g:Production;
-         rdf:value "4g";
-         rdfs:comment "[4g] graphIri ::= IRIref";
-         rdfs:label "graphIri";
-         g:nonTerminal :language;
-         g:seq  (
-        :IRIref ) .
-    
-    :graph_statement     a g:Production;
-         rdf:value "2g";
-         rdfs:comment """[2g] graph_statement ::= directive "." | graph""";
-         rdfs:label "graph_statement";
          g:alt  (
          [
                  a g:Production;
-                 g:first "@base",
-                        "@prefix",
-                        :SPARQL_BASE,
-                        :SPARQL_PREFIX;
+                 g:first :IRIREF,
+                        :PNAME_LN,
+                        :PNAME_NS;
                  g:follow "@base",
                         "@prefix",
+                        "{",
+                        :IRIREF,
+                        :PNAME_LN,
+                        :PNAME_NS,
                         :SPARQL_BASE,
                         :SPARQL_PREFIX;
                  g:nonTerminal :language;
                  g:seq  (
-                :directive
-                "." ) ]
+                :graphIri
+                "{"
+                <#_g0>
+                "}" ) ]
+         [
+                 a g:Production;
+                 g:first "{";
+                 g:follow "@base",
+                        "@prefix",
+                        "{",
+                        :IRIREF,
+                        :PNAME_LN,
+                        :PNAME_NS,
+                        :SPARQL_BASE,
+                        :SPARQL_PREFIX;
+                 g:nonTerminal :language;
+                 g:seq  (
+                "{"
+                <#_g2>
+                "}" ) ] );
+         g:first "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS;
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
+         g:nonTerminal :language .
+    
+    :graphIri     a g:Production;
+         rdf:value "4g";
+         rdfs:comment "[4g] graphIri ::= iri";
+         rdfs:label "graphIri";
+         g:first :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS;
+         g:nonTerminal :language;
+         g:seq  (
+        :iri ) .
+    
+    :graph_statement     a g:Production;
+         rdf:value "2g";
+         rdfs:comment "[2g] graph_statement ::= directive | graph";
+         rdfs:label "graph_statement";
+         g:alt  (
+        :directive
         :graph );
          g:first "@base",
                 "@prefix",
-                g:eps,
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
                 :SPARQL_BASE,
                 :SPARQL_PREFIX;
          g:follow "@base",
                 "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
                 :SPARQL_BASE,
                 :SPARQL_PREFIX;
          g:nonTerminal :language .
@@ -1414,7 +1467,7 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:nonTerminal :language;
          g:seq  (
         :object
-        <#_g7> ) .
+        <#_g9> ) .
     
     :predicate     a g:Production;
          rdf:value "11";
@@ -1455,13 +1508,21 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:seq  (
         :verb
         :objectList
-        <#_g3> ) .
+        <#_g5> ) .
     
     :prefixID     a g:Production;
          rdf:value "4";
          rdfs:comment "[4] prefixID ::= '@prefix' PNAME_NS IRIREF \".\\\"";
          rdfs:label "prefixID";
          g:first "@prefix";
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
          g:nonTerminal :language;
          g:seq  (
         "@prefix"
@@ -1474,6 +1535,14 @@ i.e. rewrite ?, +, * operators using alt and seq
          rdfs:comment "[29s] sparqlBase ::= SPARQL_BASE IRIREF";
          rdfs:label "sparqlBase";
          g:first :SPARQL_BASE;
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
          g:nonTerminal :language;
          g:seq  (
         :SPARQL_BASE
@@ -1484,6 +1553,14 @@ i.e. rewrite ?, +, * operators using alt and seq
          rdfs:comment "[28s] sparqlPrefix ::= SPARQL_PREFIX PNAME_NS IRIREF";
          rdfs:label "sparqlPrefix";
          g:first :SPARQL_PREFIX;
+         g:follow "@base",
+                "@prefix",
+                "{",
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
+                :SPARQL_BASE,
+                :SPARQL_PREFIX;
          g:nonTerminal :language;
          g:seq  (
         :SPARQL_PREFIX
@@ -1519,7 +1596,10 @@ i.e. rewrite ?, +, * operators using alt and seq
                  a g:Production;
                  g:first "@base",
                         "@prefix",
-                        g:eps,
+                        "{",
+                        :IRIREF,
+                        :PNAME_LN,
+                        :PNAME_NS,
                         :SPARQL_BASE,
                         :SPARQL_PREFIX;
                  g:follow g:eof;
@@ -1529,7 +1609,11 @@ i.e. rewrite ?, +, * operators using alt and seq
                 :trigDoc ) ] );
          g:first "@base",
                 "@prefix",
+                "{",
                 g:eps,
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS,
                 :SPARQL_BASE,
                 :SPARQL_PREFIX;
          g:follow g:eof;
@@ -1559,7 +1643,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                  g:nonTerminal :language;
                  g:seq  (
                 :blankNodePropertyList
-                <#_g2> ) ] );
+                <#_g4> ) ] );
          g:first "(",
                 "[",
                 :ANON,
@@ -1648,6 +1732,53 @@ i.e. rewrite ?, +, * operators using alt and seq
     <#_g2>     a g:Production;
          g:alt  (
         g:empty
+         [
+                 a g:Production;
+                 g:first "(",
+                        "[",
+                        :ANON,
+                        :BLANK_NODE_LABEL,
+                        :IRIREF,
+                        :PNAME_LN,
+                        :PNAME_NS;
+                 g:nonTerminal :language;
+                 g:seq  (
+                <#_g3>
+                <#_g2> ) ] );
+         g:first "(",
+                "[",
+                g:eps,
+                :ANON,
+                :BLANK_NODE_LABEL,
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS;
+         g:nonTerminal :language;
+         g:star <#_g3> .
+    
+    <#_g3>     a g:Production;
+         g:first "(",
+                "[",
+                :ANON,
+                :BLANK_NODE_LABEL,
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS;
+         g:follow "(",
+                "[",
+                :ANON,
+                :BLANK_NODE_LABEL,
+                :IRIREF,
+                :PNAME_LN,
+                :PNAME_NS;
+         g:nonTerminal :language;
+         g:seq  (
+        :triples
+        "." ) .
+    
+    <#_g4>     a g:Production;
+         g:alt  (
+        g:empty
         :predicateObjectList );
          g:first "a",
                 g:eps,
@@ -1657,7 +1788,7 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:nonTerminal :language;
          g:opt :predicateObjectList .
     
-    <#_g3>     a g:Production;
+    <#_g5>     a g:Production;
          g:alt  (
         g:empty
          [
@@ -1665,25 +1796,25 @@ i.e. rewrite ?, +, * operators using alt and seq
                  g:first ";";
                  g:nonTerminal :language;
                  g:seq  (
-                <#_g4>
-                <#_g3> ) ] );
+                <#_g6>
+                <#_g5> ) ] );
          g:first ";",
                 g:eps;
          g:nonTerminal :language;
-         g:star <#_g4> .
+         g:star <#_g6> .
     
-    <#_g4>     a g:Production;
+    <#_g6>     a g:Production;
          g:first ";";
          g:follow ";";
          g:nonTerminal :language;
          g:seq  (
         ";"
-        <#_g5> ) .
+        <#_g7> ) .
     
-    <#_g5>     a g:Production;
+    <#_g7>     a g:Production;
          g:alt  (
         g:empty
-        <#_g6> );
+        <#_g8> );
          g:first "a",
                 g:eps,
                 :IRIREF,
@@ -1691,9 +1822,9 @@ i.e. rewrite ?, +, * operators using alt and seq
                 :PNAME_NS;
          g:follow ";";
          g:nonTerminal :language;
-         g:opt <#_g6> .
+         g:opt <#_g8> .
     
-    <#_g6>     a g:Production;
+    <#_g8>     a g:Production;
          g:first "a",
                 :IRIREF,
                 :PNAME_LN,
@@ -1704,7 +1835,7 @@ i.e. rewrite ?, +, * operators using alt and seq
         :verb
         :objectList ) .
     
-    <#_g7>     a g:Production;
+    <#_g9>     a g:Production;
          g:alt  (
         g:empty
          [
@@ -1713,15 +1844,15 @@ i.e. rewrite ?, +, * operators using alt and seq
                  g:follow ";";
                  g:nonTerminal :language;
                  g:seq  (
-                <#_g8>
-                <#_g7> ) ] );
+                <#_g10>
+                <#_g9> ) ] );
          g:first ",",
                 g:eps;
          g:follow ";";
          g:nonTerminal :language;
-         g:star <#_g8> .
+         g:star <#_g10> .
     
-    <#_g8>     a g:Production;
+    <#_g10>     a g:Production;
          g:first ",";
          g:follow ",";
          g:nonTerminal :language;
@@ -1729,7 +1860,7 @@ i.e. rewrite ?, +, * operators using alt and seq
         ","
         :object ) .
     
-    <#_g9>     a g:Production;
+    <#_g11>     a g:Production;
          g:alt  (
         g:empty
          [
@@ -1753,7 +1884,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                  g:nonTerminal :language;
                  g:seq  (
                 :object
-                <#_g9> ) ] );
+                <#_g11> ) ] );
          g:first "(",
                 "[",
                 "false",
@@ -1774,10 +1905,10 @@ i.e. rewrite ?, +, * operators using alt and seq
          g:nonTerminal :language;
          g:star :object .
     
-    <#_g10>     a g:Production;
+    <#_g12>     a g:Production;
          g:alt  (
         g:empty
-        <#_g11> );
+        <#_g13> );
          g:first "^^",
                 g:eps,
                 :LANGTAG;
@@ -1799,9 +1930,9 @@ i.e. rewrite ?, +, * operators using alt and seq
                 :STRING_LITERAL_QUOTE,
                 :STRING_LITERAL_SINGLE_QUOTE;
          g:nonTerminal :language;
-         g:opt <#_g11> .
+         g:opt <#_g13> .
     
-    <#_g11>     a g:Production;
+    <#_g13>     a g:Production;
          g:alt  (
         :LANGTAG
          [
@@ -1851,7 +1982,11 @@ i.e. rewrite ?, +, * operators using alt and seq
       [      a g:Production;
              g:first "@base",
                     "@prefix",
+                    "{",
                     g:eps,
+                    :IRIREF,
+                    :PNAME_LN,
+                    :PNAME_NS,
                     :SPARQL_BASE,
                     :SPARQL_PREFIX;
              g:seq  (
@@ -1870,16 +2005,28 @@ i.e. rewrite ?, +, * operators using alt and seq
             <#_g0> ) ].
     
       [      a g:Production;
+             g:first "(",
+                    "[",
+                    g:eps,
+                    :ANON,
+                    :BLANK_NODE_LABEL,
+                    :IRIREF,
+                    :PNAME_LN,
+                    :PNAME_NS;
+             g:seq  (
+            <#_g2> ) ].
+    
+      [      a g:Production;
              g:first ";",
                     g:eps;
              g:seq  (
-            <#_g3> ) ].
+            <#_g5> ) ].
     
       [      a g:Production;
              g:first ",",
                     g:eps;
              g:seq  (
-            <#_g7> ) ].
+            <#_g9> ) ].
     
       [      a g:Production;
              g:first "(",
@@ -1900,14 +2047,14 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :STRING_LITERAL_QUOTE,
                     :STRING_LITERAL_SINGLE_QUOTE;
              g:seq  (
-            <#_g9> ) ].
+            <#_g11> ) ].
     
       [      a g:Production;
              g:first "^^",
                     g:eps,
                     :LANGTAG;
              g:seq  (
-            <#_g10> ) ].
+            <#_g12> ) ].
     
       [      a g:Production;
              g:first :IRIREF,
@@ -1935,7 +2082,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :STRING_LITERAL_QUOTE,
                     :STRING_LITERAL_SINGLE_QUOTE;
              g:seq  (
-            <#_g9>
+            <#_g11>
             ")" ) ].
     
       [      a g:Production;
@@ -1989,7 +2136,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :STRING_LITERAL_SINGLE_QUOTE;
              g:seq  (
             :objectList
-            <#_g3> ) ].
+            <#_g5> ) ].
     
       [      a g:Production;
              g:first "a",
@@ -1998,7 +2145,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :PNAME_LN,
                     :PNAME_NS;
              g:seq  (
-            <#_g5> ) ].
+            <#_g7> ) ].
     
       [      a g:Production;
              g:first "(",
@@ -2027,7 +2174,7 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :PNAME_LN,
                     :PNAME_NS;
              g:seq  (
-            <#_g2> ) ].
+            <#_g4> ) ].
     
       [      a g:Production;
              g:first "a",
@@ -2058,9 +2205,16 @@ i.e. rewrite ?, +, * operators using alt and seq
             "." ) ].
     
       [      a g:Production;
+             g:first "(",
+                    "[",
+                    g:eps,
+                    :ANON,
+                    :BLANK_NODE_LABEL,
+                    :IRIREF,
+                    :PNAME_LN,
+                    :PNAME_NS;
              g:seq  (
-            "{"
-            <#_g0>
+            <#_g2>
             "}" ) ].
     
       [      a g:Production;
@@ -2069,11 +2223,21 @@ i.e. rewrite ?, +, * operators using alt and seq
     
       [      a g:Production;
              g:seq  (
+            "{"
+            <#_g0>
+            "}" ) ].
+    
+      [      a g:Production;
+             g:seq  (
             ")" ) ].
     
       [      a g:Production;
              g:seq  (
             "]" ) ].
+    
+      [      a g:Production;
+             g:seq  (
+            "}" ) ].
     
       [      a g:Production;
              g:first "(",
@@ -2086,10 +2250,6 @@ i.e. rewrite ?, +, * operators using alt and seq
                     :PNAME_NS;
              g:seq  (
             <#_g0>
-            "}" ) ].
-    
-      [      a g:Production;
-             g:seq  (
             "}" ) ].
     
 #ENDS

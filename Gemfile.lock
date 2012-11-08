@@ -5,6 +5,13 @@ GIT
     sxp (0.0.14)
       json (>= 1.5.1)
 
+GIT
+  remote: git://github.com/ruby-rdf/rdf-turtle.git
+  revision: cb94dd4e2b5002598d91d77aa56374b7b4c186fe
+  specs:
+    rdf-turtle (0.3.0)
+      rdf (>= 0.3.9)
+
 PATH
   remote: .
   specs:
@@ -34,8 +41,6 @@ GEM
       rdf (>= 0.3.4)
     rdf-spec (0.3.8)
       rspec (>= 2.8.0)
-    rdf-turtle (0.3.0)
-      rdf (>= 0.3.4)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -59,6 +64,7 @@ DEPENDENCIES
   rdf-n3 (>= 0.3.7)
   rdf-spec (>= 0.3.8)
   rdf-trig!
+  rdf-turtle!
   rspec (>= 2.11.0)
   sxp!
   wirble

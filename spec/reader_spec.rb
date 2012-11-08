@@ -331,11 +331,12 @@ describe "RDF::TriG::Reader" do
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig, :validate => false).should be_equivalent_graph(nq, :trace => @debug)
       end
 
       it "alternating graphs" do
         trig = %(
+          @prefix : <> .
           {:a :b :c}
           :G {:a :b :d}
           {:a :b :e}
@@ -360,7 +361,7 @@ describe "RDF::TriG::Reader" do
       it "allows undefined empty prefix if not validating" do
         trig = %({:a :b :c .})
         nq = %(<a> <b> <c> .)
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig, :validate => false).should be_equivalent_graph(nq, :trace => @debug)
       end
 
       it "empty relative-IRI" do
@@ -782,7 +783,7 @@ describe "RDF::TriG::Reader" do
     @debug = []
     options = {
       :debug => @debug,
-      :validate => false,
+      :validate => true,
       :canonicalize => false,
     }.merge(options)
     graph = options[:graph] || RDF::Repository.new
