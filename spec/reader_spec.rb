@@ -74,7 +74,7 @@ describe "RDF::TriG::Reader" do
       before(:each) do
         trig = %({<http://example.org/> <http://xmlns.com/foaf/0.1/name> "Gregg Kellogg" .})
         @graph = parse(trig, :validate => true)
-        @statement = @graph.statements.first
+        @statement = @graph.statements.to_a.first
       end
       
       it "should have a single triple" do
@@ -117,7 +117,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |contents, triple|
         specify "test #{triple}" do
           graph = parse(triple, :prefixes => {nil => ''})
-          statement = graph.statements.first
+          statement = graph.statements.to_a.first
           graph.size.should == 1
           statement.object.value.should == contents
         end
@@ -131,7 +131,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |contents, triple|
         specify "test #{triple}" do
           graph = parse(triple, :prefixes => {nil => ''})
-          statement = graph.statements.first
+          statement = graph.statements.to_a.first
           graph.size.should == 1
           statement.object.value.should == contents
         end
@@ -140,7 +140,7 @@ describe "RDF::TriG::Reader" do
       it "should parse long literal with escape" do
         trig = %(@prefix : <http://example.org/foo#> . {<a> <b> "\\U00015678another" .})
         if defined?(::Encoding)
-          statement = parse(trig).statements.first
+          statement = parse(trig).statements.to_a.first
           statement.object.value.should == "\u{15678}another"
         else
           pending("Not supported in Ruby 1.8")
@@ -168,13 +168,13 @@ describe "RDF::TriG::Reader" do
           it "parses LONG1 #{test}" do
             graph = parse(%({<a> <b> '''#{string}'''.}))
             graph.size.should == 1
-            graph.statements.first.object.value.should == string
+            graph.statements.to_a.first.object.value.should == string
           end
 
           it "parses LONG2 #{test}" do
             graph = parse(%({<a> <b> """#{string}""".}))
             graph.size.should == 1
-            graph.statements.first.object.value.should == string
+            graph.statements.to_a.first.object.value.should == string
           end
         end
       end
@@ -182,20 +182,20 @@ describe "RDF::TriG::Reader" do
       it "LONG1 matches trailing escaped single-quote" do
         graph = parse(%({<a> <b> '''\\''''.}))
         graph.size.should == 1
-        graph.statements.first.object.value.should == %q(')
+        graph.statements.to_a.first.object.value.should == %q(')
       end
       
       it "LONG2 matches trailing escaped double-quote" do
         graph = parse(%({<a> <b> """\\"""".}))
         graph.size.should == 1
-        graph.statements.first.object.value.should == %q(")
+        graph.statements.to_a.first.object.value.should == %q(")
       end
     end
 
     it "should create named subject bnode" do
       graph = parse("{_:anon <http://example.org/property> <http://example.org/resource2> .}")
       graph.size.should == 1
-      statement = graph.statements.first
+      statement = graph.statements.to_a.first
       statement.subject.should be_a(RDF::Node)
       statement.subject.id.should =~ /anon/
       statement.predicate.to_s.should == "http://example.org/property"
@@ -216,7 +216,7 @@ describe "RDF::TriG::Reader" do
     it "should create named object bnode" do
       graph = parse("{<http://example.org/resource2> <http://example.org/property> _:anon .}")
       graph.size.should == 1
-      statement = graph.statements.first
+      statement = graph.statements.to_a.first
       statement.subject.to_s.should == "http://example.org/resource2"
       statement.predicate.to_s.should == "http://example.org/property"
       statement.object.should be_a(RDF::Node)
@@ -225,19 +225,19 @@ describe "RDF::TriG::Reader" do
 
     it "should allow mixed-case language" do
       trig = %({:x2 :p "xyz"@EN .})
-      statement = parse(trig, :prefixes => {nil => ''}).statements.first
+      statement = parse(trig, :prefixes => {nil => ''}).statements.to_a.first
       statement.object.to_ntriples.should == %("xyz"@EN)
     end
 
     it "should create typed literals" do
       trig = "{<http://example.org/joe> <http://xmlns.com/foaf/0.1/name> \"Joe\" .}"
-      statement = parse(trig).statements.first
+      statement = parse(trig).statements.to_a.first
       statement.object.class.should == RDF::Literal
     end
 
     it "should create BNodes" do
       trig = "{_:a a _:c .}"
-      statement = parse(trig).statements.first
+      statement = parse(trig).statements.to_a.first
       statement.subject.class.should == RDF::Node
       statement.object.class.should == RDF::Node
     end
