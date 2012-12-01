@@ -104,7 +104,7 @@ module RDF::TriG
     # @option options [Boolean]  :standard_prefixes   (false)
     #   Add standard prefixes to @prefixes, if necessary.
     # @option options [String]   :default_namespace (nil)
-    #   URI to use as default namespace, same as prefixes[nil]
+    #   URI to use as default namespace, same as `prefixes\[nil\]`
     # @yield  [writer] `self`
     # @yieldparam  [RDF::Writer] writer
     # @yieldreturn [void]
