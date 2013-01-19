@@ -11,7 +11,7 @@ Install with `gem install rdf-trig`
 
 * 100% free and unencumbered [public domain](http://unlicense.org/) software.
 * Implements a complete parser and serializer for [TriG][].
-* Compatible with Ruby 1.8.7+, Ruby 1.9.x, and JRuby 1.4/1.5.
+* Compatible with Ruby 1.8.7+, Ruby 1.9.x, and JRuby 1.7+.
 
 ## Usage
 Instantiate a reader from a local file:
@@ -57,8 +57,8 @@ The writer also is based on the Turtle writer.
 ## Dependencies
 
 * [Ruby](http://ruby-lang.org/) (>= 1.8.7) or (>= 1.8.1 with [Backports][])
-* [RDF.rb](http://rubygems.org/gems/rdf) (>= 0.3.9)
-* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 0.3.0)
+* [RDF.rb](http://rubygems.org/gems/rdf) (>= 1.0)
+* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 1.0)
 
 ## Installation
 
