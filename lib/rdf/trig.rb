@@ -25,8 +25,6 @@ module RDF
     autoload :VERSION,    'rdf/trig/version'
     autoload :Writer,     'rdf/trig/writer'
 
-    KEYWORDS  = %w(@base @prefix).map(&:to_sym)
-    
     def self.debug?; @debug; end
     def self.debug=(value); RDF::Turtle.debug = @debug = value; end
   end

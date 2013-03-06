@@ -1,5 +1,5 @@
-require 'rdf/trig/meta'
 require 'rdf/turtle'
+require 'rdf/trig/meta'
 
 module RDF::TriG
   ##
@@ -11,32 +11,31 @@ module RDF::TriG
     include RDF::TriG::Meta
 
     # String terminals
-    terminal(nil,                  %r([\{\}\(\),.;\[\]a]|\^\^|@base|@prefix|true|false)) do |reader, prod, token, input|
+    terminal(nil,                  %r([\{\}\(\),.;\[\]a]|\^\^|@base|@prefix|true|false)) do |prod, token, input|
       case token.value
-      when 'a'             then input[:resource] = RDF.type
-      when 'true', 'false' then input[:resource] = RDF::Literal::Boolean.new(token.value)
-      else                      input[:string] = token.value
+      when 'a'                then input[:resource] = RDF.type
+      when 'true', 'false'    then input[:resource] = RDF::Literal::Boolean.new(token.value)
+      when '@base', '@prefix' then input[:lang] = token.value[1..-1]
+      else                         input[:string] = token.value
       end
-    end
-    terminal(:LANGTAG,              LANGTAG) do |reader, prod, token, input|
-      input[:lang] = token.value[1..-1]
     end
 
     # Productions
     # [3g] graph defines the basic creation of context
-    production(:graph) do |reader, phase, input, current, callback|
+    start_production(:graph) do |input, current, callback|
+      callback.call(:context, "graph", nil)
+    end
+    production(:graph) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
     
     # [4g] graphIri
     # Normally, just returns the IRIref, but if called from [3g], also
     # sets the context for triples defined within that graph
-    production(:graphIri) do |reader, phase, input, current, callback|
+    production(:graphIri) do |input, current, callback|
       # If input contains set_graph_iri, use the returned value to set @context
-      if phase == :finish
-        callback.call(:trace, "graphIri", lambda {"Set graph context to #{current[:resource]}"})
-        callback.call(:context, "graphIri", current[:resource])
-      end
+      debug("graphIri") {"Set graph context to #{current[:resource]}"}
+      callback.call(:context, "graphIri", current[:resource])
     end
     
     ##
@@ -64,7 +63,7 @@ module RDF::TriG
           debug(loc, *data)
         end
       end
-    rescue RDF::LL1::Parser::Error => e
+    rescue EBNF::LL1::Parser::Error => e
       debug("Parsing completed with errors:\n\t#{e.message}")
       raise RDF::ReaderError, e.message if validate?
     end

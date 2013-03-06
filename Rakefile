@@ -40,36 +40,14 @@ namespace :doc do
   YARD::Rake::YardocTask.new
 end
 
-
-TRIG_DIR = File.expand_path(File.dirname(__FILE__))
-
-# Use SWAP tools expected to be in ../swap
-# Download from http://www.w3.org/2000/10/swap/
 desc 'Build first, follow and branch tables'
-task :meta => "lib/rdf/trig/meta.rb"
+task :meta => "lib/rdf/turtle/meta.rb"
 
-file "lib/rdf/trig/meta.rb" => ["etc/trig-ll1.n3", "script/gramLL1"] do |t|
+file "lib/rdf/trig/meta.rb" => "etc/trig.bnf" do |t|
   sh %{
-    script/gramLL1 \
-      --grammar etc/trig-ll1.n3 \
-      --lang 'http://www.w3.org/ns/formats/TriG#language' \
-      --output lib/rdf/trig/meta.rb
-  }
-end
-
-file "etc/trig-ll1.n3" => "etc/trig.n3" do
-  sh %{
-  ( cd ../swap/grammar;
-    PYTHONPATH=../.. python ../cwm.py #{TRIG_DIR}/etc/trig.n3 \
-      ebnf2bnf.n3 \
-      first_follow.n3 \
-      --think --data
-  )  > etc/trig-ll1.n3
-  }
-end
-
-file "etc/trig.n3" => "etc/trig.bnf" do
-  sh %{
-    script/ebnf2ttl -f ttl -o etc/trig.n3 etc/trig.bnf
+    ebnf --ll1 trigDoc --format rb \
+      --mod-name RDF::TriG::Meta \
+      --output lib/rdf/trig/meta.rb \
+      etc/trig.bnf
   }
 end
