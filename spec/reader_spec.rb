@@ -784,7 +784,7 @@ describe "RDF::TriG::Reader" do
     @debug = []
     options = {
       :debug => @debug,
-      :validate => true,
+      :validate => false,
       :canonicalize => false,
     }.merge(options)
     graph = options[:graph] || RDF::Repository.new

@@ -10,6 +10,62 @@ module RDF::TriG
     format Format
     include RDF::TriG::Meta
 
+    # Terminals passed to lexer. Order matters!
+    terminal(:ANON,                 ANON) do |prod, token, input|
+      input[:resource] = self.bnode
+    end
+    terminal(:BLANK_NODE_LABEL,     BLANK_NODE_LABEL) do |prod, token, input|
+      input[:resource] = self.bnode(token.value[2..-1])
+    end
+    terminal(:IRIREF,               IRIREF, :unescape => true) do |prod, token, input|
+      input[:resource] = process_iri(token.value[1..-2])
+    end
+    terminal(:DOUBLE,               DOUBLE) do |prod, token, input|
+      # Note that a Turtle Double may begin with a '.[eE]', so tack on a leading
+      # zero if necessary
+      value = token.value.sub(/\.([eE])/, '.0\1')
+      input[:resource] = literal(value, :datatype => RDF::XSD.double)
+    end
+    terminal(:DECIMAL,              DECIMAL) do |prod, token, input|
+      # Note that a Turtle Decimal may begin with a '.', so tack on a leading
+      # zero if necessary
+      value = token.value
+      value = "0#{token.value}" if token.value[0,1] == "."
+      input[:resource] = literal(value, :datatype => RDF::XSD.decimal)
+    end
+    terminal(:INTEGER,              INTEGER) do |prod, token, input|
+      input[:resource] = literal(token.value, :datatype => RDF::XSD.integer)
+    end
+    # Spec confusion: spec says : "Literals , prefixed names and IRIs may also contain escape sequences"
+    terminal(:PNAME_LN,             PNAME_LN, :unescape => true) do |prod, token, input|
+      prefix, suffix = token.value.split(":", 2)
+      input[:resource] = pname(prefix, suffix)
+    end
+    # Spec confusion: spec says : "Literals , prefixed names and IRIs may also contain escape sequences"
+    terminal(:PNAME_NS,             PNAME_NS) do |prod, token, input|
+      prefix = token.value[0..-2]
+
+      # Two contexts, one when prefix is being defined, the other when being used
+      case prod
+      when :prefixID, :sparqlPrefix
+        input[:prefix] = prefix
+      else
+        input[:resource] = pname(prefix, '')
+      end
+    end
+    terminal(:STRING_LITERAL_LONG_SINGLE_QUOTE, STRING_LITERAL_LONG_SINGLE_QUOTE, :unescape => true) do |prod, token, input|
+      input[:string_value] = token.value[3..-4]
+    end
+    terminal(:STRING_LITERAL_LONG_QUOTE, STRING_LITERAL_LONG_QUOTE, :unescape => true) do |prod, token, input|
+      input[:string_value] = token.value[3..-4]
+    end
+    terminal(:STRING_LITERAL_QUOTE,      STRING_LITERAL_QUOTE, :unescape => true) do |prod, token, input|
+      input[:string_value] = token.value[1..-2]
+    end
+    terminal(:STRING_LITERAL_SINGLE_QUOTE,      STRING_LITERAL_SINGLE_QUOTE, :unescape => true) do |prod, token, input|
+      input[:string_value] = token.value[1..-2]
+    end
+
     # String terminals
     terminal(nil,                  %r([\{\}\(\),.;\[\]a]|\^\^|@base|@prefix|true|false)) do |prod, token, input|
       case token.value
@@ -20,6 +76,17 @@ module RDF::TriG
       end
     end
 
+    terminal(:LANGTAG,              LANGTAG) do |prod, token, input|
+      input[:lang] = token.value[1..-1]
+    end
+
+    terminal(:SPARQL_PREFIX,      SPARQL_PREFIX) do |prod, token, input|
+      input[:string_value] = token.value.downcase
+    end
+    terminal(:SPARQL_BASE,      SPARQL_BASE) do |prod, token, input|
+      input[:string_value] = token.value.downcase
+    end
+
     # Productions
     # [3g] graph defines the basic creation of context
     start_production(:graph) do |input, current, callback|
@@ -28,7 +95,7 @@ module RDF::TriG
     production(:graph) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
-    
+
     # [4g] graphIri
     # Normally, just returns the IRIref, but if called from [3g], also
     # sets the context for triples defined within that graph
@@ -37,7 +104,121 @@ module RDF::TriG
       debug("graphIri") {"Set graph context to #{current[:resource]}"}
       callback.call(:context, "graphIri", current[:resource])
     end
-    
+
+
+    # Productions
+    # [4] prefixID defines a prefix mapping
+    production(:prefixID) do |input, current, callback|
+      prefix = current[:prefix]
+      iri = current[:resource]
+      debug("prefixID") {"Defined prefix #{prefix.inspect} mapping to #{iri.inspect}"}
+      prefix(prefix, iri)
+    end
+
+    # [5] base set base_uri
+    production(:base) do |input, current, callback|
+      iri = current[:resource]
+      debug("base") {"Defined base as #{iri}"}
+      options[:base_uri] = iri
+    end
+
+    # [28s] sparqlPrefix ::= [Pp][Rr][Ee][Ff][Ii][Xx] PNAME_NS IRIREF
+    production(:sparqlPrefix) do |input, current, callback|
+      prefix = current[:prefix]
+      iri = current[:resource]
+      debug("sparqlPrefix") {"Defined prefix #{prefix.inspect} mapping to #{iri.inspect}"}
+      prefix(prefix, iri)
+    end
+
+    # [29s] sparqlBase ::= [Bb][Aa][Ss][Ee] IRIREF
+    production(:sparqlBase) do |input, current, callback|
+      iri = current[:resource]
+      debug("base") {"Defined base as #{iri}"}
+      options[:base_uri] = iri
+    end
+
+    # [6] triples
+    start_production(:triples) do |input, current, callback|
+      # Note production as triples for blankNodePropertyList
+      # to set :subject instead of :resource
+      current[:triples] = true
+    end
+    production(:triples) do |input, current, callback|
+      # Note production as triples for blankNodePropertyList
+      # to set :subject instead of :resource
+      current[:triples] = true
+    end
+
+    # [9] verb ::= predicate | "a"
+    production(:verb) do |input, current, callback|
+      input[:predicate] = current[:resource]
+    end
+
+    # [10] subject ::= IRIref | BlankNode | collection
+    start_production(:subject) do |input, current, callback|
+      current[:triples] = nil
+    end
+
+    production(:subject) do |input, current, callback|
+      input[:subject] = current[:resource]
+    end
+
+    # [12] object ::= iri | BlankNode | collection | blankNodePropertyList | literal
+    production(:object) do |input, current, callback|
+      if input[:object_list]
+        # Part of an rdf:List collection
+        input[:object_list] << current[:resource]
+      else
+        debug("object") {"current: #{current.inspect}"}
+        callback.call(:statement, "object", input[:subject], input[:predicate], current[:resource])
+      end
+    end
+
+    # [14] blankNodePropertyList ::= "[" predicateObjectList "]"
+    start_production(:blankNodePropertyList) do |input, current, callback|
+      current[:subject] = self.bnode
+    end
+
+    production(:blankNodePropertyList) do |input, current, callback|
+      if input[:triples]
+        input[:subject] = current[:subject]
+      else
+        input[:resource] = current[:subject]
+      end
+    end
+
+    # [15] collection ::= "(" object* ")"
+    start_production(:collection) do |input, current, callback|
+      # Tells the object production to collect and not generate statements
+      current[:object_list] = []
+    end
+
+    production(:collection) do |input, current, callback|
+      # Create an RDF list
+      bnode = self.bnode
+      objects = current[:object_list]
+      list = RDF::List.new(bnode, nil, objects)
+      list.each_statement do |statement|
+        # Spec Confusion, referenced section "Collection" is missing from the spec.
+        # Anicdodal evidence indicates that some expect each node to be of type rdf:list,
+        # but existing Notation3 and Turtle tests (http://www.w3.org/2001/sw/DataAccess/df1/tests/manifest.ttl) do not.
+        next if statement.predicate == RDF.type && statement.object == RDF.List
+        callback.call(:statement, "collection", statement.subject, statement.predicate, statement.object)
+      end
+      bnode = RDF.nil if list.empty?
+
+      # Return bnode as resource
+      input[:resource] = bnode
+    end
+
+    # [16] RDFLiteral ::= String ( LanguageTag | ( "^^" IRIref ) )?
+    production(:RDFLiteral) do |input, current, callback|
+      opts = {}
+      opts[:datatype] = current[:resource] if current[:resource]
+      opts[:language] = current[:lang] if current[:lang]
+      input[:resource] = literal(current[:string_value], opts)
+    end
+
     ##
     # Iterates the given block for each RDF statement in the input.
     #
@@ -49,25 +230,37 @@ module RDF::TriG
 
       parse(@input, START.to_sym, @options.merge(:branch => BRANCH,
                                                  :first => FIRST,
-                                                 :follow => FOLLOW)
+                                                 :follow => FOLLOW,
+                                                 :reset_on_start => true)
       ) do |context, *data|
-        loc = data.shift
         case context
         when :context
-          @context = data[0]
+          @context = data[1]
         when :statement
           data << @context if @context
           debug("each_statement") {"data: #{data.inspect}, context: #{@context.inspect}"}
+          loc = data.shift
           add_statement(loc, RDF::Statement.from(data))
         when :trace
-          debug(loc, *data)
+          level, lineno, depth, *args = data
+          message = "#{args.join(': ')}"
+          d_str = depth > 100 ? ' ' * 100 + '+' : ' ' * depth
+          str = "[#{lineno}](#{level})#{d_str}#{message}"
+          case @options[:debug]
+          when Array
+            @options[:debug] << str
+          when TrueClass
+            $stderr.puts str
+          when Integer
+            $stderr.puts(str) if level <= @options[:debug]
+          end
         end
       end
     rescue EBNF::LL1::Parser::Error => e
       debug("Parsing completed with errors:\n\t#{e.message}")
       raise RDF::ReaderError, e.message if validate?
     end
-    
+
     ##
     # Iterates the given block for each RDF quad in the input.
     #

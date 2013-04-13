@@ -41,7 +41,7 @@ namespace :doc do
 end
 
 desc 'Build first, follow and branch tables'
-task :meta => "lib/rdf/turtle/meta.rb"
+task :meta => "lib/rdf/trig/meta.rb"
 
 file "lib/rdf/trig/meta.rb" => "etc/trig.bnf" do |t|
   sh %{
