@@ -2,7 +2,7 @@
 
 [TriG][] reader/writer for [RDF.rb][RDF.rb] .
 
-[![Gem Version](https://badge.fury.io/rb/rdf-trig.png)][gem]
+[![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](http://badge.fury.io/rb/rdf-trig)
 [![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](http://travis-ci.org/ruby-rdf/rdf-trig)
 
 ## Description
