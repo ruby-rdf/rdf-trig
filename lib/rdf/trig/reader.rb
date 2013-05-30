@@ -67,24 +67,24 @@ module RDF::TriG
     end
 
     # String terminals
-    terminal(nil,                  %r([\{\}\(\),.;\[\]a]|\^\^|@base|@prefix|true|false)) do |prod, token, input|
+    terminal(nil,                  %r([\{\}\(\),.;\[\]a]|\^\^|true|false)) do |prod, token, input|
       case token.value
-      when 'a'                then input[:resource] = RDF.type
+      when 'A', 'a'           then input[:resource] = RDF.type
       when 'true', 'false'    then input[:resource] = RDF::Literal::Boolean.new(token.value)
       when '@base', '@prefix' then input[:lang] = token.value[1..-1]
       else                         input[:string] = token.value
       end
     end
 
-    terminal(:LANGTAG,              LANGTAG) do |prod, token, input|
-      input[:lang] = token.value[1..-1]
+    terminal(:PREFIX,      PREFIX) do |prod, token, input|
+      input[:string_value] = token.value.downcase
+    end
+    terminal(:BASE,      BASE) do |prod, token, input|
+      input[:string_value] = token.value.downcase
     end
 
-    terminal(:SPARQL_PREFIX,      SPARQL_PREFIX) do |prod, token, input|
-      input[:string_value] = token.value.downcase
-    end
-    terminal(:SPARQL_BASE,      SPARQL_BASE) do |prod, token, input|
-      input[:string_value] = token.value.downcase
+    terminal(:LANGTAG,              LANGTAG) do |prod, token, input|
+      input[:lang] = token.value[1..-1]
     end
 
     # Productions
@@ -117,21 +117,6 @@ module RDF::TriG
 
     # [5] base set base_uri
     production(:base) do |input, current, callback|
-      iri = current[:resource]
-      debug("base") {"Defined base as #{iri}"}
-      options[:base_uri] = iri
-    end
-
-    # [28s] sparqlPrefix ::= [Pp][Rr][Ee][Ff][Ii][Xx] PNAME_NS IRIREF
-    production(:sparqlPrefix) do |input, current, callback|
-      prefix = current[:prefix]
-      iri = current[:resource]
-      debug("sparqlPrefix") {"Defined prefix #{prefix.inspect} mapping to #{iri.inspect}"}
-      prefix(prefix, iri)
-    end
-
-    # [29s] sparqlBase ::= [Bb][Aa][Ss][Ee] IRIREF
-    production(:sparqlBase) do |input, current, callback|
       iri = current[:resource]
       debug("base") {"Defined base as #{iri}"}
       options[:base_uri] = iri
@@ -195,20 +180,15 @@ module RDF::TriG
 
     production(:collection) do |input, current, callback|
       # Create an RDF list
-      bnode = self.bnode
       objects = current[:object_list]
-      list = RDF::List.new(bnode, nil, objects)
+      list = RDF::List[*objects]
       list.each_statement do |statement|
-        # Spec Confusion, referenced section "Collection" is missing from the spec.
-        # Anicdodal evidence indicates that some expect each node to be of type rdf:list,
-        # but existing Notation3 and Turtle tests (http://www.w3.org/2001/sw/DataAccess/df1/tests/manifest.ttl) do not.
         next if statement.predicate == RDF.type && statement.object == RDF.List
         callback.call(:statement, "collection", statement.subject, statement.predicate, statement.object)
       end
-      bnode = RDF.nil if list.empty?
 
       # Return bnode as resource
-      input[:resource] = bnode
+      input[:resource] = list.subject
     end
 
     # [16] RDFLiteral ::= String ( LanguageTag | ( "^^" IRIref ) )?
@@ -240,7 +220,8 @@ module RDF::TriG
           data << @context if @context
           debug("each_statement") {"data: #{data.inspect}, context: #{@context.inspect}"}
           loc = data.shift
-          add_statement(loc, RDF::Statement.from(data))
+          s = RDF::Statement.from(data, :lineno => lineno)
+          add_statement(loc, s) unless !s.valid? && validate?
         when :trace
           level, lineno, depth, *args = data
           message = "#{args.join(': ')}"
@@ -257,7 +238,7 @@ module RDF::TriG
         end
       end
     rescue EBNF::LL1::Parser::Error => e
-      debug("Parsing completed with errors:\n\t#{e.message}")
+      progress("Parsing completed with errors:\n\t#{e.message}")
       raise RDF::ReaderError, e.message if validate?
     end
 
