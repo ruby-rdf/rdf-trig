@@ -9,23 +9,23 @@ JSON_STATE = JSON::State.new(
    :array_nl     => "\n"
  )
 
- def normalize(graph)
-   case graph
-   when RDF::Queryable then graph
+ def normalize(repo)
+   case repo
+   when RDF::Queryable then repo
    when IO, StringIO
-     RDF::Repository.new.load(graph, :base_uri => @info.about)
+     RDF::Repository.new.load(repo, :base_uri => @info.about)
    else
      # Figure out which parser to use
      g = RDF::Repository.new
-     reader_class = RDF::Reader.for(:sample => graph)
-     reader_class.new(graph, :base_uri => @info.about).each {|s| g << s}
+     reader_class = RDF::Reader.for(:sample => repo)
+     reader_class.new(repo, :base_uri => @info.about).each {|s| g << s}
      g
    end
  end
 
 Info = Struct.new(:about, :comment, :trace, :action, :result)
 
-RSpec::Matchers.define :be_equivalent_graph do |expected, info|
+RSpec::Matchers.define :be_equivalent_dataset do |expected, info|
   match do |actual|
     @info = if info.respond_to?(:input)
       info
@@ -51,11 +51,11 @@ RSpec::Matchers.define :be_equivalent_graph do |expected, info|
   failure_message_for_should do |actual|
     info = @info.respond_to?(:comment) ? @info.comment : @info.inspect
     if @expected.is_a?(RDF::Queryable) && @actual.size != @expected.size
-      "Graph entry count differs:\nexpected: #{@expected.size}\nactual:   #{@actual.size}"
+      "Dataset entry count differs:\nexpected: #{@expected.size}\nactual:   #{@actual.size}"
     elsif @expected.is_a?(Array) && @actual.size != @expected.length
-      "Graph entry count differs:\nexpected: #{@expected.length}\nactual:   #{@actual.size}"
+      "Dataset entry count differs:\nexpected: #{@expected.length}\nactual:   #{@actual.size}"
     else
-      "Graph differs"
+      "Dataset differs"
     end +
     "\n#{info + "\n" unless info.empty?}" +
     (@info.action ? "Input file: #{@info.action}\n" : "") +

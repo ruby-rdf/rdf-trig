@@ -256,7 +256,7 @@ describe "RDF::TriG::Reader" do
           %(<http://a/joe> <http://a/b/knows> <http://a/b/jane> .),
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
-          parse(trig).should be_equivalent_graph(nt, :trace => @debug)
+          parse(trig).should be_equivalent_dataset(nt, :trace => @debug)
         end
       end
 
@@ -268,7 +268,7 @@ describe "RDF::TriG::Reader" do
         }.each_pair do |trig, nt|
           it "for '#{trig}'" do
             begin
-              parse(trig).should be_equivalent_graph(nt, :trace => @debug)
+              parse(trig).should be_equivalent_dataset(nt, :trace => @debug)
             rescue
               if defined?(::Encoding)
                 raise
@@ -285,7 +285,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
           begin
-            parse(trig, :prefixes => {nil => ''}).should be_equivalent_graph(nt, :trace => @debug)
+            parse(trig, :prefixes => {nil => ''}).should be_equivalent_dataset(nt, :trace => @debug)
           rescue
             if defined?(::Encoding)
               raise
@@ -325,13 +325,13 @@ describe "RDF::TriG::Reader" do
       it "iri" do
         trig = %(<C> {<a> <b> <c> .})
         nq = %(<a> <b> <c> <C>.)
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
-        parse(trig, :validate => false).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "alternating graphs" do
@@ -348,7 +348,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <e> .
           <a> <b> <f> <G> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
     end
 
@@ -361,13 +361,13 @@ describe "RDF::TriG::Reader" do
       it "allows undefined empty prefix if not validating" do
         trig = %({:a :b :c .})
         nq = %(<a> <b> <c> .)
-        parse(trig, :validate => false).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "empty relative-IRI" do
         trig = %(@prefix foo: <> . {<a> a foo:a.})
         nq = %(<a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <a> .)
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "<#> as a prefix and as a triple node" do
@@ -375,7 +375,7 @@ describe "RDF::TriG::Reader" do
         nq = %(
         <#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <#a> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "ignores _ as prefix identifier" do
@@ -389,7 +389,7 @@ describe "RDF::TriG::Reader" do
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <q> .
         )
         lambda {parse(trig, :validate => true)}.should raise_error(RDF::ReaderError)
-        parse(trig, :validate => false).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "redefine" do
@@ -404,7 +404,7 @@ describe "RDF::TriG::Reader" do
         <http://host/A#b> <http://host/A#p> <http://host/A#v> .
         <http://host/Z#b> <http://host/Z#p> <http://host/Z#v> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "returns defined prefixes" do
@@ -434,7 +434,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "sets absolute base (trailing /)" do
@@ -443,7 +443,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar/> <http://foo/bar/a> <http://foo/bar/b> .
         <http://foo/bar/#c> <http://foo/bar/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "should set absolute base (trailing #)" do
@@ -452,7 +452,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar#> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "sets a relative base" do
@@ -472,7 +472,7 @@ describe "RDF::TriG::Reader" do
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/d> .
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/#e> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "redefine" do
@@ -489,7 +489,7 @@ describe "RDF::TriG::Reader" do
         <http://example.com/path/DIFFERENT/a2> <http://example.com/path/DIFFERENT/b2> <http://example.com/path/DIFFERENT/foo/bar#baz2> .
         <http://example.com/path/DIFFERENT/d3> <http://example.com/path/DIFFERENT/#b3> <http://example.com/path/DIFFERENT/e3> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -500,7 +500,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> <d> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "literals" do
@@ -509,7 +509,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> "1" .
           <a> <b> "2" .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "mixed" do
@@ -518,7 +518,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2" .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -538,7 +538,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/a#b> <http://foo/a#p2> <http://foo/a#v1> .
         <http://foo/a#b> <http://foo/a#p3> <http://foo/a#v2> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -554,7 +554,7 @@ describe "RDF::TriG::Reader" do
         nq = %(
           <http://foo/a#b> <http://foo/a#p0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
         )
-        parse(trig).should be_equivalent_graph(nq, :trace => @debug)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "Single entry" do
@@ -660,7 +660,7 @@ describe "RDF::TriG::Reader" do
         end
         
         it "continues after an error", :pending => true do
-          parse(input, :validate => false).should be_equivalent_graph(expected, :trace => @debug)
+          parse(input, :validate => false).should be_equivalent_dataset(expected, :trace => @debug)
         end
       end
     end
@@ -775,7 +775,7 @@ describe "RDF::TriG::Reader" do
     }.each do |name, (input, expected)|
       it "matches TriG spec #{name}" do
         lambda {parse(input)}.should_not raise_error
-        #parse(input).should be_equivalent_graph(expected, :trace => @debug)
+        #parse(input).should be_equivalent_dataset(expected, :trace => @debug)
       end
     end
   end

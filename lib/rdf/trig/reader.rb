@@ -96,13 +96,13 @@ module RDF::TriG
       callback.call(:context, "graph", nil)
     end
 
-    # [4g] graphIri
-    # Normally, just returns the IRIref, but if called from [3g], also
+    # [4g] graphName
+    # Normally, just returns the resource, but if called from [3g], also
     # sets the context for triples defined within that graph
-    production(:graphIri) do |input, current, callback|
+    production(:graphName) do |input, current, callback|
       # If input contains set_graph_iri, use the returned value to set @context
-      debug("graphIri") {"Set graph context to #{current[:resource]}"}
-      callback.call(:context, "graphIri", current[:resource])
+      debug("graphName") {"Set graph context to #{current[:resource]}"}
+      callback.call(:context, "graphName", current[:resource])
     end
 
 

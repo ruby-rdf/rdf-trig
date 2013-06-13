@@ -1,11 +1,67 @@
 # Spira class for manipulating test-manifest style test suites.
-# Used for Turtle tests
+# Used for TriG and N-Quads tests
 require 'rdf/turtle'
 require 'json/ld'
 
+# For now, override RDF::Utils::File.open_file to look for the file locally before attempting to retrieve it
+module RDF::Util
+  module File
+    REMOTE_PATH = "https://dvcs.w3.org/hg/rdf/raw-file/default/"
+    LOCAL_PATH = ::File.expand_path("../w3c-rdf", __FILE__) + '/'
+
+    ##
+    # Override to use Patron for http and https, Kernel.open otherwise.
+    #
+    # @param [String] filename_or_url to open
+    # @param  [Hash{Symbol => Object}] options
+    # @option options [Array, String] :headers
+    #   HTTP Request headers.
+    # @return [IO] File stream
+    # @yield [IO] File stream
+    def self.open_file(filename_or_url, options = {}, &block)
+      case filename_or_url.to_s
+      when /^file:/
+        path = filename_or_url[5..-1]
+        Kernel.open(path.to_s, &block)
+      when /^#{REMOTE_PATH}/
+        begin
+          #puts "attempt to open #{filename_or_url} locally"
+          local_filename = filename_or_url.to_s.sub(REMOTE_PATH, LOCAL_PATH)
+          if ::File.exist?(local_filename)
+            response = ::File.open(local_filename)
+            #puts "use #{filename_or_url} locally"
+            case filename_or_url.to_s
+            when /\.trig$/
+              def response.content_type; 'application/trig'; end
+            when /\.nq$/
+              def response.content_type; 'application/n-quads'; end
+            end
+
+            if block_given?
+              begin
+                yield response
+              ensure
+                response.close
+              end
+            else
+              response
+            end
+          else
+            Kernel.open(filename_or_url.to_s, &block)
+          end
+        rescue Errno::ENOENT #, OpenURI::HTTPError
+          # Not there, don't run tests
+          StringIO.new("")
+        end
+      end
+    end
+  end
+end
+
 module Fixtures
   module SuiteTest
-    BASE = "http://svn.apache.org/repos/asf/jena/Experimental/riot-reader/testing/RIOT/Lang/"
+    BASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/"
+    NQBASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/nquads/tests/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -23,9 +79,10 @@ module Fixtures
       "@type": "mf:Manifest",
       "entries": {
         "@type": [
-          "rdft:TestTurtlePositiveSyntax",
-          "rdft:TestTurtleNegativeSyntax",
-          "rdft:TestTurtlePositiveEval"
+          "rdft:TestTriGPositiveSyntax",
+          "rdft:TestTriGNegativeSyntax",
+          "rdft:TestTriGEval",
+          "rdft:TestTriGNegativeEval"
         ]
       }
     }))
@@ -34,8 +91,7 @@ module Fixtures
       def self.open(file)
         #puts "open: #{file}"
         prefixes = {}
-        g = RDF::Graph.load(file, :format => :turtle)
-        json = nil
+        g = RDF::Repository.load(file, :format => :turtle)
         JSON::LD::API.fromRDF(g) do |expanded|
           JSON::LD::API.frame(expanded, FRAME) do |framed|
             yield Manifest.new(framed['@graph'].first)
@@ -59,7 +115,7 @@ module Fixtures
       attr_accessor :debug
 
       def base
-        'http://example/base/' + action.split('/').last
+        "ttp://www.w3.org/2013/TriGTests/" + action.split('/').last
       end
 
       # Alias data and query

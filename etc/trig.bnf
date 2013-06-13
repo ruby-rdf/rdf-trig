@@ -1,7 +1,7 @@
 [1g] trigDoc ::= (graph_statement)* 
 [2g] graph_statement ::= directive | graph
-[3g] graph ::= graphIri "{" (triples ".")* "}" | "{" (triples ".")* "}"
-[4g] graphIri ::= iri
+[3g] graph ::= graphName "{" (triples ".")* "}" | "{" (triples ".")* "}"
+[4g] graphName ::= iri | BlankNode
 
 /* Remaining from Turtle */
 [3] directive ::= prefixID | base
