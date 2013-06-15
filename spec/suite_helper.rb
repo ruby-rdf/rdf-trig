@@ -115,7 +115,7 @@ module Fixtures
       attr_accessor :debug
 
       def base
-        "ttp://www.w3.org/2013/TriGTests/" + action.split('/').last
+        "http://www.w3.org/2013/TriGTests/" + action.split('/').last
       end
 
       # Alias data and query

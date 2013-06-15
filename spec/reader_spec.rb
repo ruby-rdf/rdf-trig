@@ -328,6 +328,12 @@ describe "RDF::TriG::Reader" do
         parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
+      it "BNode" do
+        trig = %(_:graph {<a> <b> <c> .})
+        nq = %(<a> <b> <c> _:graph .)
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+      end
+
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
@@ -347,6 +353,32 @@ describe "RDF::TriG::Reader" do
           <a> <b> <d> <G> .
           <a> <b> <e> .
           <a> <b> <f> <G> .
+        )
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+      end
+
+      it "alternating graphs (BNodes)" do
+        trig = %(
+          @prefix : <> .
+          {:a :b :c.}
+          _:G {:a :b :d.}
+          {:a :b :e.}
+          _:G {:a :b :f.}
+        )
+        nq = %(
+          <a> <b> <c> .
+          <a> <b> <d> _:G .
+          <a> <b> <e> .
+          <a> <b> <f> _:G .
+        )
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+      end
+
+      it "no closing ." do
+        trig = %({<a> <b> <c>, "2" .})
+        nq = %(
+          <a> <b> <c> .
+          <a> <b> "2"
         )
         parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
@@ -520,6 +552,15 @@ describe "RDF::TriG::Reader" do
         )
         parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
+
+      it "optional closing ," do
+        trig = %({<a> <b> <c>, "2" .})
+        nq = %(
+          <a> <b> <c> .
+          <a> <b> "2",
+        )
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+      end
     end
     
     describe "predicateObjectList" do
@@ -537,6 +578,15 @@ describe "RDF::TriG::Reader" do
         <http://foo/a#b> <http://foo/a#p1> "456" .
         <http://foo/a#b> <http://foo/a#p2> <http://foo/a#v1> .
         <http://foo/a#b> <http://foo/a#p3> <http://foo/a#v2> .
+        )
+        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+      end
+
+      it "optional closing ;" do
+        trig = %({<a> <b> <c>, "2" .})
+        nq = %(
+          <a> <b> <c> .
+          <a> <b> "2" ;
         )
         parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
       end
@@ -602,10 +652,6 @@ describe "RDF::TriG::Reader" do
       "prefix within a graph" => [
         %q({ @prefix foo: <http://example.com/> . foo:a foo:b foo:c}),
         %q(<a> <b> <c>)
-      ],
-      "BNode graph identifier" => [
-        %q(_:a {<a> <b> <c> .}),
-        %q(<a> <b> <c> .)
       ],
       "Literal graph identifier" => [
         %q("a" {<a> <b> <c> .}),

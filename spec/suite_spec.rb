@@ -11,7 +11,9 @@ describe RDF::TriG::Reader do
         describe m.comment do
           m.entries.each do |t|
             specify "#{t.name}: #{t.comment}" do
-              if false
+              case t.name
+              when /bad-base-(02|03)/
+                pending "More liberal interpretation of @base and BASE"
               else
                 t.debug = [t.inspect, "source:", t.input.read]
 

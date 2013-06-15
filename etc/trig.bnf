@@ -1,7 +1,8 @@
-[1g] trigDoc ::= (graph_statement)* 
-[2g] graph_statement ::= directive | graph
-[3g] graph ::= graphName "{" (triples ".")* "}" | "{" (triples ".")* "}"
-[4g] graphName ::= iri | BlankNode
+[1g] trigDoc                          ::= (graph_statement)* 
+[2g] graph_statement                  ::= directive | graph
+[3g] graph                            ::= graphName? "{" triplesBlock? "}"
+[4g] graphName                        ::= iri | BlankNode
+[5g] triplesBlock                     ::= triples ('.' triplesBlock?)?
 
 /* Remaining from Turtle */
 [3] directive ::= prefixID | base
@@ -10,7 +11,7 @@
 [6] triples                           ::= subject predicateObjectList | blankNodePropertyList predicateObjectList? 
 [7] predicateObjectList               ::= verb objectList ( ";" ( verb objectList)? )*
 [8] objectList                        ::= object ( "," object )* 
-[9] verb                              ::= predicate | "A" | "a"
+[9] verb                              ::= predicate | "a"
 [10] subject                          ::= iri | BlankNode | collection
 [11] predicate                        ::= iri 
 [12] object                           ::= iri | BlankNode | collection | blankNodePropertyList| literal 
