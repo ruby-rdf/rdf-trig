@@ -38,7 +38,7 @@ def run_tc(tc, options)
 
     reader = RDF::Reader.for(tc.action).new(tc.input, :base_uri => tc.base, :validate => true)
 
-    graph = RDF::Graph.new
+    graph = RDF::Repository.new
     result = nil
 
     if tc.positive_test?
@@ -59,7 +59,7 @@ def run_tc(tc, options)
     end
 
     if tc.evaluate? && result.nil?
-      output_graph = RDF::Graph.load(tc.result, :format => :nquads, :base_uri => tc.base)
+      output_graph = RDF::Repository.load(tc.result, :format => :nquads, :base_uri => tc.base)
       result = graph.isomorphic_with?(output_graph) ? "passed" : "failed"
     else
       result ||= "passed"
@@ -139,15 +139,13 @@ opts.each do |opt, arg|
   end
 end
 
-manifests = options[:nquads] ? %w(N-Quads/manifest.ttl) : %w(TriG/manifest.ttl)
+manifest = (options[:nquads] ? Fixtures::SuiteTest::NQBASE : Fixtures::SuiteTest::BASE) + "manifest.ttl"
 
 earl_preamble(options) if options[:earl]
 
-manifests.each do |man|
-  Fixtures::SuiteTest::Manifest.open(Fixtures::SuiteTest::BASE + man) do |m|
-    m.entries.each do |tc|
-      next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
-      run_tc(tc, options)
-    end
+Fixtures::SuiteTest::Manifest.open(manifest) do |m|
+  m.entries.each do |tc|
+    next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
+    run_tc(tc, options)
   end
 end

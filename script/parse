@@ -1,90 +1,36 @@
 #!/usr/bin/env ruby
 require 'rubygems'
 $:.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", 'lib')))
+require "bundler/setup"
 require 'rdf'
-require 'rdf/turtle'
 require 'rdf/trig'
-require 'rdf/ntriples'
 require 'rdf/nquads'
 require 'rdf/trig/meta'
-require 'ebnf'
+require 'ebnf/ll1/parser'
 require 'getoptlong'
 require 'open-uri'
 
-TERMINALS = [
-  [:ANON,                 RDF::Turtle::Terminals::ANON],
-  [nil,                   %r([\(\),.;\[\]a]|\^\^|@base|@prefix|true|false)],
-  [:BLANK_NODE_LABEL,     RDF::Turtle::Terminals::BLANK_NODE_LABEL],
-  [:IRIREF,               RDF::Turtle::Terminals::IRIREF],
-  [:DECIMAL,              RDF::Turtle::Terminals::DECIMAL],
-  [:DOUBLE,               RDF::Turtle::Terminals::DOUBLE],
-  [:INTEGER,              RDF::Turtle::Terminals::INTEGER],
-  [:LANGTAG,              RDF::Turtle::Terminals::LANGTAG],
-  [:PNAME_LN,             RDF::Turtle::Terminals::PNAME_LN],
-  [:PNAME_NS,             RDF::Turtle::Terminals::PNAME_NS],
-  [:STRING_LITERAL_LONG_SINGLE_QUOTE, RDF::Turtle::Terminals::STRING_LITERAL_LONG_SINGLE_QUOTE],
-  [:STRING_LITERAL_LONG_QUOTE, RDF::Turtle::Terminals::STRING_LITERAL_LONG_QUOTE],
-  [:STRING_LITERAL_QUOTE,      RDF::Turtle::Terminals::STRING_LITERAL_QUOTE],
-  [:STRING_LITERAL_SINGLE_QUOTE,      RDF::Turtle::Terminals::STRING_LITERAL_SINGLE_QUOTE],
-  [:SPARQL_PREFIX,        RDF::Turtle::Terminals::SPARQL_PREFIX],
-  [:SPARQL_BASE ,         RDF::Turtle::Terminals::SPARQL_BASE],
-]
-
-class P
-  include EBNF::LL1::Parser
-  include RDF::Turtle::Terminals
-
-  terminal(:ANON,                 ANON)
-  terminal(:BLANK_NODE_LABEL,     BLANK_NODE_LABEL)
-  terminal(:IRIREF,              IRIREF, :unescape => true)
-  terminal(:DOUBLE,               DOUBLE)
-  terminal(:DECIMAL,              DECIMAL)
-  terminal(:INTEGER,              INTEGER)
-  terminal(:PNAME_LN,             PNAME_LN)
-  terminal(:PNAME_NS,             PNAME_NS)
-  terminal(:STRING_LITERAL_LONG_SINGLE_QUOTE, STRING_LITERAL_LONG_SINGLE_QUOTE, :unescape => true)
-  terminal(:STRING_LITERAL_LONG_QUOTE, STRING_LITERAL_LONG_QUOTE, :unescape => true)
-  terminal(:STRING_LITERAL_QUOTE,      STRING_LITERAL_QUOTE, :unescape => true)
-  terminal(:STRING_LITERAL_SINGLE_QUOTE,      STRING_LITERAL_SINGLE_QUOTE, :unescape => true)
-  terminal(nil,                   %r([\(\),.;\[\]a]|\^\^|@base|@prefix|true|false))
-  terminal(:LANGTAG,              LANGTAG)
-  terminal(:SPARQL_PREFIX,        SPARQL_PREFIX)
-  terminal(:SPARQL_BASE,          SPARQL_BASE)
-end
-
 def run(input, options)
+  if options[:profile]
+    require 'profiler'
+  end
+
   reader_class = RDF::Reader.for(options[:input_format].to_sym)
   raise "Reader not found for #{options[:input_format]}" unless reader_class
 
   start = Time.new
   num = 0
-  if options[:lex_only]
-    lexer = RDF::LL1::Lexer.new(input, TERMINALS)
-    begin
-      while token = lexer.first
-        puts "[#{token.lineno}: #{token.inspect}]" unless options[:quiet]
-        lexer.shift
-      end
-    rescue RDF::LL1::Lexer::Error => e
-      STDERR.puts "Error: #{e.message}" unless options[:quiet]
-      lexer.recover
-      retry
-    end
-  elsif options[:parse_only]
-    P.new.parse(input, RDF::Turtle::Meta::START,
-      options[:parser_options].merge(
-        :branch => RDF::Turtle::Meta::BRANCH,
-        :follow => RDF::Turtle::Meta::FOLLOW)
-    ) do |context, *data|
-      puts('.')
-    end
-  elsif options[:output_format] == :ntriples || options[:quiet]
-    reader_class.new(input, options[:parser_options]).each do |statement|
+  Profiler__::start_profile if options[:profile]
+  if options[:output_format] == :ntriples || options[:quiet]
+    r = reader_class.new(input, options[:parser_options])
+    r.each do |statement|
       num += 1
-      if options[:quiet]
-        print "."
+      if options[:errors] && statement.invalid?
+        $stderr.puts "Invalid statement at #{r.lineno}: #{statement.inspect}"
+      elsif options[:quiet]
+        print "." if options[:quiet] == 1
       else
-       options[:output]. puts statement.to_ntriples
+       options[:output].puts statement.to_ntriples
       end
     end
   elsif options[:output_format] == :inspect
@@ -94,9 +40,13 @@ def run(input, options)
     end
   else
     r = reader_class.new(input, options[:parser_options])
-    g = RDF::Repository.new << r
+    g = RDF::Graph.new << r
     num = g.count
-    options[:output].puts g.dump(options[:output_format], :base_uri => options[:base_uri], :prefixes => r.prefixes, :standard_prefixes => true)
+    options[:output].puts g.dump(options[:output_format], :base_uri => options[:parser_options][:base_uri], :prefixes => r.prefixes, :standard_prefixes => true)
+  end
+  if options[:profile]
+    Profiler__::stop_profile
+    Profiler__::print_profile($stderr)
   end
   puts
   secs = Time.new - start
@@ -109,10 +59,9 @@ rescue Exception => e
 end
 
 parser_options = {
-  :base_uri => "",
+  :base_uri => nil,
   :progress   => false,
   :validate => false,
-  :strict => false,
 }
 
 options = {
@@ -125,12 +74,14 @@ input = nil
 
 opts = GetoptLong.new(
   ["--dbg", GetoptLong::NO_ARGUMENT],
+  ["--errors", GetoptLong::NO_ARGUMENT],
   ["--execute", "-e", GetoptLong::REQUIRED_ARGUMENT],
+  ["--canonicalize", GetoptLong::NO_ARGUMENT],
+  ["--freebase", GetoptLong::NO_ARGUMENT],
   ["--format", GetoptLong::REQUIRED_ARGUMENT],
   ["--input-format", GetoptLong::REQUIRED_ARGUMENT],
   ["--output", "-o", GetoptLong::REQUIRED_ARGUMENT],
-  ["--lex-only", GetoptLong::NO_ARGUMENT],
-  ["--parse-only", GetoptLong::NO_ARGUMENT],
+  ["--profile", GetoptLong::NO_ARGUMENT],
   ["--progress", GetoptLong::NO_ARGUMENT],
   ["--quiet", GetoptLong::NO_ARGUMENT],
   ["--uri", GetoptLong::REQUIRED_ARGUMENT],
@@ -140,14 +91,16 @@ opts = GetoptLong.new(
 opts.each do |opt, arg|
   case opt
   when '--dbg'          then parser_options[:debug] = ::RDF::TriG::debug = true
+  when '--canonicalize' then parser_options[:canonicalize] = true
+  when '--errors'       then options[:errors] = true
   when '--execute'      then input = arg
   when '--format'       then options[:output_format] = arg.to_sym
+  when '--freebase'     then parser_options[:freebase] = true
   when '--input-format' then options[:input_format] = arg.to_sym
   when '--output'       then options[:output] = File.open(arg, "w")
-  when '--lex-only'     then options[:lex_only] = true
-  when '--parse-only'   then options[:parse_only] = true
-  when '--progress'     then parser_options[:progress] = true
-  when '--quiet'        then options[:quiet] = true
+  when '--profile'      then options[:profile] = true
+  when '--progress'     then parser_options[:debug] ||= 2
+  when '--quiet'        then options[:quiet] = options[:quiet].to_i + 1
   when '--uri'          then parser_options[:base_uri] = arg
   when '--validate'     then parser_options[:validate] = true
   when '--verbose'      then $verbose = true
