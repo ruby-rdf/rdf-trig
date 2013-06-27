@@ -22,7 +22,7 @@
       doap:programming-language "Ruby";
       doap:repository <https://github.com/ruby-rdf/rdf-trig>;
       doap:mailing-list <http://lists.w3.org/Archives/Public/public-rdf-ruby/>;
-      doap:implements <http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html> ;
+      doap:implements <http://www.w3.org/TR/trig/> ;
       doap:category <http://dbpedia.org/resource/Resource_Description_Framework>,
         <http://dbpedia.org/resource/Ruby_(programming_language)>;
       doap:homepage <http://github.com/ruby-rdf/rdf-trig>;

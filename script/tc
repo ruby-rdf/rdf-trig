@@ -36,7 +36,7 @@ def run_tc(tc, options)
     puts "open #{tc.action}" if options[:verbose]
     options = {:base_uri => tc.base}.merge(options)
 
-    reader = RDF::Reader.for(tc.action).new(tc.input, :base_uri => tc.base, :validate => true)
+    reader = RDF::Reader.for(options[:nquads] ? :nquads : :trig).new(tc.input, :base_uri => tc.base, :validate => true)
 
     graph = RDF::Repository.new
     result = nil
@@ -80,7 +80,7 @@ def run_tc(tc, options)
     options[:output].puts %{
 [ a earl:Assertion;
   earl:assertedBy <#{ASSERTOR}>;
-  earl:subject <http://rubygems.org/gems/rdf#{'-turtle' unless options[:ntriples]}>;
+  earl:subject <http://rubygems.org/gems/rdf#{'-trig' unless options[:nquads]}>;
   earl:test <#{tc.id}>;
   earl:result [
     a earl:TestResult;
@@ -124,13 +124,12 @@ def help(options)
   exit(0)
 end
 
-
 opts.each do |opt, arg|
   case opt
   when '--help'             then help(options)
   when '--dbg'              then ::RDF::Turtle::debug = true
   when '--earl'             then options[:quiet] = options[:earl] = true
-  when '--nquads'           then options[:ntriples] = true
+  when '--nquads'           then options[:nquads] = true
   when '--output'           then options[:output] = File.open(arg, "w")
   when '--quiet'            then options[:quiet] = true
   when '--skip-long'        then options[:skip] = true
@@ -139,13 +138,15 @@ opts.each do |opt, arg|
   end
 end
 
-manifest = (options[:nquads] ? Fixtures::SuiteTest::NQBASE : Fixtures::SuiteTest::BASE) + "manifest.ttl"
+manifests = (options[:nquads] ? [Fixtures::SuiteTest::NTBASE, Fixtures::SuiteTest::NQBASE] : [Fixtures::SuiteTest::BASE]).map {|b| b + "manifest.ttl"}
 
 earl_preamble(options) if options[:earl]
 
-Fixtures::SuiteTest::Manifest.open(manifest) do |m|
-  m.entries.each do |tc|
-    next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
-    run_tc(tc, options)
+manifests.each do |manifest|
+  Fixtures::SuiteTest::Manifest.open(manifest) do |m|
+    m.entries.each do |tc|
+      next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
+      run_tc(tc, options)
+    end
   end
 end

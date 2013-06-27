@@ -62,6 +62,7 @@ module Fixtures
   module SuiteTest
     BASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/"
     NQBASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/nquads/tests/"
+    NTBASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/rdf-turtle/tests-nt/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -82,7 +83,9 @@ module Fixtures
           "rdft:TestTriGPositiveSyntax",
           "rdft:TestTriGNegativeSyntax",
           "rdft:TestTriGEval",
-          "rdft:TestTriGNegativeEval"
+          "rdft:TestTriGNegativeEval",
+          "rdft:TestNQuadsPositiveSyntax",
+          "rdft:TestNQuadsNegativeSyntax"
         ]
       }
     }))
@@ -128,15 +131,15 @@ module Fixtures
       end
       
       def evaluate?
-        attributes['@type'].match(/Eval/)
+        attributes['@type'].to_s.match(/Eval/)
       end
       
       def syntax?
-        attributes['@type'].match(/Syntax/)
+        attributes['@type'].to_s.match(/Syntax/)
       end
 
       def positive_test?
-        !attributes['@type'].match(/Negative/)
+        !attributes['@type'].to_s.match(/Negative/)
       end
       
       def negative_test?

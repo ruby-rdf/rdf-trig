@@ -36,10 +36,10 @@ describe RDF::TriG::Reader do
                   }.should raise_error(RDF::ReaderError)
                 end
 
-                if t.evaluate?
+                if t.evaluate? && t.positive_test?
                   output_repo = RDF::Repository.load(t.result, :format => :nquads, :base_uri => t.base)
                   repo.should be_equivalent_dataset(output_repo, t)
-                else
+                elsif !t.evaluate?
                   repo.should be_a(RDF::Enumerable)
                 end
               end

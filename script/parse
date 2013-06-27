@@ -21,7 +21,7 @@ def run(input, options)
   start = Time.new
   num = 0
   Profiler__::start_profile if options[:profile]
-  if options[:output_format] == :ntriples || options[:quiet]
+  if options[:output_format] == :nquads || options[:quiet]
     r = reader_class.new(input, options[:parser_options])
     r.each do |statement|
       num += 1
@@ -30,7 +30,7 @@ def run(input, options)
       elsif options[:quiet]
         print "." if options[:quiet] == 1
       else
-       options[:output].puts statement.to_ntriples
+       options[:output].puts statement.to_nquads
       end
     end
   elsif options[:output_format] == :inspect

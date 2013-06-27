@@ -17,7 +17,7 @@ module RDF
   #
   # @see http://rubydoc.info/github/ruby-rdf/rdf-turtle/
   # @see http://rubydoc.info/github/ruby-rdf/rdf/master/
-  # @see http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html
+  # @see http://www.w3.org/TR/trig/
   #
   # @author [Gregg Kellogg](http://greggkellogg.net/)
   module TriG

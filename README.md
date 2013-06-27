@@ -101,7 +101,7 @@ see <http://unlicense.org/> or the accompanying {file:UNLICENSE} file.
 [PDD]:          http://lists.w3.org/Archives/Public/public-rdf-ruby/2010May/0013.html
 [RDF.rb]:       http://rubydoc.info/github/ruby-rdf/rdf/master/frames
 [Backports]:    http://rubygems.org/gems/backports
-[TriG]:         http://dvcs.w3.org/hg/rdf/raw-file/default/trig/index.html
+[TriG]:         http://www.w3.org/TR/trig/
 [TriG doc]:     http://rubydoc.info/github/ruby-rdf/rdf-trig/master/file/README.markdown
 [TriG EBNF]:    http://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf
 [Turtle doc]:   http://rubydoc.info/github/ruby-rdf/rdf-turtle/master/file/README.markdown
