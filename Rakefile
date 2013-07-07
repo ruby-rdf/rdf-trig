@@ -51,3 +51,22 @@ file "lib/rdf/trig/meta.rb" => "etc/trig.bnf" do |t|
       etc/trig.bnf
   }
 end
+
+desc 'Create versions of ebnf files in etc'
+task :etc => %w{etc/trig.sxp etc/trig.ll1.sxp}
+
+file "etc/trig.ll1.sxp" => "etc/trig.bnf" do |t|
+  sh %{
+    ebnf --ll1 trigDoc --format sxp \
+      --output etc/trig.ll1.sxp \
+      etc/trig.bnf
+  }
+end
+
+file "etc/trig.sxp" => "etc/trig.bnf" do |t|
+  sh %{
+    ebnf --bnf --format sxp \
+      --output etc/trig.sxp \
+      etc/trig.bnf
+  }
+end

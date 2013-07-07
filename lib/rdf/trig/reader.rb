@@ -71,12 +71,14 @@ module RDF::TriG
       case token.value
       when 'A', 'a'           then input[:resource] = RDF.type
       when 'true', 'false'    then input[:resource] = RDF::Literal::Boolean.new(token.value)
-      when '@base', '@prefix' then input[:lang] = token.value[1..-1]
       when '.'                then input[:terminated] = true
       else                         input[:string] = token.value
       end
     end
 
+    terminal(:GRAPH,      /graph/i) do |prod, token, input|
+      input[:string_value] = token.value
+    end
     terminal(:PREFIX,      PREFIX) do |prod, token, input|
       input[:string_value] = token.value
     end
@@ -89,23 +91,39 @@ module RDF::TriG
     end
 
     # Productions
-    # [3g] graph defines the basic creation of context
-    start_production(:graph) do |input, current, callback|
+    # [2g] statement defines the basic creation of context
+    start_production(:statement) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
-    production(:graph) do |input, current, callback|
+    production(:statement) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
 
-    # [4g] graphName
-    # Normally, just returns the resource, but if called from [3g], also
-    # sets the context for triples defined within that graph
+    # [6g] graphName
+    # Sets the context for triples defined within that graph
     production(:graphName) do |input, current, callback|
       # If input contains set_graph_iri, use the returned value to set @context
       debug("graphName") {"Set graph context to #{current[:resource]}"}
       callback.call(:context, "graphName", current[:resource])
+      input[:resource] = current[:resource]
     end
 
+    # [7g] graphName1
+    # Sets the context for triples defined within that graph
+    production(:graphName1) do |input, current, callback|
+      # If input contains set_graph_iri, use the returned value to set @context
+      debug("graphName1") {"Set graph context to #{current[:resource]}"}
+      callback.call(:context, "graphName1", current[:resource])
+      input[:resource] = current[:resource]
+    end
+
+    # _tripleOrBareGraph_4 ::= PropertyListNotEmpty '.'
+    start_production(:_tripleOrBareGraph_4) do |input, current, callback|
+      # Default graph after all
+      callback.call(:context, "graph", nil)
+      debug("_tripleOrBareGraph_4") {"subject: #{current[:resource]}"}
+      current[:subject] = input[:resource]
+    end
 
     # Productions
     # [4] prefixID defines a prefix mapping
@@ -141,20 +159,20 @@ module RDF::TriG
       options[:base_uri] = iri
     end
 
-    # [6] triples
-    start_production(:triples) do |input, current, callback|
+    # [52s]  TriplesTemplate
+    start_production(:TriplesTemplate) do |input, current, callback|
       # Note production as triples for blankNodePropertyList
       # to set :subject instead of :resource
       current[:triples] = true
     end
-    production(:triples) do |input, current, callback|
+    production(:TriplesTemplate) do |input, current, callback|
       # Note production as triples for blankNodePropertyList
       # to set :subject instead of :resource
       current[:triples] = true
     end
 
-    # [9] verb ::= predicate | "a"
-    production(:verb) do |input, current, callback|
+    # [9] Verb ::= predicate | "a"
+    production(:Verb) do |input, current, callback|
       input[:predicate] = current[:resource]
     end
 
@@ -167,7 +185,7 @@ module RDF::TriG
       input[:subject] = current[:resource]
     end
 
-    # [12] object ::= iri | BlankNode | collection | blankNodePropertyList | literal
+    # [12] object ::= iri | BlankNode | collection | BlankNodePropertyList | literal
     production(:object) do |input, current, callback|
       if input[:object_list]
         # Part of an rdf:List collection
@@ -178,12 +196,12 @@ module RDF::TriG
       end
     end
 
-    # [14] blankNodePropertyList ::= "[" predicateObjectList "]"
-    start_production(:blankNodePropertyList) do |input, current, callback|
+    # [14] BlankNodePropertyList ::= "[" PropertyListNotEmpty "]"
+    start_production(:BlankNodePropertyList) do |input, current, callback|
       current[:subject] = self.bnode
     end
 
-    production(:blankNodePropertyList) do |input, current, callback|
+    production(:BlankNodePropertyList) do |input, current, callback|
       if input[:triples]
         input[:subject] = current[:subject]
       else

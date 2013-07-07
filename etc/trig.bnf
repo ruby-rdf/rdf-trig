@@ -1,34 +1,40 @@
-[1g] trigDoc                          ::= (graph_statement)* 
-[2g] graph_statement                  ::= directive | graph
-[3g] graph                            ::= graphName? "{" triplesBlock? "}"
-[4g] graphName                        ::= iri | BlankNode
-[5g] triplesBlock                     ::= triples ('.' triplesBlock?)?
+[1g]   trigDoc               ::= (statement)* 
+[2g]   statement             ::= directive | tripleOrBareGraph | graphword | wrappedDefault
+[3g]   tripleOrBareGraph     ::= graphName (wrappedDefault | PropertyListNotEmpty '.')
+                               | graphName1 (wrappedDefault | PropertyListNotEmpty? '.')
+[4g]   graphword             ::= GRAPH graphName wrappedDefault
+[5g]   wrappedDefault        ::= '{' TriplesTemplate? '}'
+[6g]   graphName             ::= iri | BlankNode
+[7g]   graphName1            ::= collection | BlankNodePropertyList
 
 /* Remaining from Turtle */
-[3] directive ::= prefixID | base
-[4] prefixID                          ::= PREFIX PNAME_NS IRIREF "."?
-[5] base                              ::= BASE IRIREF "."?
-[6] triples                           ::= subject predicateObjectList | blankNodePropertyList predicateObjectList? 
-[7] predicateObjectList               ::= verb objectList ( ";" ( verb objectList)? )*
-[8] objectList                        ::= object ( "," object )* 
-[9] verb                              ::= predicate | "a"
-[10] subject                          ::= iri | BlankNode | collection
-[11] predicate                        ::= iri 
-[12] object                           ::= iri | BlankNode | collection | blankNodePropertyList| literal 
-[13] literal                          ::= RDFLiteral | NumericLiteral | BooleanLiteral 
-[14] blankNodePropertyList            ::= "[" predicateObjectList "]" 
-[15] collection                       ::= "(" object* ")" 
-[16] NumericLiteral                   ::= INTEGER | DECIMAL | DOUBLE 
-[128s] RDFLiteral                     ::= String ( LANGTAG | ( "^^" iri ) )? 
-[133s] BooleanLiteral                 ::= "true" | "false" 
-[17] String                           ::= STRING_LITERAL_QUOTE | STRING_LITERAL_SINGLE_QUOTE | STRING_LITERAL_LONG_SINGLE_QUOTE |
-                                          STRING_LITERAL_LONG_QUOTE 
-[135s] iri                            ::= IRIREF | PrefixedName 
-[136s] PrefixedName                   ::= PNAME_LN | PNAME_NS 
-[137s] BlankNode                      ::= BLANK_NODE_LABEL | ANON 
+[3]    directive             ::= prefixID | base
+[4]    prefixID              ::= PREFIX PNAME_NS IRIREF "."?
+[5]    base                  ::= BASE IRIREF "."?
+[52s]  TriplesTemplate       ::= TriplesSameSubject ( '.' TriplesTemplate? )?
+[6]    TriplesSameSubject    ::= subject PropertyListNotEmpty | BlankNodePropertyList PropertyList
+[76s]  PropertyList          ::= PropertyListNotEmpty?
+[77s]  PropertyListNotEmpty  ::= Verb ObjectList (';' (Verb ObjectList)?)*
+[8]    ObjectList            ::= object (',' object)*
+[9]    Verb                  ::= predicate | 'a'
+[10]   subject               ::= iri | BlankNode | collection
+[11]   predicate             ::= iri
+[12]   object                ::= iri | BlankNode | collection | BlankNodePropertyList | literal
+[13]   literal               ::= RDFLiteral | NumericLiteral | BooleanLiteral
+[14]   BlankNodePropertyList ::= '[' PropertyListNotEmpty ']'
+[15]   collection            ::= "(" object* ")" 
+[16]   NumericLiteral        ::= INTEGER | DECIMAL | DOUBLE 
+[128s] RDFLiteral            ::= String ( LANGTAG | ( "^^" iri ) )? 
+[133s] BooleanLiteral        ::= "true" | "false" 
+[17]   String                ::= STRING_LITERAL_QUOTE | STRING_LITERAL_SINGLE_QUOTE | STRING_LITERAL_LONG_SINGLE_QUOTE |
+                                 STRING_LITERAL_LONG_QUOTE 
+[135s] iri                   ::= IRIREF | PrefixedName 
+[136s] PrefixedName          ::= PNAME_LN | PNAME_NS 
+[137s] BlankNode             ::= BLANK_NODE_LABEL | ANON 
 
 @terminals
 
+[1t] GRAPH                            ::= [Gg][Rr][Aa][Pp][Hh]
 [18] IRIREF                           ::=  '<' ([^#x00-#x20<>"{}|^`\] | UCHAR)* '>'
 [139s] PNAME_NS                       ::= PN_PREFIX? ":" 
 [140s] PNAME_LN                       ::= PNAME_NS PN_LOCAL 
