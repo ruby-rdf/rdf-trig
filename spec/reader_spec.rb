@@ -444,6 +444,9 @@ describe "RDF::TriG::Reader" do
           _:a <p> <o> .
           <s1> <p1> <o1> _:a .
         ),
+        %(() { <s1> <p1> <o1>}) => %(
+          <s1> <p1> <o1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+        ),
         %((1 2) { <s1> <p1> <o1>}) => %(
           <s1> <p1> <o1> _:a .
           _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
