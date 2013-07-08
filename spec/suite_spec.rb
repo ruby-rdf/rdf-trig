@@ -31,9 +31,9 @@ describe RDF::TriG::Reader do
                     e.message.should produce("Not exception #{e.inspect}", t.debug)
                   end
                 else
-                  lambda {
+                  expect {
                     repo << reader
-                  }.should raise_error(RDF::ReaderError)
+                  }.to raise_error(RDF::ReaderError)
                 end
 
                 if t.evaluate? && t.positive_test?
