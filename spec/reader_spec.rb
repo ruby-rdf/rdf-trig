@@ -35,7 +35,7 @@ describe "RDF::TriG::Reader" do
     }
     
     it "should yield reader" do
-      inner = mock("inner")
+      inner = double("inner")
       inner.should_receive(:called).with(RDF::TriG::Reader)
       RDF::TriG::Reader.new(subject) do |reader|
         inner.called(reader.class)
@@ -53,7 +53,7 @@ describe "RDF::TriG::Reader" do
     end
 
     it "should yield statements" do
-      inner = mock("inner")
+      inner = double("inner")
       inner.should_receive(:called).with(RDF::Statement).exactly(10)
       RDF::TriG::Reader.new(subject).each_statement do |statement|
         inner.called(statement.class)
@@ -61,7 +61,7 @@ describe "RDF::TriG::Reader" do
     end
     
     it "should yield triples" do
-      inner = mock("inner")
+      inner = double("inner")
       inner.should_receive(:called).exactly(10)
       RDF::TriG::Reader.new(subject).each_triple do |subject, predicate, object|
         inner.called(subject.class, predicate.class, object.class)
