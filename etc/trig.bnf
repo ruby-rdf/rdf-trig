@@ -1,11 +1,12 @@
 [1g]   trigDoc               ::= (statement)* 
 [2g]   statement             ::= directive | tripleOrBareGraph | graphword | wrappedDefault
 [3g]   tripleOrBareGraph     ::= graphName (wrappedDefault | PropertyListNotEmpty '.')
-                               | graphName1 (wrappedDefault | PropertyListNotEmpty? '.')
+                               | graphName1 (wrappedDefault | PropertyList '.')
+                               | collection PropertyListNotEmpty '.'
 [4g]   graphword             ::= GRAPH graphName wrappedDefault
 [5g]   wrappedDefault        ::= '{' TriplesTemplate? '}'
 [6g]   graphName             ::= iri | BlankNode
-[7g]   graphName1            ::= collection | BlankNodePropertyList
+[7g]   graphName1            ::= BlankNodePropertyList
 
 /* Remaining from Turtle */
 [3]    directive             ::= prefixID | base
@@ -19,7 +20,8 @@
 [9]    Verb                  ::= predicate | 'a'
 [10]   subject               ::= iri | BlankNode | collection
 [11]   predicate             ::= iri
-[12]   object                ::= iri | BlankNode | collection | BlankNodePropertyList | literal
+[12]   object                ::= iri | BlankNode | collection | BlankNodePropertyList | literal | graphObject
+[12g]  graphObject           ::= wrappedDefault
 [13]   literal               ::= RDFLiteral | NumericLiteral | BooleanLiteral
 [14]   BlankNodePropertyList ::= '[' PropertyListNotEmpty ']'
 [15]   collection            ::= "(" object* ")" 

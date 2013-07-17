@@ -444,15 +444,35 @@ describe "RDF::TriG::Reader" do
           _:a <p> <o> .
           <s1> <p1> <o1> _:a .
         ),
-        %(() { <s1> <p1> <o1>}) => %(
-          <s1> <p1> <o1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+      }.each do |trig, nq|
+        it "generates #{nq} from #{trig}" do
+          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        end
+      end
+    end
+
+    describe "graphs as objects" do
+      {
+        %(<a> <b> {<c> <d> <e>} .) => %(
+          <a> <b> _:a .
+          <c> <d> <e> _:a .
         ),
-        %((1 2) { <s1> <p1> <o1>}) => %(
-          <s1> <p1> <o1> _:a .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b .
-          _:b <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
-          _:b <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+        %(<a> <b> {<c> <d> {<e> <f> <g>}} .) => %(
+          <a> <b> _:a .
+          <c> <d> _:b _:a .
+          <e> <f> <g> _:b .
+        ),
+        %(<a> <b> {<c> <d> <e>}, <f> .) => %(
+          <a> <b> _:a .
+          <c> <d> <e> _:a .
+          <a> <b> <f> .
+        ),
+        %(<a> <b> {<c> <d> {<e> <f> <g>}, <h>}, <i> .) => %(
+          <a> <b> _:a .
+          <a> <b> <i> .
+          <c> <d> _:b _:a .
+          <c> <d> <h> _:a
+          <e> <f> <g> _:b .
         ),
       }.each do |trig, nq|
         it "generates #{nq} from #{trig}" do

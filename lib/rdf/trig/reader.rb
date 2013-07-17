@@ -10,6 +10,10 @@ module RDF::TriG
     format Format
     include RDF::TriG::Meta
 
+    # Current context, used in processing
+    # @return [RDF::Resource]
+    attr_reader :context
+
     # Terminals passed to lexer. Order matters!
     terminal(:ANON,                 ANON) do |prod, token, input|
       input[:resource] = self.bnode
@@ -117,8 +121,8 @@ module RDF::TriG
       input[:resource] = current[:resource]
     end
 
-    # _tripleOrBareGraph_4 ::= PropertyListNotEmpty '.'
-    start_production(:_tripleOrBareGraph_4) do |input, current, callback|
+    # _tripleOrBareGraph_5 ::= PropertyListNotEmpty '.'
+    start_production(:_tripleOrBareGraph_5) do |input, current, callback|
       # Default graph after all
       callback.call(:context, "graph", nil)
       debug("_tripleOrBareGraph_4") {"subject: #{current[:resource]}"}
@@ -185,7 +189,7 @@ module RDF::TriG
       input[:subject] = current[:resource]
     end
 
-    # [12] object ::= iri | BlankNode | collection | BlankNodePropertyList | literal
+    # [12] object ::= iri | BlankNode | collection | BlankNodePropertyList | literal | graphObject
     production(:object) do |input, current, callback|
       if input[:object_list]
         # Part of an rdf:List collection
@@ -194,6 +198,18 @@ module RDF::TriG
         debug("object") {"current: #{current.inspect}"}
         callback.call(:statement, "object", input[:subject], input[:predicate], current[:resource])
       end
+    end
+
+    # [12g] graphObject           ::= wrappedDefault
+    start_production(:graphObject) do |input, current, callback|
+      current[:saved_context] = self.context
+      callback.call(:context, "graphObject", self.bnode)
+    end
+    production(:graphObject) do |input, current, callback|
+      # When used in object position, the current graph name is the resource
+      input[:resource] = self.context
+      # Restore graph from entry
+      callback.call(:context, "graphObject", current[:saved_context])
     end
 
     # [14] BlankNodePropertyList ::= "[" PropertyListNotEmpty "]"
