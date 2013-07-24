@@ -22,58 +22,62 @@
    "[" "{" )
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (alt directive tripleOrBareGraph graphword wrappedDefault))
- (rule tripleOrBareGraph "3g"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
+  (alt directive tripleOrNamedGraph graphword))
+ (rule tripleOrNamedGraph "3g"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (alt _tripleOrBareGraph_1 _tripleOrBareGraph_2 _tripleOrBareGraph_3))
- (rule _tripleOrBareGraph_5 "3g.5"
+  (alt _tripleOrNamedGraph_1 _tripleOrNamedGraph_2 _tripleOrNamedGraph_3))
+ (rule _tripleOrNamedGraph_5 "3g.5"
   (first IRIREF PNAME_LN PNAME_NS "a")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq PropertyListNotEmpty "."))
- (rule _tripleOrBareGraph_2 "3g.2"
+ (rule _tripleOrNamedGraph_2 "3g.2"
   (first "[")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq graphName1 _tripleOrBareGraph_6))
- (rule _tripleOrBareGraph_6 "3g.6"
+  (seq graphName1 _tripleOrNamedGraph_6))
+ (rule _tripleOrNamedGraph_6 "3g.6"
   (first "." IRIREF PNAME_LN PNAME_NS "a" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (alt wrappedDefault _tripleOrBareGraph_7))
- (rule _tripleOrBareGraph_7 "3g.7"
+  (alt wrappedGraph _tripleOrNamedGraph_7))
+ (rule _tripleOrNamedGraph_7 "3g.7"
   (first "." IRIREF PNAME_LN PNAME_NS "a")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq PropertyList "."))
- (rule _tripleOrBareGraph_3 "3g.3"
-  (first "(")
+ (rule _tripleOrNamedGraph_3 "3g.3"
+  (first "(" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq collection PropertyListNotEmpty "."))
- (rule _tripleOrBareGraph_4 "3g.4"
+  (seq _tripleOrNamedGraph_8 PropertyListNotEmpty "."))
+ (rule _tripleOrNamedGraph_8 "3g.8"
+  (first "(" "{")
+  (follow IRIREF PNAME_LN PNAME_NS "a")
+  (alt collection graphSubject))
+ (rule _tripleOrNamedGraph_4 "3g.4"
   (first IRIREF PNAME_LN PNAME_NS "a" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (alt wrappedDefault _tripleOrBareGraph_5))
- (rule _tripleOrBareGraph_1 "3g.1"
-  (first ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
-  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
-   "[" _eof "{" )
-  (seq graphName _tripleOrBareGraph_4))
- (rule _tripleOrBareGraph_8 "3g.8"
+  (alt wrappedGraph _tripleOrNamedGraph_5))
+ (rule _tripleOrNamedGraph_9 "3g.9"
   (first IRIREF PNAME_LN PNAME_NS "a" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq _tripleOrBareGraph_4))
- (rule _tripleOrBareGraph_9 "3g.9"
+  (seq _tripleOrNamedGraph_4))
+ (rule _tripleOrNamedGraph_10 "3g.10"
   (first ".")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq "."))
- (rule _tripleOrBareGraph_11 "3g.11"
+ (rule _tripleOrNamedGraph_11 "3g.11"
+  (first "." IRIREF PNAME_LN PNAME_NS "a" "{")
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq _tripleOrNamedGraph_6))
+ (rule _tripleOrNamedGraph_12 "3g.12"
   (first ".")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
@@ -83,26 +87,26 @@
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (alt prefixID base))
- (rule _tripleOrBareGraph_10 "3g.10"
-  (first "." IRIREF PNAME_LN PNAME_NS "a" "{")
-  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
-   "[" _eof "{" )
-  (seq _tripleOrBareGraph_6))
- (rule _graphword_1 "4g.1"
+ (rule _tripleOrNamedGraph_1 "3g.1"
   (first ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq graphName wrappedDefault))
+  (seq graphName _tripleOrNamedGraph_4))
  (rule prefixID "4"
   (first PREFIX)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq PREFIX PNAME_NS IRIREF _prefixID_1))
+ (rule _graphword_1 "4g.1"
+  (first ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq graphName wrappedGraph))
  (rule graphword "4g"
   (first GRAPH)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq GRAPH graphName wrappedDefault))
+  (seq GRAPH graphName wrappedGraph))
  (rule _prefixID_1 "4.1"
   (first "." _eps)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -128,31 +132,31 @@
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq BASE IRIREF _base_1))
- (rule _wrappedDefault_3 "5g.3"
+ (rule _wrappedGraph_3 "5g.3"
   (first "}")
   (follow "(" ")" "," "." ";" ANON BASE BLANK_NODE_LABEL DECIMAL DOUBLE GRAPH
    INTEGER IRIREF PNAME_LN PNAME_NS PREFIX STRING_LITERAL_LONG_QUOTE
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
-   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "false" "true" "{" "}" )
+   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "a" "false" "true" "{" "}" )
   (seq "}"))
- (rule _wrappedDefault_2 "5g.2"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" "}")
+ (rule _wrappedGraph_2 "5g.2"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" "{" "}")
   (follow "(" ")" "," "." ";" ANON BASE BLANK_NODE_LABEL DECIMAL DOUBLE GRAPH
    INTEGER IRIREF PNAME_LN PNAME_NS PREFIX STRING_LITERAL_LONG_QUOTE
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
-   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "false" "true" "{" "}" )
-  (seq _wrappedDefault_1 "}"))
- (rule _wrappedDefault_1 "5g.1"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
+   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "a" "false" "true" "{" "}" )
+  (seq _wrappedGraph_1 "}"))
+ (rule _wrappedGraph_1 "5g.1"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps "{")
   (follow "}")
   (alt _empty TriplesTemplate))
- (rule wrappedDefault "5g"
+ (rule wrappedGraph "5g"
   (first "{")
   (follow "(" ")" "," "." ";" ANON BASE BLANK_NODE_LABEL DECIMAL DOUBLE GRAPH
    INTEGER IRIREF PNAME_LN PNAME_NS PREFIX STRING_LITERAL_LONG_QUOTE
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
-   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "false" "true" "{" "}" )
-  (seq "{" _wrappedDefault_1 "}"))
+   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "a" "false" "true" "{" "}" )
+  (seq "{" _wrappedGraph_1 "}"))
  (rule _base_1 "5.1"
   (first "." _eps)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -173,11 +177,11 @@
   (follow IRIREF PNAME_LN PNAME_NS "a" "{")
   (alt iri BlankNode))
  (rule TriplesSameSubject "6"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" "{")
   (follow "." "}")
   (alt _TriplesSameSubject_1 _TriplesSameSubject_2))
  (rule _TriplesSameSubject_1 "6.1"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "{")
   (follow "." "}")
   (seq subject PropertyListNotEmpty))
  (rule _TriplesSameSubject_2 "6.2"
@@ -226,9 +230,14 @@
    STRING_LITERAL_QUOTE STRING_LITERAL_SINGLE_QUOTE "[" "false" "true" "{" )
   (alt predicate "a"))
  (rule subject "10"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "{")
   (follow IRIREF PNAME_LN PNAME_NS "a")
-  (alt iri BlankNode collection))
+  (alt iri BlankNode collection graphObject))
+ (rule graphSubject "10g"
+  (first "{")
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "a" "{" )
+  (seq wrappedGraph))
  (rule predicate "11"
   (first IRIREF PNAME_LN PNAME_NS)
   (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
@@ -238,11 +247,11 @@
   (seq iri))
  (rule graphObject "12g"
   (first "{")
-  (follow "(" ")" "," "." ";" ANON BASE BLANK_NODE_LABEL DECIMAL DOUBLE GRAPH
-   INTEGER IRIREF PNAME_LN PNAME_NS PREFIX STRING_LITERAL_LONG_QUOTE
+  (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
+   IRIREF PNAME_LN PNAME_NS STRING_LITERAL_LONG_QUOTE
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
-   STRING_LITERAL_SINGLE_QUOTE "[" "]" _eof "false" "true" "{" "}" )
-  (seq wrappedDefault))
+   STRING_LITERAL_SINGLE_QUOTE "[" "]" "a" "false" "true" "{" "}" )
+  (seq wrappedGraph))
  (rule object "12"
   (first "(" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER IRIREF PNAME_LN
    PNAME_NS STRING_LITERAL_LONG_QUOTE STRING_LITERAL_LONG_SINGLE_QUOTE
@@ -365,79 +374,79 @@
  (terminal PREFIX "28t"
   (seq (opt "@") (range "Pp") (range "Rr") (range "Ee") (range "Ff") (range "Ii") (range "Xx")))
  (terminal BASE "29t" (seq (opt "@") (range "Bb") (range "Aa") (range "Ss") (range "Ee")))
- (rule _TriplesTemplate_2 "52s.2" (first ".") (follow "}") (seq "." _TriplesTemplate_3))
- (rule _TriplesTemplate_4 "52s.4" (first "." _eps) (follow "}") (seq _TriplesTemplate_1))
- (rule _TriplesTemplate_5 "52s.5"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
-  (follow "}")
-  (seq _TriplesTemplate_3))
- (rule _TriplesTemplate_3 "52s.3"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
-  (follow "}")
-  (alt _empty TriplesTemplate))
- (rule TriplesTemplate "52s"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
-  (follow "}")
-  (seq TriplesSameSubject _TriplesTemplate_1))
  (rule _TriplesTemplate_1 "52s.1"
   (first "." _eps)
   (follow "}")
   (alt _empty _TriplesTemplate_2))
+ (rule _TriplesTemplate_5 "52s.5"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps "{")
+  (follow "}")
+  (seq _TriplesTemplate_3))
+ (rule _TriplesTemplate_4 "52s.4" (first "." _eps) (follow "}") (seq _TriplesTemplate_1))
+ (rule _TriplesTemplate_2 "52s.2" (first ".") (follow "}") (seq "." _TriplesTemplate_3))
+ (rule _TriplesTemplate_3 "52s.3"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps "{")
+  (follow "}")
+  (alt _empty TriplesTemplate))
+ (rule TriplesTemplate "52s"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" "{")
+  (follow "}")
+  (seq TriplesSameSubject _TriplesTemplate_1))
  (rule PropertyList "76s"
   (first IRIREF PNAME_LN PNAME_NS _eps "a")
   (follow "." "}")
   (alt _empty PropertyListNotEmpty))
- (rule _PropertyListNotEmpty_6 "77s.6"
-  (first "(" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER IRIREF PNAME_LN
-   PNAME_NS STRING_LITERAL_LONG_QUOTE STRING_LITERAL_LONG_SINGLE_QUOTE
-   STRING_LITERAL_QUOTE STRING_LITERAL_SINGLE_QUOTE "[" "false" "true" "{" )
-  (follow "." "]" "}")
-  (seq ObjectList _PropertyListNotEmpty_1))
  (rule PropertyListNotEmpty "77s"
   (first IRIREF PNAME_LN PNAME_NS "a")
   (follow "." "]" "}")
   (seq Verb ObjectList _PropertyListNotEmpty_1))
- (rule _PropertyListNotEmpty_1 "77s.1"
-  (first ";" _eps)
-  (follow "." "]" "}")
-  (alt _empty _PropertyListNotEmpty_3))
- (rule _PropertyListNotEmpty_3 "77s.3"
-  (first ";")
-  (follow "." "]" "}")
-  (seq _PropertyListNotEmpty_2 _PropertyListNotEmpty_1))
  (rule _PropertyListNotEmpty_9 "77s.9"
   (first "(" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER IRIREF PNAME_LN
    PNAME_NS STRING_LITERAL_LONG_QUOTE STRING_LITERAL_LONG_SINGLE_QUOTE
    STRING_LITERAL_QUOTE STRING_LITERAL_SINGLE_QUOTE "[" "false" "true" "{" )
   (follow "." ";" "]" "}")
   (seq ObjectList))
- (rule _PropertyListNotEmpty_2 "77s.2"
-  (first ";")
-  (follow "." ";" "]" "}")
-  (seq ";" _PropertyListNotEmpty_4))
- (rule _PropertyListNotEmpty_4 "77s.4"
-  (first IRIREF PNAME_LN PNAME_NS _eps "a")
-  (follow "." ";" "]" "}")
-  (alt _empty _PropertyListNotEmpty_5))
- (rule _PropertyListNotEmpty_5 "77s.5"
-  (first IRIREF PNAME_LN PNAME_NS "a")
-  (follow "." ";" "]" "}")
-  (seq Verb ObjectList))
- (rule _PropertyListNotEmpty_7 "77s.7"
-  (first ";" _eps)
-  (follow "." "]" "}")
-  (seq _PropertyListNotEmpty_1))
  (rule _PropertyListNotEmpty_8 "77s.8"
   (first IRIREF PNAME_LN PNAME_NS _eps "a")
   (follow "." ";" "]" "}")
   (seq _PropertyListNotEmpty_4))
- (rule _RDFLiteral_1 "128s.1"
+ (rule _PropertyListNotEmpty_7 "77s.7"
+  (first ";" _eps)
+  (follow "." "]" "}")
+  (seq _PropertyListNotEmpty_1))
+ (rule _PropertyListNotEmpty_6 "77s.6"
+  (first "(" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER IRIREF PNAME_LN
+   PNAME_NS STRING_LITERAL_LONG_QUOTE STRING_LITERAL_LONG_SINGLE_QUOTE
+   STRING_LITERAL_QUOTE STRING_LITERAL_SINGLE_QUOTE "[" "false" "true" "{" )
+  (follow "." "]" "}")
+  (seq ObjectList _PropertyListNotEmpty_1))
+ (rule _PropertyListNotEmpty_5 "77s.5"
+  (first IRIREF PNAME_LN PNAME_NS "a")
+  (follow "." ";" "]" "}")
+  (seq Verb ObjectList))
+ (rule _PropertyListNotEmpty_3 "77s.3"
+  (first ";")
+  (follow "." "]" "}")
+  (seq _PropertyListNotEmpty_2 _PropertyListNotEmpty_1))
+ (rule _PropertyListNotEmpty_4 "77s.4"
+  (first IRIREF PNAME_LN PNAME_NS _eps "a")
+  (follow "." ";" "]" "}")
+  (alt _empty _PropertyListNotEmpty_5))
+ (rule _PropertyListNotEmpty_1 "77s.1"
+  (first ";" _eps)
+  (follow "." "]" "}")
+  (alt _empty _PropertyListNotEmpty_3))
+ (rule _PropertyListNotEmpty_2 "77s.2"
+  (first ";")
+  (follow "." ";" "]" "}")
+  (seq ";" _PropertyListNotEmpty_4))
+ (rule _RDFLiteral_4 "128s.4"
   (first LANGTAG "^^" _eps)
   (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
    IRIREF PNAME_LN PNAME_NS STRING_LITERAL_LONG_QUOTE
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
    STRING_LITERAL_SINGLE_QUOTE "[" "]" "false" "true" "{" "}" )
-  (alt _empty _RDFLiteral_2))
+  (seq _RDFLiteral_1))
  (rule RDFLiteral "128s"
   (first STRING_LITERAL_LONG_QUOTE STRING_LITERAL_LONG_SINGLE_QUOTE
    STRING_LITERAL_QUOTE STRING_LITERAL_SINGLE_QUOTE )
@@ -446,13 +455,6 @@
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
    STRING_LITERAL_SINGLE_QUOTE "[" "]" "false" "true" "{" "}" )
   (seq String _RDFLiteral_1))
- (rule _RDFLiteral_4 "128s.4"
-  (first LANGTAG "^^" _eps)
-  (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
-   IRIREF PNAME_LN PNAME_NS STRING_LITERAL_LONG_QUOTE
-   STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
-   STRING_LITERAL_SINGLE_QUOTE "[" "]" "false" "true" "{" "}" )
-  (seq _RDFLiteral_1))
  (rule _RDFLiteral_3 "128s.3"
   (first "^^")
   (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
@@ -460,6 +462,13 @@
    STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
    STRING_LITERAL_SINGLE_QUOTE "[" "]" "false" "true" "{" "}" )
   (seq "^^" iri))
+ (rule _RDFLiteral_1 "128s.1"
+  (first LANGTAG "^^" _eps)
+  (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER
+   IRIREF PNAME_LN PNAME_NS STRING_LITERAL_LONG_QUOTE
+   STRING_LITERAL_LONG_SINGLE_QUOTE STRING_LITERAL_QUOTE
+   STRING_LITERAL_SINGLE_QUOTE "[" "]" "false" "true" "{" "}" )
+  (alt _empty _RDFLiteral_2))
  (rule _RDFLiteral_2 "128s.2"
   (first LANGTAG "^^")
   (follow "(" ")" "," "." ";" ANON BLANK_NODE_LABEL DECIMAL DOUBLE INTEGER

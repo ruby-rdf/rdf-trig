@@ -121,11 +121,19 @@ module RDF::TriG
       input[:resource] = current[:resource]
     end
 
-    # _tripleOrBareGraph_5 ::= PropertyListNotEmpty '.'
-    start_production(:_tripleOrBareGraph_5) do |input, current, callback|
+    # _tripleOrNamedGraph_5 ::= PropertyListNotEmpty '.'
+    start_production(:_tripleOrNamedGraph_5) do |input, current, callback|
       # Default graph after all
       callback.call(:context, "graph", nil)
-      debug("_tripleOrBareGraph_4") {"subject: #{current[:resource]}"}
+      debug("_tripleOrNamedGraph_5") {"subject: #{current[:resource]}"}
+      current[:subject] = input[:resource]
+    end
+
+    # _tripleOrNamedGraph_7 ::= PropertyList '.'
+    start_production(:_tripleOrNamedGraph_7) do |input, current, callback|
+      # Default graph after all
+      callback.call(:context, "graph", nil)
+      debug("_tripleOrNamedGraph_7") {"subject: #{current[:resource]}"}
       current[:subject] = input[:resource]
     end
 
@@ -187,6 +195,18 @@ module RDF::TriG
 
     production(:subject) do |input, current, callback|
       input[:subject] = current[:resource]
+    end
+
+    # [10g] graphSubject           ::= wrappedDefault
+    start_production(:graphSubject) do |input, current, callback|
+      current[:saved_context] = self.context
+      callback.call(:context, "graphSubject", self.bnode)
+    end
+    production(:graphSubject) do |input, current, callback|
+      # When used in object position, the current graph name is the resource
+      input[:subject] = self.context
+      # Restore graph from entry
+      callback.call(:context, "graphSubject", current[:saved_context])
     end
 
     # [12] object ::= iri | BlankNode | collection | BlankNodePropertyList | literal | graphObject
