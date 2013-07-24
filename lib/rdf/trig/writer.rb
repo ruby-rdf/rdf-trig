@@ -146,11 +146,8 @@ module RDF::TriG
         reset
         @depth = 2
 
-        if ctx
-          @output.write("\n#{format_value(ctx)} {")
-        else
-          @output.write("\n{")
-        end
+        
+        @output.write("\n#{format_value(ctx)} {") if ctx
 
         # Restrict view to the particular context
         @graph = ContextFilteredRepo.new(@repo, ctx)
@@ -163,7 +160,7 @@ module RDF::TriG
           end
         end
 
-        @output.puts("}")
+        @output.puts("}") if ctx
       end
     end
 
