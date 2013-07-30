@@ -157,6 +157,34 @@ describe RDF::TriG::Writer do
       end
     end
   end
+  
+  # W3C TriG Test suite
+  describe "w3c trig tests" do
+    require 'suite_helper'
+
+    %w(manifest.ttl).each do |man|
+      Fixtures::SuiteTest::Manifest.open(Fixtures::SuiteTest::BASE + man) do |m|
+        describe m.comment do
+          m.entries.each do |t|
+            next unless t.positive_test? && t.evaluate?
+            specify "#{t.name}: #{t.comment}" do
+              repo = parse(t.output, :format => :ntriples)
+              ttl = serialize(t.output, t.base, [], :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
+              g2 = parse(ttl, :base_uri => t.base)
+              g2.should be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+            end
+
+            specify "#{t.name}: #{t.comment} (stream)" do
+              repo = parse(t.output, :format => :ntriples)
+              ttl = serialize(t.output, t.base, [], :stream => true, :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
+              g2 = parse(ttl, :base_uri => t.base)
+              g2.should be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+            end
+          end
+        end
+      end
+    end
+  end
 
   def parse(input, options = {})
     graph = RDF::Repository.new
