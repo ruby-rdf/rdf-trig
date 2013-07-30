@@ -30,7 +30,7 @@ RSpec::Matchers.define :be_equivalent_dataset do |expected, info|
     @info = if info.respond_to?(:input)
       info
     elsif info.is_a?(Hash)
-      identifier = info[:identifier] || expected.is_a?(RDF::Queryable) ? expected.context : info[:about]
+      identifier = info[:identifier] || expected.is_a?(RDF::Graph) ? expected.context : info[:about]
       trace = info[:trace]
       if trace.is_a?(Array)
         trace = if defined?(RUBY_ENGINE) && RUBY_ENGINE == "jruby" && RUBY_VERSION >= "1.9"
