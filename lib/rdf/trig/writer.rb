@@ -1,4 +1,5 @@
 require 'rdf/turtle'
+require 'rdf/trig/streaming_writer'
 
 module RDF::TriG
   ##
@@ -34,6 +35,13 @@ module RDF::TriG
   #     end
   #   end
   #
+  # @example Serializing RDF statements to a string in streaming mode
+  #   RDF::TriG::Writer.buffer(:stream => true) do |writer|
+  #     repo.each_statement do |statement|
+  #       writer << statement
+  #     end
+  #   end
+  #
   # The writer will add prefix definitions, and use them for creating @prefix definitions, and minting QNames
   #
   # @example Creating @base and @prefix definitions in output
@@ -48,6 +56,7 @@ module RDF::TriG
   #
   # @author [Gregg Kellogg](http://greggkellogg.net/)
   class Writer < RDF::Turtle::Writer
+    include StreamingWriter
     format RDF::TriG::Format
     
     class ContextFilteredRepo
@@ -103,6 +112,8 @@ module RDF::TriG
     #   Maximum depth for recursively defining resources, defaults to 3
     # @option options [Boolean]  :standard_prefixes   (false)
     #   Add standard prefixes to @prefixes, if necessary.
+    # @option options [Boolean] :stream (false)
+    #   Do not attempt to optimize graph presentation, suitable for streaming large repositories.
     # @option options [String]   :default_namespace (nil)
     #   URI to use as default namespace, same as `prefixes\[nil\]`
     # @yield  [writer] `self`
@@ -111,6 +122,8 @@ module RDF::TriG
     # @yield  [writer]
     # @yieldparam [RDF::Writer] writer
     def initialize(output = $stdout, options = {}, &block)
+      reset
+      @streaming_context = :none
       super do
         # Set both @repo and @graph to a new repository.
         # When serializing a context, @graph is changed
@@ -125,45 +138,76 @@ module RDF::TriG
       end
     end
 
+
+    ##
+    # Adds a statement to be serialized
+    # @param  [RDF::Statement] statement
+    # @return [void]
+    def write_statement(statement)
+      case
+      when @options[:stream]
+        stream_statement(statement)
+      else
+        super
+      end
+    end
+
+    ##
+    # Write out declarations
+    # @return [void] `self`
+    def write_prologue
+      case
+      when @options[:stream]
+        stream_prologue
+      else
+        super
+      end
+    end
+
     ##
     # Outputs the TriG representation of all stored triples.
     #
     # @return [void]
     # @see    #write_triple
     def write_epilogue
-      @max_depth = @options[:max_depth] || 3
-      @base_uri = RDF::URI(@options[:base_uri])
+      case
+      when @options[:stream]
+        stream_epilogue
+      else
+        @max_depth = @options[:max_depth] || 3
+        @base_uri = RDF::URI(@options[:base_uri])
 
-      reset
-
-      debug {"\nserialize: repo: #{@repo.size}"}
-
-      preprocess
-      start_document
-
-      order_contexts.each do |ctx|
-        debug {"context: #{ctx.inspect}"}
         reset
-        @depth = 2
 
-        if ctx
-          @output.write("\n#{format_value(ctx)} {")
-        else
-          @output.write("\n{")
-        end
+        debug {"\nserialize: repo: #{@repo.size}"}
 
-        # Restrict view to the particular context
-        @graph = ContextFilteredRepo.new(@repo, ctx)
+        preprocess
+        start_document
 
-        # Pre-process statements again, but in the specified context
-        @graph.each {|st| preprocess_statement(st)}
-        order_subjects.each do |subject|
-          unless is_done?(subject)
-            statement(subject)
+        order_contexts.each do |ctx|
+          debug {"context: #{ctx.inspect}"}
+          reset
+          @depth = 2
+
+          if ctx
+            @output.write("\n#{format_value(ctx)} {")
+          else
+            @output.write("\n{")
           end
-        end
 
-        @output.puts("}")
+          # Restrict view to the particular context
+          @graph = ContextFilteredRepo.new(@repo, ctx)
+
+          # Pre-process statements again, but in the specified context
+          @graph.each {|st| preprocess_statement(st)}
+          order_subjects.each do |subject|
+            unless is_done?(subject)
+              statement(subject)
+            end
+          end
+
+          @output.puts("}")
+        end
       end
     end
 
