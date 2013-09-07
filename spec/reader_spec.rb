@@ -438,29 +438,6 @@ describe "RDF::TriG::Reader" do
       end
     end
 
-    describe "complex Graph Names" do
-      {
-        %([<p> <o>] { <s1> <p1> <o1>}) => %(
-          _:a <p> <o> .
-          <s1> <p1> <o1> _:a .
-        ),
-        %(() { <s1> <p1> <o1>}) => %(
-          <s1> <p1> <o1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-        ),
-        %((1 2) { <s1> <p1> <o1>}) => %(
-          <s1> <p1> <o1> _:a .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:b .
-          _:b <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
-          _:b <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
-        ),
-      }.each do |trig, nq|
-        it "generates #{nq} from #{trig}" do
-          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
-        end
-      end
-    end
-
     describe "@prefix" do
       it "raises an error when validating if not defined" do
         trig = %({<a> a :a .})
@@ -706,11 +683,11 @@ describe "RDF::TriG::Reader" do
   describe "validation" do
     {
       %({<a> <b> "xyz"^^<http://www.w3.org/2001/XMLSchema#integer> .}) => %r("xyz" is not a valid .*),
-      %(GRAPH {<s> <p> <o>}) => %r("{" does not match production :graphName),
+      %(GRAPH {<s> <p> <o>}) => %r("{" does not match production :labelOrSubject),
       %(GRAPH <g> {<s> <p> <o>} .) => %r(found "."),
-      %(GRAPH <g> <s> <p> <o> .) => %r(does not match production :wrappedDefault),
-      %(GRAPH <s> <p> <o> .) => %r(does not match production :wrappedDefault),
-      %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(does not match production :wrappedDefault),
+      %(GRAPH <g> <s> <p> <o> .) => %r(does not match production :wrappedGraph),
+      %(GRAPH <s> <p> <o> .) => %r(does not match production :wrappedGraph),
+      %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(does not match production :wrappedGraph),
       %(GRAPH <g1> {<s> <p> <o>) => %r(Unexpected end of input),
       %(GRAPH <g> {
         <s> <p> <o> .
@@ -722,8 +699,8 @@ describe "RDF::TriG::Reader" do
         prefix x: <http://example/x#>
         x:s1 x:p1 x:o1
       }) => RDF::ReaderError,
-      %(GRAPH () { :s :p :o }) => %r(does not match production :graphName),
-      %(GRAPH (1 2) { :s :p :o }) => %r(does not match production :graphName),
+      %(GRAPH () { :s :p :o }) => %r(does not match production :labelOrSubject),
+      %(GRAPH (1 2) { :s :p :o }) => %r(does not match production :labelOrSubject),
     }.each_pair do |trig, error|
       it "should raise '#{error}' for '#{trig}'" do
         expect {
