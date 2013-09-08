@@ -6,7 +6,7 @@ describe RDF::TriG::Reader do
     require 'suite_helper'
 
     # TriG/manifest.ttl
-    %w(manifest.ttl ../tests2/manifest.ttl).each do |man|
+    %w(manifest.ttl).each do |man|
       Fixtures::SuiteTest::Manifest.open(Fixtures::SuiteTest::BASE + man) do |m|
         describe m.comment do
           m.entries.each do |t|
