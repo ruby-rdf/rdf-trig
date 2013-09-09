@@ -71,12 +71,14 @@ module RDF::TriG
       case token.value
       when 'A', 'a'           then input[:resource] = RDF.type
       when 'true', 'false'    then input[:resource] = RDF::Literal::Boolean.new(token.value)
-      when '@base', '@prefix' then input[:lang] = token.value[1..-1]
       when '.'                then input[:terminated] = true
       else                         input[:string] = token.value
       end
     end
 
+    terminal(:GRAPH,      /graph/i) do |prod, token, input|
+      input[:string_value] = token.value
+    end
     terminal(:PREFIX,      PREFIX) do |prod, token, input|
       input[:string_value] = token.value
     end
@@ -89,23 +91,30 @@ module RDF::TriG
     end
 
     # Productions
-    # [3g] graph defines the basic creation of context
-    start_production(:graph) do |input, current, callback|
+    # [2g] block defines the basic creation of context
+    start_production(:block) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
-    production(:graph) do |input, current, callback|
+    production(:block) do |input, current, callback|
       callback.call(:context, "graph", nil)
     end
 
-    # [4g] graphName
-    # Normally, just returns the resource, but if called from [3g], also
-    # sets the context for triples defined within that graph
-    production(:graphName) do |input, current, callback|
+    # [7g] labelOrSubject
+    # Sets the context for triples defined within that graph
+    production(:labelOrSubject) do |input, current, callback|
       # If input contains set_graph_iri, use the returned value to set @context
-      debug("graphName") {"Set graph context to #{current[:resource]}"}
-      callback.call(:context, "graphName", current[:resource])
+      debug(":labelOrSubject") {"Set graph context to #{current[:resource]}"}
+      callback.call(:context, "labelOrSubject", current[:resource])
+      input[:resource] = current[:resource]
     end
 
+    # _triplesOrGraph_2 ::= predicateObjectList '.'
+    start_production(:_triplesOrGraph_2) do |input, current, callback|
+      # Default graph after all
+      callback.call(:context, "graph", nil)
+      debug("_triplesOrGraph_2") {"subject: #{current[:resource]}"}
+      current[:subject] = input[:resource]
+    end
 
     # Productions
     # [4] prefixID defines a prefix mapping
@@ -141,13 +150,13 @@ module RDF::TriG
       options[:base_uri] = iri
     end
 
-    # [6] triples
-    start_production(:triples) do |input, current, callback|
+    # [52s]  triplesBlock
+    start_production(:triplesBlock) do |input, current, callback|
       # Note production as triples for blankNodePropertyList
       # to set :subject instead of :resource
       current[:triples] = true
     end
-    production(:triples) do |input, current, callback|
+    production(:triplesBlock) do |input, current, callback|
       # Note production as triples for blankNodePropertyList
       # to set :subject instead of :resource
       current[:triples] = true
@@ -158,7 +167,7 @@ module RDF::TriG
       input[:predicate] = current[:resource]
     end
 
-    # [10] subject ::= IRIref | BlankNode | collection
+    # [10] subject ::= iri | blank
     start_production(:subject) do |input, current, callback|
       current[:triples] = nil
     end

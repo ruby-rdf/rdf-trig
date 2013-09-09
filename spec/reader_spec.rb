@@ -47,9 +47,9 @@ describe "RDF::TriG::Reader" do
     end
     
     it "should not raise errors" do
-      lambda {
+      expect {
         RDF::TriG::Reader.new(subject, :validate => true)
-      }.should_not raise_error
+      }.to_not raise_error
     end
 
     it "should yield statements" do
@@ -203,9 +203,9 @@ describe "RDF::TriG::Reader" do
     end
 
     it "raises error with anonymous predicate" do
-      lambda {
+      expect {
         parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", :validate => true)
-      }.should raise_error RDF::ReaderError
+      }.to raise_error RDF::ReaderError
     end
 
     it "ignores anonymous predicate" do
@@ -314,7 +314,7 @@ describe "RDF::TriG::Reader" do
         %(``),
       ].each do |uri|
         it "rejects #{uri.inspect}" do
-          lambda {parse(%({<#{uri}> <uri> "#{uri} .}"), :validate => true)}.should raise_error RDF::ReaderError
+          expect {parse(%({<#{uri}> <uri> "#{uri} .}"), :validate => true)}.to raise_error RDF::ReaderError
         end
       end
     end
@@ -384,10 +384,64 @@ describe "RDF::TriG::Reader" do
       end
     end
 
+    describe "GRAPH" do
+      {
+        %(GRAPH <g> {<s> <p> <o>}) => %(<s> <p> <o> <g> .),
+        %(graph <g> {<s> <p> <o>}) => %(<s> <p> <o> <g> .),
+        %(GRAPH <g> {<s> <p> <o> .}) => %(<s> <p> <o> <g> .),
+        %(GRAPH <g> {}) => %(),
+        %(PREFIX : <http://example/>
+          GRAPH :g1 {:s :p :o}
+          GRAPH :g2 {:s :p :o}
+          :g3 {:s :p :o}
+          graph :g4 {:s :p :o}
+          graph :g5 {:s :p :o}) => %(
+          <http://example/s> <http://example/p> <http://example/o> <http://example/g1> .
+          <http://example/s> <http://example/p> <http://example/o> <http://example/g2> .
+          <http://example/s> <http://example/p> <http://example/o> <http://example/g3> .
+          <http://example/s> <http://example/p> <http://example/o> <http://example/g4> .
+          <http://example/s> <http://example/p> <http://example/o> <http://example/g5> .
+        ),
+        %(GRAPH _:a {<s> <p> <o> .}) => %(<s> <p> <o> _:a .),
+        %(PREFIX : <http://example/>
+          GRAPH [] {:s :p :o}
+          [] {:s :p :o}
+          graph [] {:s :p :o}) => %(
+          <http://example/s> <http://example/p> <http://example/o> _:a .
+          <http://example/s> <http://example/p> <http://example/o> _:b .
+          <http://example/s> <http://example/p> <http://example/o> _:c .
+        ),
+      }.each do |trig, nq|
+        it "generates #{nq} from #{trig}" do
+          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        end
+      end
+    end
+
+    describe "Turtle as Trig" do
+      {
+        %(<s> <p> <o>; <q> 123, 456 .
+          <s1> <p1> "more" .
+        ) => %(
+          <s> <p> <o> .
+          <s> <q> "123"^^<http://www.w3.org/2001/XMLSchema#integer> .
+          <s> <q> "456"^^<http://www.w3.org/2001/XMLSchema#integer> .
+          <s1> <p1> "more" .
+        ),
+        %([ <p> <o> ] .) => %(_:s <p> <o> .),
+        %(prefix : <http://example/>
+          [ :p :o ] .) => %(_:s <http://example/p> <http://example/o> .),
+      }.each do |trig, nq|
+        it "generates #{nq} from #{trig}" do
+          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        end
+      end
+    end
+
     describe "@prefix" do
       it "raises an error when validating if not defined" do
         trig = %({<a> a :a .})
-        lambda {parse(trig, :validate => true)}.should raise_error(RDF::ReaderError)
+        expect {parse(trig, :validate => true)}.to raise_error(RDF::ReaderError)
       end
       
       it "allows undefined empty prefix if not validating" do
@@ -420,7 +474,7 @@ describe "RDF::TriG::Reader" do
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <p> .
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <q> .
         )
-        lambda {parse(trig, :validate => true)}.should raise_error(RDF::ReaderError)
+        expect {parse(trig, :validate => true)}.to raise_error(RDF::ReaderError)
         parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
       end
 
@@ -629,12 +683,29 @@ describe "RDF::TriG::Reader" do
   describe "validation" do
     {
       %({<a> <b> "xyz"^^<http://www.w3.org/2001/XMLSchema#integer> .}) => %r("xyz" is not a valid .*),
-      # FIXME: more invalid TriX
+      %(GRAPH {<s> <p> <o>}) => %r("{" does not match production :labelOrSubject),
+      %(GRAPH <g> {<s> <p> <o>} .) => %r(found "."),
+      %(GRAPH <g> <s> <p> <o> .) => %r(does not match production :wrappedGraph),
+      %(GRAPH <s> <p> <o> .) => %r(does not match production :wrappedGraph),
+      %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(does not match production :wrappedGraph),
+      %(GRAPH <g1> {<s> <p> <o>) => %r(Unexpected end of input),
+      %(GRAPH <g> {
+        <s> <p> <o> .
+        GRAPH <g1> { <s1> <p1> <o1>}
+      }) => RDF::ReaderError,
+      %(@graph <g> {<s> <p> <o>} .) => RDF::ReaderError,
+      %(GRAPH <g> {
+        <s> <p> <o> .
+        prefix x: <http://example/x#>
+        x:s1 x:p1 x:o1
+      }) => RDF::ReaderError,
+      %(GRAPH () { :s :p :o }) => %r(does not match production :labelOrSubject),
+      %(GRAPH (1 2) { :s :p :o }) => %r(does not match production :labelOrSubject),
     }.each_pair do |trig, error|
       it "should raise '#{error}' for '#{trig}'" do
-        lambda {
+        expect {
           parse("@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . #{trig}", :base_uri => "http://a/b", :validate => true)
-        }.should raise_error(error)
+        }.to raise_error(error)
       end
     end
   end
@@ -700,9 +771,9 @@ describe "RDF::TriG::Reader" do
     }.each do |test, (input, expected)|
       context test do
         it "raises an error if valiating" do
-          lambda {
+          expect {
             parse(input, :validate => true)
-          }.should raise_error
+          }.to raise_error
         end
         
         it "continues after an error", :pending => true do
@@ -820,7 +891,7 @@ describe "RDF::TriG::Reader" do
       ],
     }.each do |name, (input, expected)|
       it "matches TriG spec #{name}" do
-        lambda {parse(input)}.should_not raise_error
+        expect {parse(input)}.to_not raise_error
         #parse(input).should be_equivalent_dataset(expected, :trace => @debug)
       end
     end
