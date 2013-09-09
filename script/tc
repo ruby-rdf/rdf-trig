@@ -14,6 +14,10 @@ RUN_TIME = Time.now
 def earl_preamble(options)
   options[:output].write File.read(File.expand_path("../../etc/doap#{'-nquads' if options[:nquads]}.ttl", __FILE__))
   options[:output].puts %(
+<> foaf:primaryTopic <http://rubygems.org/gems/rdf#{'-trig' unless options[:nquads]}> ;
+  dc:issued "#{RUN_TIME.xmlschema}"^^xsd:dateTime ;
+  foaf:maker <#{ASSERTOR}> .
+
 <#{ASSERTOR}> a foaf:Person, earl:Assertor;
   foaf:name "Gregg Kellogg";
   foaf:title "Implementor";

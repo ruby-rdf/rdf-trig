@@ -16,6 +16,7 @@ Install with `gem install rdf-trig`
 * 100% free and unencumbered [public domain](http://unlicense.org/) software.
 * Implements a complete parser and serializer for [TriG][].
 * Compatible with Ruby 1.8.7+, Ruby 1.9.x, and JRuby 1.7+.
+* Optional streaming writer, to serialize large graphs
 
 ## Usage
 Instantiate a reader from a local file:
@@ -43,20 +44,14 @@ Full documentation available on [Rubydoc.info][TriG doc].
 * {RDF::TriG::Reader}
 * {RDF::TriG::Writer}
 
-### Interpretations of the spec
-
-It is still not defined what the interpretation of multiple uses of the same `graphIri` mean. This implementation takes
-the use of multiple graphs having the same `graphIri` to be additive, meaning that the statements from each graph
-are combined together to create a single graph.
-
-Graphs are written with `context` set to the associated `graphIri`.
-
-Although `RDF::Repository` allows any `RDF::Value`, such as a BNode, literal or variable to be used as a context, TriG
-only allows the use of an IRI.
 
 ## Implementation Notes
 The reader uses the [Turtle][Turtle doc] parser, which is based on the LL1::Parser with minor updates for the TriG grammar.
 The writer also is based on the Turtle writer.
+
+The syntax is compatible with placing default triples within `{}`, but the writer does not use this for writing triples in the default graph.
+
+There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient for streaming large datasets.
       
 ## Dependencies
 
