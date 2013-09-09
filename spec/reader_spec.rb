@@ -19,7 +19,7 @@ describe "RDF::TriG::Reader" do
       {:content_type   => 'application/trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
-        RDF::Reader.for(arg).should == RDF::TriG::Reader
+        expect(RDF::Reader.for(arg)).to eq RDF::TriG::Reader
       end
     end
   end
@@ -35,15 +35,11 @@ describe "RDF::TriG::Reader" do
     }
     
     it "should yield reader" do
-      inner = double("inner")
-      inner.should_receive(:called).with(RDF::TriG::Reader)
-      RDF::TriG::Reader.new(subject) do |reader|
-        inner.called(reader.class)
-      end
+      expect {|b| RDF::TriG::Reader.new(subject, &b)}.to yield_with_args(RDF::TriG::Reader)
     end
     
     it "should return reader" do
-      RDF::TriG::Reader.new(subject).should be_a(RDF::TriG::Reader)
+      expect(RDF::TriG::Reader.new(subject)).to be_a(RDF::TriG::Reader)
     end
     
     it "should not raise errors" do
@@ -53,19 +49,13 @@ describe "RDF::TriG::Reader" do
     end
 
     it "should yield statements" do
-      inner = double("inner")
-      inner.should_receive(:called).with(RDF::Statement).exactly(10)
-      RDF::TriG::Reader.new(subject).each_statement do |statement|
-        inner.called(statement.class)
-      end
+      expect {|b| RDF::TriG::Reader.new(subject).each_statement(&b)}.
+        to yield_successive_args(*([RDF::Statement] * 10))
     end
     
     it "should yield triples" do
-      inner = double("inner")
-      inner.should_receive(:called).exactly(10)
-      RDF::TriG::Reader.new(subject).each_triple do |subject, predicate, object|
-        inner.called(subject.class, predicate.class, object.class)
-      end
+      expect {|b| RDF::TriG::Reader.new(subject).each_triple(&b)}.
+        to yield_control.exactly(10)
     end
   end
 
@@ -78,17 +68,17 @@ describe "RDF::TriG::Reader" do
       end
       
       it "should have a single triple" do
-        @graph.size.should == 1
+        expect(@graph.size).to eq 1
       end
       
       it "should have subject" do
-        @statement.subject.to_s.should == "http://example.org/"
+        expect(@statement.subject.to_s).to eq "http://example.org/"
       end
       it "should have predicate" do
-        @statement.predicate.to_s.should == "http://xmlns.com/foaf/0.1/name"
+        expect(@statement.predicate.to_s).to eq "http://xmlns.com/foaf/0.1/name"
       end
       it "should have object" do
-        @statement.object.to_s.should == "Gregg Kellogg"
+        expect(@statement.object.to_s).to eq "Gregg Kellogg"
       end
     end
     
@@ -101,7 +91,7 @@ describe "RDF::TriG::Reader" do
         "line with spaces"          => "      "
       }.each_pair do |name, statement|
         specify "test #{name}" do
-          parse(statement).size.should == 0
+          expect(parse(statement).size).to eq 0
         end
       end
     end
@@ -118,8 +108,8 @@ describe "RDF::TriG::Reader" do
         specify "test #{triple}" do
           graph = parse(triple, :prefixes => {nil => ''})
           statement = graph.statements.to_a.first
-          graph.size.should == 1
-          statement.object.value.should == contents
+          expect(graph.size).to eq 1
+          expect(statement.object.value).to eq contents
         end
       end
       
@@ -132,8 +122,8 @@ describe "RDF::TriG::Reader" do
         specify "test #{triple}" do
           graph = parse(triple, :prefixes => {nil => ''})
           statement = graph.statements.to_a.first
-          graph.size.should == 1
-          statement.object.value.should == contents
+          expect(graph.size).to eq 1
+          expect(statement.object.value).to eq contents
         end
       end
       
@@ -141,7 +131,7 @@ describe "RDF::TriG::Reader" do
         trig = %(@prefix : <http://example.org/foo#> . {<a> <b> "\\U00015678another" .})
         if defined?(::Encoding)
           statement = parse(trig).statements.to_a.first
-          statement.object.value.should == "\u{15678}another"
+          expect(statement.object.value).to eq "\u{15678}another"
         else
           pending("Not supported in Ruby 1.8")
         end
@@ -167,39 +157,39 @@ describe "RDF::TriG::Reader" do
         }.each do |test, string|
           it "parses LONG1 #{test}" do
             graph = parse(%({<a> <b> '''#{string}'''.}))
-            graph.size.should == 1
-            graph.statements.to_a.first.object.value.should == string
+            expect(graph.size).to eq 1
+            expect(graph.statements.to_a.first.object.value).to eq string
           end
 
           it "parses LONG2 #{test}" do
             graph = parse(%({<a> <b> """#{string}""".}))
-            graph.size.should == 1
-            graph.statements.to_a.first.object.value.should == string
+            expect(graph.size).to eq 1
+            expect(graph.statements.to_a.first.object.value).to eq string
           end
         end
       end
       
       it "LONG1 matches trailing escaped single-quote" do
         graph = parse(%({<a> <b> '''\\''''.}))
-        graph.size.should == 1
-        graph.statements.to_a.first.object.value.should == %q(')
+        expect(graph.size).to eq 1
+        expect(graph.statements.to_a.first.object.value).to eq %q(')
       end
       
       it "LONG2 matches trailing escaped double-quote" do
         graph = parse(%({<a> <b> """\\"""".}))
-        graph.size.should == 1
-        graph.statements.to_a.first.object.value.should == %q(")
+        expect(graph.size).to eq 1
+        expect(graph.statements.to_a.first.object.value).to eq %q(")
       end
     end
 
     it "should create named subject bnode" do
       graph = parse("{_:anon <http://example.org/property> <http://example.org/resource2> .}")
-      graph.size.should == 1
+      expect(graph.size).to eq 1
       statement = graph.statements.to_a.first
-      statement.subject.should be_a(RDF::Node)
-      statement.subject.id.should =~ /anon/
-      statement.predicate.to_s.should == "http://example.org/property"
-      statement.object.to_s.should == "http://example.org/resource2"
+      expect(statement.subject).to be_a(RDF::Node)
+      expect(statement.subject.id).to match /anon/
+      expect(statement.predicate.to_s).to eq "http://example.org/property"
+      expect(statement.object.to_s).to eq "http://example.org/resource2"
     end
 
     it "raises error with anonymous predicate" do
@@ -210,36 +200,36 @@ describe "RDF::TriG::Reader" do
 
     it "ignores anonymous predicate" do
       g = parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", :validate => false)
-      g.should be_empty
+      expect(g).to be_empty
     end
 
     it "should create named object bnode" do
       graph = parse("{<http://example.org/resource2> <http://example.org/property> _:anon .}")
-      graph.size.should == 1
+      expect(graph.size).to eq 1
       statement = graph.statements.to_a.first
-      statement.subject.to_s.should == "http://example.org/resource2"
-      statement.predicate.to_s.should == "http://example.org/property"
-      statement.object.should be_a(RDF::Node)
-      statement.object.id.should =~ /anon/
+      expect(statement.subject.to_s).to eq "http://example.org/resource2"
+      expect(statement.predicate.to_s).to eq "http://example.org/property"
+      expect(statement.object).to be_a(RDF::Node)
+      expect(statement.object.id).to match /anon/
     end
 
     it "should allow mixed-case language" do
       trig = %({:x2 :p "xyz"@EN .})
       statement = parse(trig, :prefixes => {nil => ''}).statements.to_a.first
-      statement.object.to_ntriples.should == %("xyz"@EN)
+      expect(statement.object.to_ntriples).to eq %("xyz"@EN)
     end
 
     it "should create typed literals" do
       trig = "{<http://example.org/joe> <http://xmlns.com/foaf/0.1/name> \"Joe\" .}"
       statement = parse(trig).statements.to_a.first
-      statement.object.class.should == RDF::Literal
+      expect(statement.object).to be_a RDF::Literal
     end
 
     it "should create BNodes" do
       trig = "{_:a a _:c .}"
       statement = parse(trig).statements.to_a.first
-      statement.subject.class.should == RDF::Node
-      statement.object.class.should == RDF::Node
+      expect(statement.subject).to be_a RDF::Node
+      expect(statement.object).to be_a RDF::Node
     end
 
     describe "IRIs" do
@@ -256,7 +246,7 @@ describe "RDF::TriG::Reader" do
           %(<http://a/joe> <http://a/b/knows> <http://a/b/jane> .),
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
-          parse(trig).should be_equivalent_dataset(nt, :trace => @debug)
+          expect(parse(trig)).to be_equivalent_dataset(nt, :trace => @debug)
         end
       end
 
@@ -268,7 +258,7 @@ describe "RDF::TriG::Reader" do
         }.each_pair do |trig, nt|
           it "for '#{trig}'" do
             begin
-              parse(trig).should be_equivalent_dataset(nt, :trace => @debug)
+              expect(parse(trig)).to be_equivalent_dataset(nt, :trace => @debug)
             rescue
               if defined?(::Encoding)
                 raise
@@ -285,7 +275,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
           begin
-            parse(trig, :prefixes => {nil => ''}).should be_equivalent_dataset(nt, :trace => @debug)
+            expect(parse(trig, :prefixes => {nil => ''})).to be_equivalent_dataset(nt, :trace => @debug)
           rescue
             if defined?(::Encoding)
               raise
@@ -325,19 +315,19 @@ describe "RDF::TriG::Reader" do
       it "iri" do
         trig = %(<C> {<a> <b> <c> .})
         nq = %(<a> <b> <c> <C>.)
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "BNode" do
         trig = %(_:graph {<a> <b> <c> .})
         nq = %(<a> <b> <c> _:graph .)
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
-        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "alternating graphs" do
@@ -354,7 +344,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <e> .
           <a> <b> <f> <G> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "alternating graphs (BNodes)" do
@@ -371,7 +361,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <e> .
           <a> <b> <f> _:G .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "no closing ." do
@@ -380,7 +370,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2"
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
     end
 
@@ -413,7 +403,7 @@ describe "RDF::TriG::Reader" do
         ),
       }.each do |trig, nq|
         it "generates #{nq} from #{trig}" do
-          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+          expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
         end
       end
     end
@@ -433,7 +423,7 @@ describe "RDF::TriG::Reader" do
           [ :p :o ] .) => %(_:s <http://example/p> <http://example/o> .),
       }.each do |trig, nq|
         it "generates #{nq} from #{trig}" do
-          parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+          expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
         end
       end
     end
@@ -447,13 +437,13 @@ describe "RDF::TriG::Reader" do
       it "allows undefined empty prefix if not validating" do
         trig = %({:a :b :c .})
         nq = %(<a> <b> <c> .)
-        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "empty relative-IRI" do
         trig = %(@prefix foo: <> . {<a> a foo:a.})
         nq = %(<a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <a> .)
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "<#> as a prefix and as a triple node" do
@@ -461,7 +451,7 @@ describe "RDF::TriG::Reader" do
         nq = %(
         <#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <#a> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "ignores _ as prefix identifier" do
@@ -475,7 +465,7 @@ describe "RDF::TriG::Reader" do
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <q> .
         )
         expect {parse(trig, :validate => true)}.to raise_error(RDF::ReaderError)
-        parse(trig, :validate => false).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "redefine" do
@@ -490,7 +480,7 @@ describe "RDF::TriG::Reader" do
         <http://host/A#b> <http://host/A#p> <http://host/A#v> .
         <http://host/Z#b> <http://host/Z#p> <http://host/Z#v> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "returns defined prefixes" do
@@ -506,10 +496,10 @@ describe "RDF::TriG::Reader" do
         )
         reader = RDF::TriG::Reader.new(trig)
         reader.each {|statement|}
-        reader.prefixes.should == {
+        expect(reader.prefixes).to eq({
           :rdf => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
           :rdfs => "http://www.w3.org/2000/01/rdf-schema#",
-          nil => "http://test/"}
+          nil => "http://test/"})
       end
     end
 
@@ -520,7 +510,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "sets absolute base (trailing /)" do
@@ -529,7 +519,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar/> <http://foo/bar/a> <http://foo/bar/b> .
         <http://foo/bar/#c> <http://foo/bar/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "should set absolute base (trailing #)" do
@@ -538,7 +528,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar#> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "sets a relative base" do
@@ -558,7 +548,7 @@ describe "RDF::TriG::Reader" do
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/d> .
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/#e> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
       
       it "redefine" do
@@ -575,7 +565,7 @@ describe "RDF::TriG::Reader" do
         <http://example.com/path/DIFFERENT/a2> <http://example.com/path/DIFFERENT/b2> <http://example.com/path/DIFFERENT/foo/bar#baz2> .
         <http://example.com/path/DIFFERENT/d3> <http://example.com/path/DIFFERENT/#b3> <http://example.com/path/DIFFERENT/e3> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -586,7 +576,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> <d> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "literals" do
@@ -595,7 +585,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> "1" .
           <a> <b> "2" .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "mixed" do
@@ -604,7 +594,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2" .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "optional closing ," do
@@ -613,7 +603,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2",
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -633,7 +623,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/a#b> <http://foo/a#p2> <http://foo/a#v1> .
         <http://foo/a#b> <http://foo/a#p3> <http://foo/a#v2> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "optional closing ;" do
@@ -642,7 +632,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2" ;
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
     end
     
@@ -658,7 +648,7 @@ describe "RDF::TriG::Reader" do
         nq = %(
           <http://foo/a#b> <http://foo/a#p0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
         )
-        parse(trig).should be_equivalent_dataset(nq, :trace => @debug)
+        expect(parse(trig)).to be_equivalent_dataset(nq, :trace => @debug)
       end
 
       it "Single entry" do
@@ -675,7 +665,7 @@ describe "RDF::TriG::Reader" do
           _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> "123" <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
         )
         g = parse(trig)
-        g.each_statement {|s| s.context.should produce(RDF::URI("http://foo/a#U"), @debug)}
+        g.each_statement {|s| expect(s.context).to produce(RDF::URI("http://foo/a#U"), @debug)}
       end
     end
   end
@@ -777,7 +767,7 @@ describe "RDF::TriG::Reader" do
         end
         
         it "continues after an error", :pending => true do
-          parse(input, :validate => false).should be_equivalent_dataset(expected, :trace => @debug)
+          expect(parse(input, :validate => false)).to be_equivalent_dataset(expected, :trace => @debug)
         end
       end
     end
@@ -891,8 +881,7 @@ describe "RDF::TriG::Reader" do
       ],
     }.each do |name, (input, expected)|
       it "matches TriG spec #{name}" do
-        expect {parse(input)}.to_not raise_error
-        #parse(input).should be_equivalent_dataset(expected, :trace => @debug)
+        expect(parse(input)).to be_equivalent_dataset(expected, :trace => @debug)
       end
     end
   end

@@ -28,7 +28,7 @@ describe RDF::TriG::Reader do
                   begin
                     repo << reader
                   rescue Exception => e
-                    e.message.should produce("Not exception #{e.inspect}", t.debug)
+                    expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
                   end
                 else
                   expect {
@@ -38,9 +38,9 @@ describe RDF::TriG::Reader do
 
                 if t.evaluate? && t.positive_test?
                   output_repo = RDF::Repository.load(t.result, :format => :nquads, :base_uri => t.base)
-                  repo.should be_equivalent_dataset(output_repo, t)
+                  expect(repo).to be_equivalent_dataset(output_repo, t)
                 elsif !t.evaluate?
-                  repo.should be_a(RDF::Enumerable)
+                  expect(repo).to be_a(RDF::Enumerable)
                 end
               end
             end

@@ -22,13 +22,13 @@ describe RDF::NTriples::Reader do
                 begin
                   repo << reader
                 rescue Exception => e
-                  e.message.should produce("Not exception #{e.inspect}", t.debug)
+                  expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
                 end
               else
                 expect {repo << reader}.to raise_error
               end
 
-              repo.should be_a(RDF::Enumerable)
+              expect(repo).to be_a(RDF::Enumerable)
             end
           end
         end

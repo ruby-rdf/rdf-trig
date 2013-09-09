@@ -19,7 +19,7 @@ describe RDF::TriG::Writer do
       {:content_type   => 'application/trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
-        RDF::Writer.for(arg).should == RDF::TriG::Writer
+        expect(RDF::Writer.for(arg)).to eq RDF::TriG::Writer
       end
     end
   end
@@ -171,14 +171,14 @@ describe RDF::TriG::Writer do
               repo = parse(t.output, :format => :ntriples)
               ttl = serialize(t.output, t.base, [], :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
               g2 = parse(ttl, :base_uri => t.base)
-              g2.should be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
               repo = parse(t.output, :format => :ntriples)
               ttl = serialize(t.output, t.base, [], :stream => true, :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
               g2 = parse(ttl, :base_uri => t.base)
-              g2.should be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
             end
           end
         end
@@ -208,7 +208,7 @@ describe RDF::TriG::Writer do
     end
     
     regexps.each do |re|
-      result.should match_re(re, :about => base, :trace => @debug, :input => ntstr)
+      expect(result).to match_re(re, :about => base, :trace => @debug, :input => ntstr)
     end
     
     result

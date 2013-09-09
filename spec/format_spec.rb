@@ -19,7 +19,7 @@ describe RDF::TriG::Format do
       {:content_type   => 'application/x-trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
-        RDF::Format.for(arg).should == @format_class
+        expect(RDF::Format.for(arg)).to eq @format_class
       end
     end
 
@@ -35,17 +35,17 @@ describe RDF::TriG::Format do
       :STRING_LITERAL_LONG2  => %({<a> <b> """\nliteral\n""" .}),
     }.each do |sym, str|
       it "detects #{sym}" do
-        @format_class.for {str}.should == @format_class
+        expect(@format_class.for {str}).to eq @format_class
       end
     end
 
     it "should discover 'trig'" do
-      RDF::Format.for(:trig).reader.should == RDF::TriG::Reader
+      expect(RDF::Format.for(:trig).reader).to eq RDF::TriG::Reader
     end
   end
 
   describe "#to_sym" do
-    specify {@format_class.to_sym.should == :trig}
+    specify {expect(@format_class.to_sym).to eq :trig}
   end
 
   describe ".detect" do
@@ -61,7 +61,7 @@ describe RDF::TriG::Format do
       :STRING_LITERAL_LONG2  => %({<a> <b> """\nliteral\n""" .}),
     }.each do |sym, str|
       it "detects #{sym}" do
-        @format_class.detect(str).should be_true
+        expect(@format_class.detect(str)).to be_true
       end
     end
 
@@ -81,7 +81,7 @@ describe RDF::TriG::Format do
       :microdata => '<div itemref="bar"></div>',
     }.each do |sym, str|
       it "does not detect #{sym}" do
-        @format_class.detect(str).should be_false
+        expect(@format_class.detect(str)).to be_false
       end
     end
   end
