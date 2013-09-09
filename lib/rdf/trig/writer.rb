@@ -190,8 +190,6 @@ module RDF::TriG
 
           if ctx
             @output.write("\n#{format_value(ctx)} {")
-          else
-            @output.write("\n{")
           end
 
           # Restrict view to the particular context
@@ -205,7 +203,7 @@ module RDF::TriG
             end
           end
 
-          @output.puts("}")
+          @output.puts("}") if ctx
         end
       end
     end
