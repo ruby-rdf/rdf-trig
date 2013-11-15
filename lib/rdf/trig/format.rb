@@ -16,7 +16,7 @@ module RDF::TriG
   #
   # @see http://www.w3.org/TR/rdf-testcases/#ntriples
   class Format < RDF::Format
-    content_type     'application/x-trig',  :extension => :trig, :alias => 'application/trig'
+    content_type     'application/trig',  :extension => :trig, :alias => 'application/x-trig'
     content_encoding 'utf-8'
 
     reader { RDF::TriG::Reader }
