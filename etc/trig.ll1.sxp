@@ -23,21 +23,21 @@
   (follow _eof)
   (seq trigDoc))
  (terminal GRAPH "1t" (seq (range "Gg") (range "Rr") (range "Aa") (range "Pp") (range "Hh")))
- (rule _block_3 "2g.3"
-  (first "{")
-  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
-   "[" _eof "{" )
-  (seq wrappedGraph))
- (rule _block_2 "2g.2"
-  (first ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
-  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
-   "[" _eof "{" )
-  (seq labelOrSubject wrappedGraph))
  (rule block "2g"
   (first "(" ANON BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS "[" "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (alt triplesOrGraph wrappedGraph triples2 _block_1))
+ (rule _block_2 "2g.2"
+  (first ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq labelOrSubject wrappedGraph))
+ (rule _block_3 "2g.3"
+  (first "{")
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq wrappedGraph))
  (rule _block_1 "2g.1"
   (first GRAPH)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -73,29 +73,35 @@
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq "."))
+ (rule _triples2_4 "4g.4"
+  (first "." IRIREF PNAME_LN PNAME_NS "a")
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq _triples2_3 "."))
  (rule prefixID "4"
   (first PREFIX)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq PREFIX PNAME_NS IRIREF _prefixID_1))
  (rule _triples2_1 "4g.1"
-  (first "(" "[")
-  (follow "." IRIREF PNAME_LN PNAME_NS "a")
-  (alt blankNodePropertyList collection))
+  (first "[")
+  (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
+   "[" _eof "{" )
+  (seq blankNodePropertyList _triples2_3 "."))
  (rule triples2 "4g"
   (first "(" "[")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq _triples2_1 _triples2_2 "."))
- (rule _triples2_2 "4g.2"
+  (alt _triples2_1 _triples2_2))
+ (rule _triples2_3 "4g.3"
   (first IRIREF PNAME_LN PNAME_NS _eps "a")
   (follow ".")
   (alt _empty predicateObjectList))
- (rule _triples2_3 "4g.3"
-  (first "." IRIREF PNAME_LN PNAME_NS "a")
+ (rule _triples2_2 "4g.2"
+  (first "(")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq _triples2_2 "."))
+  (seq collection predicateObjectList "."))
  (rule _prefixID_1 "4.1"
   (first "." _eps)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -116,11 +122,11 @@
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq _prefixID_1))
- (rule _wrappedGraph_3 "5g.3"
-  (first "}")
+ (rule wrappedGraph "5g"
+  (first "{")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq "}"))
+  (seq "{" _wrappedGraph_1 "}"))
  (rule base "5"
   (first BASE)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -135,11 +141,11 @@
   (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
   (follow "}")
   (alt _empty triplesBlock))
- (rule wrappedGraph "5g"
-  (first "{")
+ (rule _wrappedGraph_3 "5g.3"
+  (first "}")
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
-  (seq "{" _wrappedGraph_1 "}"))
+  (seq "}"))
  (rule _base_1 "5.1"
   (first "." _eps)
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
@@ -155,6 +161,11 @@
   (follow "(" ANON BASE BLANK_NODE_LABEL GRAPH IRIREF PNAME_LN PNAME_NS PREFIX
    "[" _eof "{" )
   (seq _base_1))
+ (rule triplesBlock "6g"
+  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
+  (follow "}")
+  (seq triples _triplesBlock_1))
+ (rule _triplesBlock_2 "6g.2" (first ".") (follow "}") (seq "." _triplesBlock_3))
  (rule triples "6"
   (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
   (follow "." "}")
@@ -163,17 +174,12 @@
   (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
   (follow "}")
   (alt _empty triplesBlock))
- (rule _triplesBlock_2 "6g.2" (first ".") (follow "}") (seq "." _triplesBlock_3))
- (rule _triplesBlock_1 "6g.1" (first "." _eps) (follow "}") (alt _empty _triplesBlock_2))
- (rule triplesBlock "6g"
-  (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[")
-  (follow "}")
-  (seq triples _triplesBlock_1))
  (rule _triplesBlock_5 "6g.5"
   (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS "[" _eps)
   (follow "}")
   (seq _triplesBlock_3))
  (rule _triplesBlock_4 "6g.4" (first "." _eps) (follow "}") (seq _triplesBlock_1))
+ (rule _triplesBlock_1 "6g.1" (first "." _eps) (follow "}") (alt _empty _triplesBlock_2))
  (rule _triples_1 "6.1"
   (first "(" ANON BLANK_NODE_LABEL IRIREF PNAME_LN PNAME_NS)
   (follow "." "}")
