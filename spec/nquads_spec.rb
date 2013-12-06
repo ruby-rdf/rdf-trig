@@ -6,30 +6,28 @@ describe RDF::NTriples::Reader do
   describe "w3c N-Quads tests" do
     require 'suite_helper'
 
-    [Fixtures::SuiteTest::NTBASE, Fixtures::SuiteTest::NQBASE].each do |base|
-      Fixtures::SuiteTest::Manifest.open("#{base}manifest.ttl") do |m|
-        describe m.comment do
-          m.entries.each do |t|
-            specify "#{t.name}: #{t.comment}" do
-              t.debug = [t.inspect, "source:", t.input.read]
+    Fixtures::SuiteTest::Manifest.open("#{Fixtures::SuiteTest::NQBASE}manifest.ttl") do |m|
+      describe m.comment do
+        m.entries.each do |t|
+          specify "#{t.name}: #{t.comment}" do
+            t.debug = [t.inspect, "source:", t.input.read]
 
-              reader = RDF::NQuads::Reader.new(t.input,
-                  :validate => true)
+            reader = RDF::NQuads::Reader.new(t.input,
+                :validate => true)
 
-              repo = RDF::Repository.new
+            repo = RDF::Repository.new
 
-              if t.positive_test?
-                begin
-                  repo << reader
-                rescue Exception => e
-                  expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
-                end
-              else
-                expect {repo << reader}.to raise_error
+            if t.positive_test?
+              begin
+                repo << reader
+              rescue Exception => e
+                expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
               end
-
-              expect(repo).to be_a(RDF::Enumerable)
+            else
+              expect {repo << reader}.to raise_error
             end
+
+            expect(repo).to be_a(RDF::Enumerable)
           end
         end
       end

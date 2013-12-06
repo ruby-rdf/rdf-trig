@@ -53,7 +53,7 @@
   foaf:weblog <http://greggkellogg.net> .
 
 <> foaf:primaryTopic <http://rubygems.org/gems/rdf-trig> ;
-  dc:issued "2013-09-07T17:54:43-07:00"^^xsd:dateTime ;
+  dc:issued "2013-11-24T13:15:29-08:00"^^xsd:dateTime ;
   foaf:maker <http://greggkellogg.net/foaf#me> .
 
 <http://greggkellogg.net/foaf#me> a foaf:Person, earl:Assertor;
@@ -68,7 +68,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -78,7 +78,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -88,7 +88,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -98,7 +98,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -108,7 +108,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -118,7 +118,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -128,7 +128,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -138,7 +138,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -148,7 +148,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -158,7 +158,17 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-minimal-whitespace-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -168,7 +178,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -178,7 +188,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -188,7 +198,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -198,7 +208,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -208,7 +218,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -218,7 +228,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -228,7 +238,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -238,7 +248,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -248,7 +258,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -258,7 +268,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -268,7 +278,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -278,7 +288,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -288,7 +298,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -298,7 +308,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -308,7 +318,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -318,7 +328,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -328,7 +338,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -338,7 +348,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -348,7 +358,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -358,7 +368,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -368,7 +378,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -378,7 +388,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -388,7 +398,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -398,7 +408,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -408,7 +418,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -418,7 +428,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -428,7 +438,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -438,7 +448,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -448,7 +458,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -458,7 +468,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -468,7 +478,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -478,7 +488,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -488,7 +498,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -498,7 +508,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -508,7 +518,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -518,7 +528,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -528,7 +538,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -538,7 +548,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -548,7 +558,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -558,7 +568,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -568,7 +578,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -578,7 +588,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -588,7 +598,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -598,7 +608,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -608,7 +618,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -618,7 +628,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -628,7 +638,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -638,7 +648,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -648,7 +658,17 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#LITERAL1_with_UTF8_boundaries>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -658,7 +678,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -668,7 +688,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -678,7 +698,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -688,7 +708,17 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#LITERAL_LONG1_with_UTF8_boundaries>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -698,7 +728,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -708,7 +738,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -718,7 +748,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -728,7 +758,17 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#LITERAL2_with_UTF8_boundaries>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -738,7 +778,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -748,7 +788,17 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#LITERAL_LONG2_with_UTF8_boundaries>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -758,7 +808,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -768,7 +818,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -778,7 +828,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -788,7 +838,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -798,7 +848,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -808,7 +858,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -818,7 +868,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -828,7 +878,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -838,7 +888,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -848,7 +898,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -858,7 +908,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -868,7 +918,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -878,7 +928,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -888,7 +938,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -898,7 +948,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -908,7 +958,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -918,7 +968,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -928,7 +978,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -938,7 +988,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -948,7 +998,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -958,7 +1008,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -968,7 +1018,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -978,7 +1028,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -988,7 +1038,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -998,7 +1048,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1008,7 +1058,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1018,7 +1068,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1028,7 +1078,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1038,7 +1088,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1048,7 +1098,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1058,7 +1108,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1068,7 +1118,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1078,1717 +1128,47 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-01>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#comment_following_localName>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-02>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#number_sign_following_localName>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-03>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#comment_following_PNAME_NS>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-01>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#number_sign_following_PNAME_NS>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-11>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-11>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-datatypes-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-datatypes-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-11>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-12>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-13>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-12>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-13>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-14>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-15>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-16>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-17>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-lang-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-struct-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-struct-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-05>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-06>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-07>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-08>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-09>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-10>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-11>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-12>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-13>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-14>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-15>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-16>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-17>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-18>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-19>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-20>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-21>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-22>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-23>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-24>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-25>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-26>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-27>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-01>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-02>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-03>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
-  earl:mode earl:automatic ] .
-
-[ a earl:Assertion;
-  earl:assertedBy <http://greggkellogg.net/foaf#me>;
-  earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-04>;
-  earl:result [
-    a earl:TestResult;
-    earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2798,7 +1178,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2808,7 +1188,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2818,7 +1198,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2828,7 +1208,1717 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-file-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-uri-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-base-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-prefix-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-string-11>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-str-esc-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-pname-esc-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bnode-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-number-11>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-datatypes-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-datatypes-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-kw-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-struct-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-lists-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-uri-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-prefix-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-base-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-kw-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-11>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-12>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-n3-extras-13>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-12>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-13>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-14>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-15>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-16>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-struct-17>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-lang-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-esc-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-pname-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-string-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-num-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-struct-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-struct-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-05>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-06>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-07>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-08>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-09>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-10>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-11>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-12>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-13>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-14>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-15>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-16>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-17>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-18>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-19>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-20>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-21>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-22>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-23>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-24>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-25>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-26>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-subm-27>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-eval-bad-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2838,7 +2928,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2848,7 +2938,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2858,7 +2948,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2868,7 +2958,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2878,7 +2968,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2888,7 +2978,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2898,7 +2988,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2908,7 +2998,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2918,7 +3008,47 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-list-01>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-list-02>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-list-03>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
+  earl:mode earl:automatic ] .
+
+[ a earl:Assertion;
+  earl:assertedBy <http://greggkellogg.net/foaf#me>;
+  earl:subject <http://rubygems.org/gems/rdf-trig>;
+  earl:test <https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/manifest.ttl#trig-syntax-bad-list-04>;
+  earl:result [
+    a earl:TestResult;
+    earl:outcome earl:passed;
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2928,7 +3058,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2938,7 +3068,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2948,7 +3078,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2958,7 +3088,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2968,7 +3098,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2978,7 +3108,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2988,7 +3118,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -2998,7 +3128,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3008,7 +3138,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3018,7 +3148,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3028,7 +3158,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3038,7 +3168,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3048,7 +3178,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3058,7 +3188,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3068,7 +3198,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3078,7 +3208,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3088,7 +3218,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3098,7 +3228,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3108,7 +3238,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3118,7 +3248,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3128,7 +3258,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3138,7 +3268,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3148,7 +3278,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3158,7 +3288,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3168,7 +3298,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3178,7 +3308,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3188,7 +3318,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3198,7 +3328,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3208,7 +3338,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3218,7 +3348,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3228,7 +3358,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3238,7 +3368,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3248,7 +3378,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3258,7 +3388,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3268,7 +3398,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -3278,5 +3408,5 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2013-09-07T17:54:43-07:00"^^xsd:dateTime];
+    dc:date "2013-11-24T13:15:29-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .

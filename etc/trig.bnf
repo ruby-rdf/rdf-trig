@@ -4,7 +4,8 @@
                               | triples2
                               | GRAPH labelOrSubject wrappedGraph
 [3g] triplesOrGraph         ::= labelOrSubject ( wrappedGraph | predicateObjectList '.' )
-[4g] triples2               ::= ( blankNodePropertyList | collection ) predicateObjectList? '.'
+[4g] triples2               ::= blankNodePropertyList predicateObjectList? '.'
+                              | collection predicateObjectList '.'
 [5g] wrappedGraph           ::= '{' triplesBlock? '}'
 [6g] triplesBlock           ::=   triples ( '.' triplesBlock? )?
 [7g] labelOrSubject         ::= ( iri | BlankNode )
