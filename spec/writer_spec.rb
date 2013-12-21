@@ -3,6 +3,8 @@ require 'spec_helper'
 require 'rdf/spec/writer'
 
 describe RDF::TriG::Writer do
+  before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
+  after(:each) {$stderr = @old_stderr}
   before(:each) do
     @writer = RDF::TriG::Writer.new(StringIO.new)
   end
