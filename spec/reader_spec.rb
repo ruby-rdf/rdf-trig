@@ -4,6 +4,8 @@ require 'spec_helper'
 require 'rdf/spec/reader'
 
 describe "RDF::TriG::Reader" do
+  before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
+  after(:each) {$stderr = @old_stderr}
   before :each do
     @reader = RDF::TriG::Reader.new(StringIO.new(""))
   end
