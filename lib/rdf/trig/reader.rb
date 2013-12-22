@@ -265,7 +265,7 @@ module RDF::TriG
           end
         end
       end
-    rescue EBNF::LL1::Parser::Error => e
+    rescue EBNF::LL1::Parser::Error, EBNF::LL1::Lexer::Error => e
       if validate?
         raise RDF::ReaderError, e.message
       else
