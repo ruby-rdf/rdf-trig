@@ -17,7 +17,8 @@ module RDF::TriG
         @output.write "#{format_term(statement.subject)} "
         @output.write "#{format_term(statement.predicate)} "
       elsif statement.subject != @streaming_subject
-        @output.write " .\n#{indent(@streaming_subject ? 1 : 0)}"
+        @output.puts " ." if @previous_statement
+        @output.write "#{indent(@streaming_subject ? 1 : 0)}"
         @streaming_subject, @streaming_predicate = statement.subject, statement.predicate
         @output.write "#{format_term(statement.subject)} "
         @output.write "#{format_term(statement.predicate)} "
@@ -28,13 +29,18 @@ module RDF::TriG
         @output.write ",\n#{indent(@streaming_subject ? 3 : 2)}"
       end
       @output.write("#{format_term(statement.object)}")
+      @previous_statement = statement
     end
 
     ##
     # Complete open statements
     # @return [void] `self`
     def stream_epilogue
-      @output.puts " }" if @streaming_context
+      case
+      when @previous_statement.nil? ;
+      when @streaming_context then @output.puts " }"
+      else @output.puts " ."
+      end
     end
 
     private
