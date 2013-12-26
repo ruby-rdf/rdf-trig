@@ -169,40 +169,39 @@ describe RDF::TriG::Writer do
         describe m.comment do
           m.entries.each do |t|
             next unless t.positive_test? && t.evaluate?
-            specify "#{t.name}: #{t.comment}" do
-              repo = parse(t.output, :format => :ntriples)
-              ttl = serialize(t.output, t.base, [], :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
-              g2 = parse(ttl, :base_uri => t.base)
-              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+            specify "#{t.name}: #{t.comment}", pending: (t.name == 'collection_subject') do
+              repo = parse(t.expected, format: :nquads)
+              trig = serialize(repo, t.base, [], base_uri: t.base, standard_prefixes: true)
+              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              g2 = parse(trig, base_uri: t.base)
+              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
-              repo = parse(t.output, :format => :ntriples)
-              ttl = serialize(t.output, t.base, [], :stream => true, :format => :ttl, :base_uri => t.base, :standard_prefixes => true)
-              g2 = parse(ttl, :base_uri => t.base)
-              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+              repo = parse(t.expected, format: :nquads)
+              trig = serialize(repo, t.base, [], :stream => true, base_uri: t.base, standard_prefixes: true)
+              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              g2 = parse(trig, base_uri: t.base)
+              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
           end
         end
       end
     end
-  end
+  end unless ENV['CI']
 
   def parse(input, options = {})
-    graph = RDF::Repository.new
-    RDF::TriG::Reader.new(input, options).each do |statement|
-      graph << statement
-    end
-    graph
+    reader = RDF::Reader.for(options.fetch(:format, :trig))
+    RDF::Repository.new << reader.new(input, options)
   end
 
   # Serialize ntstr to a string and compare against regexps
   def serialize(ntstr, base = nil, regexps = [], options = {})
     prefixes = options[:prefixes] || {}
-    g = parse(ntstr, :base_uri => base, :prefixes => prefixes)
+    repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, :base_uri => base, :prefixes => prefixes)
     @debug = []
     result = RDF::TriG::Writer.buffer(options.merge(:debug => @debug, :base_uri => base, :prefixes => prefixes)) do |writer|
-      writer << g
+      writer << repo
     end
     if $verbose
       require 'cgi'

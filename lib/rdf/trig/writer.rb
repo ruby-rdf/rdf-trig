@@ -209,6 +209,23 @@ module RDF::TriG
     end
 
     protected
+
+    # Add additional constraint that the resource must be in a single context
+    def blankNodePropertyList?(subject)
+      super && resource_in_single_context?(subject)
+    end
+
+    # Add additional constraint that the resource must be in a single context
+    def p_squared?(resource, position)
+      super && resource_in_single_context?(resource)
+    end
+
+    def resource_in_single_context?(resource)
+      contexts = @repo.query(:subject => resource).map(&:context)
+      contexts += @repo.query(:object => resource).map(&:context)
+      contexts.length == 1
+    end
+
     # Order contexts for output
     def order_contexts
       debug("order_contexts") {@repo.contexts.to_a.inspect}
