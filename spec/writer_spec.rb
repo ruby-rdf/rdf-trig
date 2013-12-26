@@ -169,26 +169,26 @@ describe RDF::TriG::Writer do
         describe m.comment do
           m.entries.each do |t|
             next unless t.positive_test? && t.evaluate?
-            specify "#{t.name}: #{t.comment}", :pending => (t.name == 'collection_subject') do
-              repo = parse(t.expected, :format => :nquads)
-              trig = serialize(repo, t.base, [], :base_uri => t.base, :standard_prefixes => true)
-              @debug << [t.inspect, "source:", t.expected.read, "result:", trig]
-              g2 = parse(trig, :base_uri => t.base)
-              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+            specify "#{t.name}: #{t.comment}", pending: (t.name == 'collection_subject') do
+              repo = parse(t.expected, format: :nquads)
+              trig = serialize(repo, t.base, [], base_uri: t.base, standard_prefixes: true)
+              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              g2 = parse(trig, base_uri: t.base)
+              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
-              repo = parse(t.expected, :format => :nquads)
-              trig = serialize(repo, t.base, [], :stream => true, :base_uri => t.base, :standard_prefixes => true)
-              @debug << [t.inspect, "source:", t.expected.read, "result:", trig]
-              g2 = parse(trig, :base_uri => t.base)
-              expect(g2).to be_equivalent_dataset(repo, :trace => @debug.join("\n"))
+              repo = parse(t.expected, format: :nquads)
+              trig = serialize(repo, t.base, [], :stream => true, base_uri: t.base, standard_prefixes: true)
+              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              g2 = parse(trig, base_uri: t.base)
+              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
           end
         end
       end
     end
-  end
+  end unless ENV['CI']
 
   def parse(input, options = {})
     reader = RDF::Reader.for(options.fetch(:format, :trig))
