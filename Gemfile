@@ -13,3 +13,8 @@ group :debug do
   gem "byebug", :platforms => :mri_20
   gem "redcarpet", :platforms => :ruby
 end
+
+platforms :rbx do
+  gem 'rubysl', '~> 2.0'
+  gem 'rubinius', '~> 2.0'
+end
