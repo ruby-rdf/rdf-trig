@@ -2,4 +2,5 @@
 /doc/
 /pkg/
 /.rbx/
+/.bundle/
 Gemfile.lock

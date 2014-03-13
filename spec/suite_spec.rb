@@ -14,7 +14,7 @@ describe RDF::TriG::Reader do
               case t.name
               when false
               else
-                t.debug = [t.inspect, "source:", t.input.read]
+                t.debug = [t.inspect, "source:", t.input]
 
                 reader = RDF::TriG::Reader.new(t.input,
                     :base_uri => t.base,

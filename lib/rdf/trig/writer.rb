@@ -186,7 +186,7 @@ module RDF::TriG
         order_contexts.each do |ctx|
           debug {"context: #{ctx.inspect}"}
           reset
-          @depth = 2
+          @depth = ctx ? 2 : 0
 
           if ctx
             @output.write("\n#{format_value(ctx)} {")
@@ -223,7 +223,7 @@ module RDF::TriG
     def resource_in_single_context?(resource)
       contexts = @repo.query(:subject => resource).map(&:context)
       contexts += @repo.query(:object => resource).map(&:context)
-      contexts.length == 1
+      contexts.uniq.length <= 1
     end
 
     # Order contexts for output
