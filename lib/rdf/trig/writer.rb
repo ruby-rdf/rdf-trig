@@ -186,7 +186,7 @@ module RDF::TriG
         order_contexts.each do |ctx|
           debug {"context: #{ctx.inspect}"}
           reset
-          @depth = 2
+          @depth = ctx ? 2 : 0
 
           if ctx
             @output.write("\n#{format_value(ctx)} {")
