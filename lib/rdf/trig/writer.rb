@@ -223,7 +223,7 @@ module RDF::TriG
     def resource_in_single_context?(resource)
       contexts = @repo.query(:subject => resource).map(&:context)
       contexts += @repo.query(:object => resource).map(&:context)
-      contexts.length == 1
+      contexts.uniq.length <= 1
     end
 
     # Order contexts for output

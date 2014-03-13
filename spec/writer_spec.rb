@@ -150,7 +150,21 @@ describe RDF::TriG::Writer do
         ),
         [
           %r(^<a> <b> <c> .)m,
-          %r(^<C> \{\s*<a> <b> <c> .\s*\})m
+          %r(^<C> \{\s*<a> <b> <c> \.\s*\})m
+        ]
+      ],
+      "combo with chained blankNodePropertyList " => [
+        %q(
+          <a> <b> _:c .
+          _:c a <Class> .
+          <C> {
+            <d> <e> _:f .
+            _:f a <Class> .
+          }
+        ),
+        [
+          %r(^<a> <b> \[ a <Class>\] \.)m,
+          %r(^<C> \{\s*<d> <e> \[ a <Class>\] \.\s*\})m
         ]
       ],
     }.each_pair do |title, (input, matches)|
