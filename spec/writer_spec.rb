@@ -172,7 +172,7 @@ describe RDF::TriG::Writer do
             specify "#{t.name}: #{t.comment}", pending: (t.name == 'collection_subject') do
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], base_uri: t.base, standard_prefixes: true)
-              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              @debug += [t.inspect, "source:", t.expected, "result:", trig]
               g2 = parse(trig, base_uri: t.base)
               expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
@@ -180,7 +180,7 @@ describe RDF::TriG::Writer do
             specify "#{t.name}: #{t.comment} (stream)" do
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], :stream => true, base_uri: t.base, standard_prefixes: true)
-              @debug += [t.inspect, "source:", t.expected.read, "result:", trig]
+              @debug += [t.inspect, "source:", t.expected, "result:", trig]
               g2 = parse(trig, base_uri: t.base)
               expect(g2).to be_equivalent_dataset(repo, trace: @debug)
             end
