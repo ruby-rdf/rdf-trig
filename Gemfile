@@ -9,8 +9,8 @@ gem 'ebnf',           :git => "git://github.com/gkellogg/ebnf.git", :branch => "
 
 group :debug do
   gem "wirble"
-  gem "debugger", :platforms => :mri_19
-  gem "byebug", :platforms => :mri_20
+  gem "pry"
+  gem "pry-debugger"
   gem "redcarpet", :platforms => :ruby
 end
 
