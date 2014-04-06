@@ -3,7 +3,7 @@ require 'ebnf'
 
 module RDF
   ##
-  # **`RDF::TriG`** is an TriG plugin for RDF.rb.
+  # **`RDF::TriG`** is an TriG extension for RDF.rb.
   #
   # @example Requiring the `RDF::TriG` module
   #   require 'rdf/trig'
