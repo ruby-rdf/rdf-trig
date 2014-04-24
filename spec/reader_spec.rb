@@ -6,8 +6,14 @@ require 'rdf/spec/reader'
 describe "RDF::TriG::Reader" do
   before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
   after(:each) {$stderr = @old_stderr}
-  before :each do
-    @reader = RDF::TriG::Reader.new(StringIO.new(""))
+  let!(:doap) {File.expand_path("../../etc/doap.trig", __FILE__)}
+  let!(:doap_nq) {File.expand_path("../../etc/doap.nq", __FILE__)}
+  let!(:doap_count) {File.open(doap_nq).each_line.to_a.length}
+
+  before(:each) do
+    @reader_input = File.read(doap)
+    @reader = RDF::TriG::Reader.new(@reader_input)
+    @reader_count = doap_count
   end
 
   include RDF_Reader
