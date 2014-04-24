@@ -234,43 +234,64 @@ module RDF::TriG
     # @yieldparam [RDF::Statement] statement
     # @return [void]
     def each_statement(&block)
-      @callback = block
+      if block_given?
+        @callback = block
 
-      parse(@input, START.to_sym, @options.merge(:branch => BRANCH,
-                                                 :first => FIRST,
-                                                 :follow => FOLLOW,
-                                                 :reset_on_start => true)
-      ) do |context, *data|
-        case context
-        when :context
-          @context = data[1]
-        when :statement
-          data << @context if @context
-          debug("each_statement") {"data: #{data.inspect}, context: #{@context.inspect}"}
-          loc = data.shift
-          s = RDF::Statement.from(data, :lineno => lineno)
-          add_statement(loc, s) unless !s.valid? && validate?
-        when :trace
-          level, lineno, depth, *args = data
-          message = "#{args.join(': ')}"
-          d_str = depth > 100 ? ' ' * 100 + '+' : ' ' * depth
-          str = "[#{lineno}](#{level})#{d_str}#{message}"
-          case @options[:debug]
-          when Array
-            @options[:debug] << str
-          when TrueClass
-            $stderr.puts str
-          when Integer
-            $stderr.puts(str) if level <= @options[:debug]
+        parse(@input, START.to_sym, @options.merge(:branch => BRANCH,
+                                                   :first => FIRST,
+                                                   :follow => FOLLOW,
+                                                   :reset_on_start => true)
+        ) do |context, *data|
+          case context
+          when :context
+            @context = data[1]
+          when :statement
+            data << @context if @context
+            debug("each_statement") {"data: #{data.inspect}, context: #{@context.inspect}"}
+            loc = data.shift
+            s = RDF::Statement.from(data, :lineno => lineno)
+            add_statement(loc, s) unless !s.valid? && validate?
+          when :trace
+            level, lineno, depth, *args = data
+            message = "#{args.join(': ')}"
+            d_str = depth > 100 ? ' ' * 100 + '+' : ' ' * depth
+            str = "[#{lineno}](#{level})#{d_str}#{message}"
+            case @options[:debug]
+            when Array
+              @options[:debug] << str
+            when TrueClass
+              $stderr.puts str
+            when Integer
+              $stderr.puts(str) if level <= @options[:debug]
+            end
           end
         end
       end
+      enum_for(:each_statement)
     rescue EBNF::LL1::Parser::Error, EBNF::LL1::Lexer::Error => e
       if validate?
         raise RDF::ReaderError, e.message
       else
         $stderr.puts e.message
       end
+    end
+
+    ##
+    # Iterates the given block for each RDF quad in the input.
+    # This results in flattening each quad into a triple.
+    #
+    # @yield  [subject, predicate, object]
+    # @yieldparam [RDF::Resource] subject
+    # @yieldparam [RDF::URI]      predicate
+    # @yieldparam [RDF::Value]    object
+    # @return [void]
+    def each_triple(&block)
+      if block_given?
+        each_statement do |statement|
+          block.call(*statement.to_triple)
+        end
+      end
+      enum_for(:each_quad)
     end
 
     ##
@@ -283,9 +304,12 @@ module RDF::TriG
     # @yieldparam [RDF::URI]      context
     # @return [void]
     def each_quad(&block)
-      each_statement do |statement|
-        block.call(*statement.to_quad)
+      if block_given?
+        each_statement do |statement|
+          block.call(*statement.to_quad)
+        end
       end
+      enum_for(:each_quad)
     end
   end # class Reader
 end # module RDF::Turtle
