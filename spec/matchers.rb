@@ -44,7 +44,7 @@ RSpec::Matchers.define :be_equivalent_dataset do |expected, info|
     @actual.isomorphic_with?(@expected) rescue false
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     info = @info.respond_to?(:comment) ? @info.comment : @info.inspect
     if @expected.is_a?(RDF::Queryable) && @actual.size != @expected.size
       "Dataset entry count differs:\nexpected: #{@expected.size}\nactual:   #{@actual.size}"
@@ -81,7 +81,7 @@ RSpec::Matchers.define :match_re do |expected, info|
     @actual.to_s.match(@expected)
   end
   
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     info = @info.respond_to?(:comment) ? @info.comment : @info.inspect
     "Match failed" +
     "\n#{info + "\n" unless info.empty?}" +
@@ -95,10 +95,10 @@ end
 
 RSpec::Matchers.define :produce do |expected, info|
   match do |actual|
-    actual.should == expected
+    actual == expected
   end
   
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "Expected: #{expected.to_json(JSON_STATE)}\n" +
     "Actual  : #{actual.to_json(JSON_STATE)}\n" +
     #(expected.is_a?(Hash) && actual.is_a?(Hash) ? "Diff: #{expected.diff(actual).to_json(JSON_STATE)}\n" : "") +

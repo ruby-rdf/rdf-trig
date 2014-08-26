@@ -43,7 +43,7 @@ describe "RDF::TriG::Reader" do
     }
     
     it "should yield reader" do
-      expect {|b| RDF::TriG::Reader.new(subject, &b)}.to yield_with_args(RDF::TriG::Reader)
+      expect {|b| RDF::TriG::Reader.new(subject, &b)}.to yield_control.exactly(1).times
     end
     
     it "should return reader" do
@@ -58,12 +58,22 @@ describe "RDF::TriG::Reader" do
 
     it "should yield statements" do
       expect {|b| RDF::TriG::Reader.new(subject).each_statement(&b)}.
-        to yield_successive_args(*([RDF::Statement] * 10))
+        to yield_control.exactly(10).times
+
+      RDF::TriG::Reader.new(subject).each_statement do |s|
+        expect(s).to be_statement
+      end
     end
     
     it "should yield triples" do
       expect {|b| RDF::TriG::Reader.new(subject).each_triple(&b)}.
-        to yield_control.exactly(10)
+        to yield_control.exactly(10).times
+
+      RDF::TriG::Reader.new(subject).each_triple do |s, p, o|
+        expect(s).to be_resource
+        expect(p).to be_uri
+        expect(o).to be_term
+      end
     end
   end
 
@@ -774,7 +784,7 @@ describe "RDF::TriG::Reader" do
           }.to raise_error
         end
         
-        it "continues after an error", :pending => true do
+        it "continues after an error", skip: true do
           expect(parse(input, :validate => false)).to be_equivalent_dataset(expected, :trace => @debug)
         end
       end
