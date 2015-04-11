@@ -123,7 +123,6 @@ module RDF::TriG
     # @yieldparam [RDF::Writer] writer
     def initialize(output = $stdout, options = {}, &block)
       reset
-      @streaming_context = :none
       super do
         # Set both @repo and @graph to a new repository.
         # When serializing a context, @graph is changed
