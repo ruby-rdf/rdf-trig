@@ -61,7 +61,7 @@ describe RDF::TriG::Format do
       :STRING_LITERAL_LONG2  => %({<a> <b> """\nliteral\n""" .}),
     }.each do |sym, str|
       it "detects #{sym}" do
-        expect(@format_class.detect(str)).to be_true
+        expect(@format_class.detect(str)).to be_truthy
       end
     end
 
@@ -81,7 +81,7 @@ describe RDF::TriG::Format do
       :microdata => '<div itemref="bar"></div>',
     }.each do |sym, str|
       it "does not detect #{sym}" do
-        expect(@format_class.detect(str)).to be_false
+        expect(@format_class.detect(str)).to be_falsey
       end
     end
   end
