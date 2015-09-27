@@ -24,7 +24,7 @@ describe RDF::NTriples::Reader do
                 expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
               end
             else
-              expect {repo << reader}.to raise_error
+              expect {repo << reader}.to raise_error(RDF::ReaderError)
             end
 
             expect(repo).to be_a(RDF::Enumerable)

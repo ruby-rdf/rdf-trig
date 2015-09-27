@@ -5,15 +5,14 @@ require 'rdf/spec/writer'
 describe RDF::TriG::Writer do
   before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
   after(:each) {$stderr = @old_stderr}
-  before(:each) do
-    @writer = RDF::TriG::Writer.new(StringIO.new)
-  end
   
-  include RDF_Writer
+  it_behaves_like 'an RDF::Writer' do
+    let(:writer) {RDF::TriG::Writer.new}
+  end
 
   # XXX This should work for Ruby 1.8, but don't have time to investigate further right now
   describe ".for" do
-    formats = [
+    [
       :trig,
       'etc/doap.trig',
       {:file_name      => 'etc/doap.trig'},
@@ -183,20 +182,22 @@ describe RDF::TriG::Writer do
         describe m.comment do
           m.entries.each do |t|
             next unless t.positive_test? && t.evaluate?
-            specify "#{t.name}: #{t.comment}", pending: (t.name == 'collection_subject') do
+            specify "#{t.name}: #{t.comment}" do
+              pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], base_uri: t.base, standard_prefixes: true)
               @debug += [t.inspect, "source:", t.expected, "result:", trig]
-              g2 = parse(trig, base_uri: t.base)
-              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
+              g2 = parse(trig, base_uri: t.base, debug: @debug)
+              expect(g2).to be_equivalent_dataset(repo, debug: @debug)
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
+              pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], :stream => true, base_uri: t.base, standard_prefixes: true)
               @debug += [t.inspect, "source:", t.expected, "result:", trig]
               g2 = parse(trig, base_uri: t.base)
-              expect(g2).to be_equivalent_dataset(repo, trace: @debug)
+              expect(g2).to be_equivalent_dataset(repo, debug: @debug)
             end
           end
         end
@@ -212,18 +213,19 @@ describe RDF::TriG::Writer do
   # Serialize ntstr to a string and compare against regexps
   def serialize(ntstr, base = nil, regexps = [], options = {})
     prefixes = options[:prefixes] || {}
-    repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, :base_uri => base, :prefixes => prefixes)
+    repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, base_uri: base, prefixes: prefixes, validate: false)
     @debug = []
-    result = RDF::TriG::Writer.buffer(options.merge(:debug => @debug, :base_uri => base, :prefixes => prefixes)) do |writer|
+    result = RDF::TriG::Writer.buffer(options.merge(
+      debug: @debug,
+      base_uri: base,
+      prefixes: prefixes,
+      encoding: Encoding::UTF_8
+    )) do |writer|
       writer << repo
-    end
-    if $verbose
-      require 'cgi'
-      #puts CGI.escapeHTML(result)
     end
     
     regexps.each do |re|
-      expect(result).to match_re(re, :about => base, :trace => @debug, :input => ntstr)
+      expect(result).to match_re(re, about: base, debug: @debug, input: ntstr)
     end
     
     result

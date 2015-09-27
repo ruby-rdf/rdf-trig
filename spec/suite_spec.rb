@@ -15,12 +15,16 @@ describe RDF::TriG::Reader do
               when false
               else
                 t.debug = [t.inspect, "source:", t.input]
+                t.warnings = []
+                t.errors = []
 
                 reader = RDF::TriG::Reader.new(t.input,
-                    :base_uri => t.base,
-                    :canonicalize => false,
-                    :validate => true,
-                    :debug => t.debug)
+                    base_uri: t.base,
+                    errors: t.errors,
+                    warnings: t.warnings,
+                    canonicalize: false,
+                    validate: true,
+                    debug: t.debug)
 
                 repo = RDF::Repository.new
 
@@ -28,11 +32,12 @@ describe RDF::TriG::Reader do
                   begin
                     repo << reader
                   rescue Exception => e
-                    expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
+                    expect(e.message).to produce("Not exception #{e.inspect}", t)
                   end
                 else
                   expect {
                     repo << reader
+                    expect(repo.dump(:nquads)).to produce("not this", t)
                   }.to raise_error(RDF::ReaderError)
                 end
 
