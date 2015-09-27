@@ -3,4 +3,5 @@
 /pkg/
 /.rbx/
 /.bundle/
+/coverage/
 Gemfile.lock

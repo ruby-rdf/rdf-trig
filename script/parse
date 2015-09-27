@@ -5,10 +5,8 @@ require "bundler/setup"
 require 'rdf'
 require 'rdf/trig'
 require 'rdf/nquads'
-require 'rdf/trig/meta'
 require 'ebnf/ll1/parser'
 require 'getoptlong'
-require 'open-uri'
 
 def run(input, options)
   if options[:profile]

@@ -1,5 +1,5 @@
 require 'rdf'
-require 'ebnf'
+require 'rdf/turtle'
 
 module RDF
   ##

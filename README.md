@@ -4,6 +4,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](http://badge.fury.io/rb/rdf-trig)
 [![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](http://travis-ci.org/ruby-rdf/rdf-trig)
+[![Coverage Status](https://coveralls.io/repos/ruby-rdf/rdf-trig/badge.svg)](https://coveralls.io/r/ruby-rdf/rdf-trig)
+[![Dependency Status](https://gemnasium.com/ruby-rdf/rdf-trig.png)](https://gemnasium.com/ruby-rdf/rdf-trig)
 
 ## Description
 This is a [Ruby][] implementation of a [TriG][] reader and writer for [RDF.rb][].
@@ -46,8 +48,9 @@ Full documentation available on [Rubydoc.info][TriG doc].
 
 
 ## Implementation Notes
-The reader uses the [Turtle][Turtle doc] parser, which is based on the LL1::Parser with minor updates for the TriG grammar.
-The writer also is based on the Turtle writer.
+This version uses a hand-written parser using the Lexer from the [EBNF][] gem instead of a general [EBNF][] LL(1) parser for faster performance.
+
+The reader uses the [Turtle][Turtle doc] parser. The writer also is based on the Turtle writer.
 
 The syntax is compatible with placing default triples within `{}`, but the writer does not use this for writing triples in the default graph.
 
@@ -55,9 +58,9 @@ There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient f
       
 ## Dependencies
 
-* [Ruby](http://ruby-lang.org/) (>= 1.8.7) or (>= 1.8.1 with [Backports][])
-* [RDF.rb](http://rubygems.org/gems/rdf) (>= 1.0)
-* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (>= 1.0)
+* [Ruby](http://ruby-lang.org/) (>= 1.9.3)
+* [RDF.rb](http://rubygems.org/gems/rdf) (~> 1.1)
+* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (~> 1.1, >= 1.1.8)
 
 ## Installation
 

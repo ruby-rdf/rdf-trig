@@ -6,8 +6,14 @@ require 'json/ld'
 # For now, override RDF::Utils::File.open_file to look for the file locally before attempting to retrieve it
 module RDF::Util
   module File
-    REMOTE_PATH = "https://dvcs.w3.org/hg/rdf/raw-file/default/"
-    LOCAL_PATH = ::File.expand_path("../w3c-rdf", __FILE__) + '/'
+    REMOTE_PATH = "http://www.w3.org/2013/TriGTests/"
+    LOCAL_PATH = ::File.expand_path("../w3c-rdf/trig", __FILE__) + '/'
+    REMOTE_PATH_NQ = "http://www.w3.org/2013/N-QuadsTests/"
+    LOCAL_PATH_NQ = ::File.expand_path("../w3c-rdf/nquads", __FILE__) + '/'
+
+    class << self
+      alias_method :original_open_file, :open_file
+    end
 
     ##
     # Override to use Patron for http and https, Kernel.open otherwise.
@@ -19,42 +25,80 @@ module RDF::Util
     # @return [IO] File stream
     # @yield [IO] File stream
     def self.open_file(filename_or_url, options = {}, &block)
-      case filename_or_url.to_s
-      when /^file:/
+      case 
+      when filename_or_url.to_s =~ /^file:/
         path = filename_or_url[5..-1]
         Kernel.open(path.to_s, options, &block)
-      when /^#{REMOTE_PATH}/
-        begin
-          #puts "attempt to open #{filename_or_url} locally"
-          local_filename = filename_or_url.to_s.sub(REMOTE_PATH, LOCAL_PATH)
-          if ::File.exist?(local_filename)
-            response = ::File.open(local_filename)
-            #puts "use #{filename_or_url} locally"
-            case filename_or_url.to_s
-            when /\.trig$/
-              def response.content_type; 'application/trig'; end
-            when /\.nq$/
-              def response.content_type; 'application/n-quads'; end
-            end
+      when (filename_or_url.to_s =~ %r{^#{REMOTE_PATH}} && Dir.exist?(LOCAL_PATH))
+        #puts "attempt to open #{filename_or_url} locally"
+        localpath = filename_or_url.to_s.sub(REMOTE_PATH, LOCAL_PATH)
+        response = begin
+          ::File.open(localpath)
+        rescue Errno::ENOENT => e
+          raise IOError, e.message
+        end
+        document_options = {
+          base_uri:     RDF::URI(filename_or_url),
+          charset:      Encoding::UTF_8,
+          code:         200,
+          headers:      {}
+        }
+        #puts "use #{filename_or_url} locally"
+        document_options[:headers][:content_type] = case filename_or_url.to_s
+        when /\.ttl$/    then 'text/turtle'
+        when /\.trig$/   then 'application/trig'
+        when /\.nt$/     then 'application/n-triples'
+        when /\.nq$/     then 'application/n-quads'
+        when /\.jsonld$/ then 'application/ld+json'
+        else                  'unknown'
+        end
 
-            if block_given?
-              begin
-                yield response
-              ensure
-                response.close
-              end
-            else
-              response
-            end
-          else
-            Kernel.open(filename_or_url.to_s, options.fetch(:headers, {}), &block)
-          end
-        rescue Errno::ENOENT #, OpenURI::HTTPError
-          # Not there, don't run tests
-          StringIO.new("")
+        document_options[:headers][:content_type] = response.content_type if response.respond_to?(:content_type)
+        # For overriding content type from test data
+        document_options[:headers][:content_type] = options[:contentType] if options[:contentType]
+
+        remote_document = RDF::Util::File::RemoteDocument.new(response.read, document_options)
+        if block_given?
+          yield remote_document
+        else
+          remote_document
+        end
+      when (filename_or_url.to_s =~ %r{^#{REMOTE_PATH_NQ}} && Dir.exist?(LOCAL_PATH_NQ))
+        #puts "attempt to open #{filename_or_url} locally"
+        localpath = filename_or_url.to_s.sub(REMOTE_PATH_NQ, LOCAL_PATH_NQ)
+        response = begin
+          ::File.open(localpath)
+        rescue Errno::ENOENT => e
+          raise IOError, e.message
+        end
+        document_options = {
+          base_uri:     RDF::URI(filename_or_url),
+          charset:      Encoding::UTF_8,
+          code:         200,
+          headers:      {}
+        }
+        #puts "use #{filename_or_url} locally"
+        document_options[:headers][:content_type] = case filename_or_url.to_s
+        when /\.ttl$/    then 'text/turtle'
+        when /\.trig$/   then 'application/trig'
+        when /\.nt$/     then 'application/n-triples'
+        when /\.nq$/     then 'application/n-quads'
+        when /\.jsonld$/ then 'application/ld+json'
+        else                  'unknown'
+        end
+
+        document_options[:headers][:content_type] = response.content_type if response.respond_to?(:content_type)
+        # For overriding content type from test data
+        document_options[:headers][:content_type] = options[:contentType] if options[:contentType]
+
+        remote_document = RDF::Util::File::RemoteDocument.new(response.read, document_options)
+        if block_given?
+          yield remote_document
+        else
+          remote_document
         end
       else
-        Kernel.open(filename_or_url.to_s, options.fetch(:headers, {}), &block)
+        original_open_file(filename_or_url, options, &block)
       end
     end
   end
@@ -62,9 +106,8 @@ end
 
 module Fixtures
   module SuiteTest
-    BASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/trig/tests/"
-    NQBASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/nquads/tests/"
-    NTBASE = "https://dvcs.w3.org/hg/rdf/raw-file/default/rdf-turtle/tests-nt/"
+    BASE = "http://www.w3.org/2013/TriGTests/"
+    NQBASE = "http://www.w3.org/2013/N-QuadsTests/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -80,22 +123,11 @@ module Fixtures
         "result": {"@id": "mf:result", "@type": "@id"}
       },
       "@type": "mf:Manifest",
-      "entries": {
-        "@type": [
-          "rdft:TestTriGPositiveSyntax",
-          "rdft:TestTriGNegativeSyntax",
-          "rdft:TestTriGEval",
-          "rdft:TestTriGNegativeEval",
-          "rdft:TestNQuadsPositiveSyntax",
-          "rdft:TestNQuadsNegativeSyntax"
-        ]
-      }
+      "entries": {}
     }))
  
     class Manifest < JSON::LD::Resource
       def self.open(file)
-        #puts "open: #{file}"
-        prefixes = {}
         g = RDF::Repository.load(file, :format => :turtle)
         JSON::LD::API.fromRDF(g) do |expanded|
           JSON::LD::API.frame(expanded, FRAME) do |framed|
@@ -118,9 +150,11 @@ module Fixtures
  
     class Entry < JSON::LD::Resource
       attr_accessor :debug
+      attr_accessor :warnings
+      attr_accessor :errors
 
       def base
-        "http://www.w3.org/2013/TriGTests/" + action.split('/').last
+        BASE + action.split('/').last
       end
 
       # Alias data and query
