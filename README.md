@@ -4,6 +4,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](http://badge.fury.io/rb/rdf-trig)
 [![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](http://travis-ci.org/ruby-rdf/rdf-trig)
+[![Coverage Status](https://coveralls.io/repos/ruby-rdf/rdf-trig/badge.svg)](https://coveralls.io/r/ruby-rdf/rdf-trig)
 [![Dependency Status](https://gemnasium.com/ruby-rdf/rdf-trig.png)](https://gemnasium.com/ruby-rdf/rdf-trig)
 
 ## Description
