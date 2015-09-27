@@ -767,24 +767,28 @@ describe "RDF::TriG::Reader" do
         %q(<http://example.com/a> <http://example.com/c> <http://example.com/d> .)
       ],
       "malformed bnode object(2)" => [
-        %q({<http://example.com/a> <http://example.com/b> _:-a; <http://example.com/c> <http://example.com/d> .}),
-        %q(<http://example.com/a> <http://example.com/c> <http://example.com/d> .)
+        %q({
+          <http://example.com/a> <http://example.com/b> _:-a;
+                                 <http://example.com/c> <http://example.com/d> .
+          <http://example/e> <http://example/f>  <http://example/g> .
+        }),
+        %q(<http://example/e> <http://example/f>  <http://example/g> .)
       ],
       "malformed bnode object(3)" => [
-        %q({<http://example.com/a> <http://example.com/b> _:-a, <http://example.com/d> .}),
-        %q(<http://example.com/a> <http://example.com/b> <http://example.com/d> .)
+        %q({<http://example.com/a> <http://example.com/b> _:-a , <http://example.com/d> .}),
+        %q()
       ],
       "malformed uri subject" => [
         %q({<"quoted"> <http://example.com/a> <http://example.com/b> . <http://example.com/c> <http://example.com/d> <http://example.com/e> .}),
         %q(<http://example.com/c> <http://example.com/d> <http://example.com/e> .)
       ],
       "malformed uri predicate(1)" => [
-        %q({<http://example.com/a> <"quoted"> <http://example.com/b> . <chttp://example.com/http://example.com/> <http://example.com/http://example.com/http://example.com/d> <http://example.com/e> .}),
+        %q({<http://example.com/a> <"quoted"> <http://example.com/b> . <http://example.com/c> <http://example.com/d> <http://example.com/e> .}),
         %q(<http://example.com/c> <http://example.com/d> <http://example.com/e> .)
       ],
       "malformed uri predicate(2)" => [
         %q({<http://example.com/a> <"quoted"> <http://example.com/b>; <http://example.com/d> <http://example.com/e> .}),
-        %q(<http://example.com/d> <http://example.com/d> <http://example.com/e> .)
+        %q()
       ],
       "malformed uri object(1)" => [
         %q({<http://example.com/a> <http://example.com/b> <"quoted"> . <http://example.com/c> <http://example.com/d> <http://example.com/e> .}),
@@ -792,11 +796,11 @@ describe "RDF::TriG::Reader" do
       ],
       "malformed uri object(2)" => [
         %q({<http://example.com/a> <http://example.com/b> <"quoted">; <http://example.com/d> <http://example.com/e> .}),
-        %q(<http://example.com/d> <http://example.com/d> <http://example.com/e> .)
+        %q()
       ],
       "malformed uri object(3)" => [
         %q({<http://example.com/a> <http://example.com/b> "quoted">, <http://example.com/e> .}),
-        %q(<http://example.com/a> <http://example.com/b> <http://example.com/e> .)
+        %q()
       ],
     }.each do |test, (input, expected)|
       context test do
@@ -806,7 +810,7 @@ describe "RDF::TriG::Reader" do
           }.to raise_error
         end
         
-        it "continues after an error", skip: "More detailed error recovery" do
+        it "continues after an error" do
           expect(parse(input, validate: false)).to be_equivalent_dataset(expected, errors: @errors, debug: @debug)
         end
       end

@@ -215,7 +215,7 @@ module RDF::TriG
 
     # @return [Object]
     def read_triplesBlock
-      prod(:triplesBlock) do
+      prod(:triplesBlock, %w(.)) do
         while (token = @lexer.first) && token.value != '}' && read_triples
           break unless @lexer.first === '.'
           @lexer.shift
