@@ -656,35 +656,49 @@ describe "RDF::TriG::Reader" do
     end
     
     describe "RDF Collection" do
-      it "empty collection" do
-        trig = %(
-          @prefix a: <http://foo/a#> .
+      {
+        "empty collection" => [
+          %(
+            @prefix a: <http://foo/a#> .
 
-          a:U {
-            a:b a:p0 () .
-          }
-        )
-        nq = %(
-          <http://foo/a#b> <http://foo/a#p0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
-        )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
-      end
+            a:U {
+              a:b a:p0 () .
+            }
+          ),
+          %(
+            <http://foo/a#b> <http://foo/a#p0> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
+          )
+        ],
+        "Single entry" => [
+          %(
+            @prefix a: <http://foo/a#> .
 
-      it "Single entry" do
-        trig = %(
-          @prefix a: <http://foo/a#> .
-
-          a:U {
-            a:b a:p0 ("123") .
-          }
-        )
-        nq = %(
-          <http://foo/a#b> <http://foo/a#p0> _:a <http://foo/a#U> .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "123" <http://foo/a#U> .
-          _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
-        )
-        res = RDF::Repository.new << RDF::NQuads::Reader.new(nq)
-        expect(parse(trig)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+            a:U {
+              a:b a:p0 ("123") .
+            }
+          ),
+          %(
+            <http://foo/a#b> <http://foo/a#p0> _:a <http://foo/a#U> .
+            _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "123" <http://foo/a#U> .
+            _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> <http://foo/a#U> .
+          )
+        ],
+        "as subject" => [
+          %(
+            @prefix : <http://ex/#> .
+            ("123") :p :o
+          ),
+          %(
+            _:s <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> "123" .
+            _:s <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+            _:s <http://ex/#p> <http://ex/#o> .
+          )
+        ]
+      }.each do |name, (trig, nq)|
+        it name do
+          res = RDF::Repository.new << RDF::NQuads::Reader.new(nq)
+          expect(parse(trig)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+        end
       end
     end
   end
@@ -711,6 +725,9 @@ describe "RDF::TriG::Reader" do
       }) => RDF::ReaderError,
       %(GRAPH () { :s :p :o }) => %r(\(found "\("\), production = :block),
       %(GRAPH (1 2) { :s :p :o }) => %r(\(found "\("\), production = :block),
+      %(<a> <b> <c>) => %r(Expected '.' following triple),
+      %([:p1 :o1] {:s :p :o}) => %r(Expected '.' following triple),
+      %((123) .) => %r(Expected predicateObjectList after collection subject),
     }.each_pair do |trig, error|
       context trig do
         it "should raise '#{error}' for '#{trig}'" do

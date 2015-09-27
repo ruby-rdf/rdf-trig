@@ -11,24 +11,24 @@ module RDF::TriG
       if statement.context != @streaming_context
         stream_epilogue
         if statement.context
-          @output.write "#{format_term(statement.context)} {"
+          @output.write "#{format_term(statement.context, options)} {"
         end
         @streaming_context, @streaming_subject, @streaming_predicate = statement.context, statement.subject, statement.predicate
-        @output.write "#{format_term(statement.subject)} "
-        @output.write "#{format_term(statement.predicate)} "
+        @output.write "#{format_term(statement.subject, options)} "
+        @output.write "#{format_term(statement.predicate, options)} "
       elsif statement.subject != @streaming_subject
         @output.puts " ." if @previous_statement
         @output.write "#{indent(@streaming_subject ? 1 : 0)}"
         @streaming_subject, @streaming_predicate = statement.subject, statement.predicate
-        @output.write "#{format_term(statement.subject)} "
-        @output.write "#{format_term(statement.predicate)} "
+        @output.write "#{format_term(statement.subject, options)} "
+        @output.write "#{format_term(statement.predicate, options)} "
       elsif statement.predicate != @streaming_predicate
         @streaming_predicate = statement.predicate
-        @output.write ";\n#{indent(@streaming_subject ? 2 : 1)}#{format_term(statement.predicate)} "
+        @output.write ";\n#{indent(@streaming_subject ? 2 : 1)}#{format_term(statement.predicate, options)} "
       else
         @output.write ",\n#{indent(@streaming_subject ? 3 : 2)}"
       end
-      @output.write("#{format_term(statement.object)}")
+      @output.write("#{format_term(statement.object, options)}")
       @previous_statement = statement
     end
 
