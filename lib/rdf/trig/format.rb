@@ -5,18 +5,18 @@ module RDF::TriG
   # @example Obtaining an TriG format class
   #     RDF::Format.for("etc/foaf.trig")
   #     RDF::Format.for(:file_name      => "etc/foaf.trig")
-  #     RDF::Format.for(:file_extension => "trig")
+  #     RDF::Format.for(file_extension: "trig")
   #     RDF::Format.for(:content_type   => "application/trig")
   #
   # @example Obtaining serialization format MIME types
   #     RDF::Format.content_types      #=> {"application/trig" => [RDF::TriG::Format]}
   #
   # @example Obtaining serialization format file extension mappings
-  #     RDF::Format.file_extensions    #=> {:trig => "application/trig"}
+  #     RDF::Format.file_extensions    #=> {trig: "application/trig"}
   #
   # @see http://www.w3.org/TR/rdf-testcases/#ntriples
   class Format < RDF::Format
-    content_type     'application/trig',  :extension => :trig, :alias => 'application/x-trig'
+    content_type     'application/trig',  extension: :trig, alias: 'application/x-trig'
     content_encoding 'utf-8'
 
     reader { RDF::TriG::Reader }

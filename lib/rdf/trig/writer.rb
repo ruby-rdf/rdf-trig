@@ -13,7 +13,7 @@ module RDF::TriG
   #   RDF::Writer.for(:trig)         #=> RDF::TriG::Writer
   #   RDF::Writer.for("etc/test.trig")
   #   RDF::Writer.for(:file_name      => "etc/test.trig")
-  #   RDF::Writer.for(:file_extension => "trig")
+  #   RDF::Writer.for(file_extension: "trig")
   #   RDF::Writer.for(:content_type   => "application/trig")
   #
   # @example Serializing RDF repo into an TriG file
@@ -36,7 +36,7 @@ module RDF::TriG
   #   end
   #
   # @example Serializing RDF statements to a string in streaming mode
-  #   RDF::TriG::Writer.buffer(:stream => true) do |writer|
+  #   RDF::TriG::Writer.buffer(stream: true) do |writer|
   #     repo.each_statement do |statement|
   #       writer << statement
   #     end
@@ -45,9 +45,9 @@ module RDF::TriG
   # The writer will add prefix definitions, and use them for creating @prefix definitions, and minting QNames
   #
   # @example Creating @base and @prefix definitions in output
-  #   RDF::TriG::Writer.buffer(:base_uri => "http://example.com/", :prefixes => {
+  #   RDF::TriG::Writer.buffer(base_uri: "http://example.com/", prefixes: {
   #       nil => "http://example.com/ns#",
-  #       :foaf => "http://xmlns.com/foaf/0.1/"}
+  #       foaf: "http://xmlns.com/foaf/0.1/"}
   #   ) do |writer|
   #     repo.each_statement do |statement|
   #       writer << statement
@@ -59,27 +59,27 @@ module RDF::TriG
     include StreamingWriter
     format RDF::TriG::Format
     
-    class ContextFilteredRepo
+    class GraphFilteredRepo
       include RDF::Queryable
 
-      def initialize(repo, context)
+      def initialize(repo, graph_name)
         @repo = repo
-        @context = context
+        @graph_name = graph_name
       end
       
-      # Filter statements in repository to those having the specified context
-      # Returns each statement having the specified context, `false` for default context
+      # Filter statements in repository to those having the specified graph_name
+      # Returns each statement having the specified graph_name, `false` for default graph
       # @yield statement
       # @yieldparam [RDF::Statement] statement
       # @return [void]
       # @see [RDF::Queryable]
       def each
         @repo.each_statement do |st|
-          case @context
+          case @graph_name
           when false
-            yield st if !st.context
+            yield st if !st.graph_name
           else
-            yield st if st.context == @context
+            yield st if st.graph_name == @graph_name
           end
         end
       end
@@ -88,7 +88,7 @@ module RDF::TriG
       # Proxy Repository#query_pattern
       # @see RDF::Repository#query_pattern
       def query_pattern(pattern, &block)
-        pattern.context = @context || false
+        pattern.graph_name = @graph_name || false
         @repo.send(:query_pattern, pattern, &block)
       end
     end
@@ -125,8 +125,8 @@ module RDF::TriG
       reset
       super do
         # Set both @repo and @graph to a new repository.
-        # When serializing a context, @graph is changed
-        # to a ContextFilteredRepo
+        # When serializing a named graph, @graph is changed
+        # to a GraphFilteredRepo
         @repo = @graph = RDF::Repository.new
         if block_given?
           case block.arity
@@ -183,8 +183,8 @@ module RDF::TriG
         preprocess
         start_document
 
-        order_contexts.each do |ctx|
-          debug {"context: #{ctx.inspect}"}
+        order_graphs.each do |ctx|
+          debug {"graph_name: #{ctx.inspect}"}
           reset
           @depth = ctx ? 2 : 0
 
@@ -192,10 +192,10 @@ module RDF::TriG
             @output.write("\n#{format_value(ctx)} {")
           end
 
-          # Restrict view to the particular context
-          @graph = ContextFilteredRepo.new(@repo, ctx)
+          # Restrict view to the particular graph
+          @graph = GraphFilteredRepo.new(@repo, ctx)
 
-          # Pre-process statements again, but in the specified context
+          # Pre-process statements again, but in the specified graph
           @graph.each {|st| preprocess_statement(st)}
           order_subjects.each do |subject|
             unless is_done?(subject)
@@ -210,31 +210,31 @@ module RDF::TriG
 
     protected
 
-    # Add additional constraint that the resource must be in a single context
+    # Add additional constraint that the resource must be in a single graph
     def blankNodePropertyList?(subject)
-      super && resource_in_single_context?(subject)
+      super && resource_in_single_graph?(subject)
     end
 
-    # Add additional constraint that the resource must be in a single context
+    # Add additional constraint that the resource must be in a single graph
     def p_squared?(resource, position)
-      super && resource_in_single_context?(resource)
+      super && resource_in_single_graph?(resource)
     end
 
-    def resource_in_single_context?(resource)
-      contexts = @repo.query(:subject => resource).map(&:context)
-      contexts += @repo.query(:object => resource).map(&:context)
-      contexts.uniq.length <= 1
+    def resource_in_single_graph?(resource)
+      graph_names = @repo.query(subject: resource).map(&:graph_name)
+      graph_names += @repo.query(object: resource).map(&:graph_name)
+      graph_names.uniq.length <= 1
     end
 
-    # Order contexts for output
-    def order_contexts
-      debug("order_contexts") {@repo.contexts.to_a.inspect}
-      contexts = @repo.contexts.to_a.sort
+    # Order graphs for output
+    def order_graphs
+      debug("order_graphs") {@repo.graph_names.to_a.inspect}
+      graph_names = @repo.graph_names.to_a.sort
       
-      # include default context, if necessary
-      contexts.unshift(nil) unless @repo.query(:context => false).to_a.empty?
+      # include default graph, if necessary
+      graph_names.unshift(nil) unless @repo.query(graph_name: false).to_a.empty?
       
-      contexts
+      graph_names
     end
 
     # Perform any statement preprocessing required. This is used to perform reference counts and determine required
@@ -242,7 +242,7 @@ module RDF::TriG
     # @param [Statement] statement
     def preprocess_statement(statement)
       super
-      get_pname(statement.context) if statement.has_context?
+      get_pname(statement.graph_name) if statement.has_graph?
     end
   end
 end

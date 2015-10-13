@@ -8,12 +8,12 @@ module RDF::TriG
     # `subject` and `predicate` to create more compact output
     # @return [void] `self`
     def stream_statement(statement)
-      if statement.context != @streaming_context
+      if statement.graph_name != @streaming_graph
         stream_epilogue
-        if statement.context
-          @output.write "#{format_term(statement.context, options)} {"
+        if statement.graph_name
+          @output.write "#{format_term(statement.graph_name, options)} {"
         end
-        @streaming_context, @streaming_subject, @streaming_predicate = statement.context, statement.subject, statement.predicate
+        @streaming_graph, @streaming_subject, @streaming_predicate = statement.graph_name, statement.subject, statement.predicate
         @output.write "#{format_term(statement.subject, options)} "
         @output.write "#{format_term(statement.predicate, options)} "
       elsif statement.subject != @streaming_subject
@@ -38,7 +38,7 @@ module RDF::TriG
     def stream_epilogue
       case
       when @previous_statement.nil? ;
-      when @streaming_context then @output.puts " }"
+      when @streaming_graph then @output.puts " }"
       else @output.puts " ."
       end
     end

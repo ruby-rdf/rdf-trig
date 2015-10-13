@@ -128,7 +128,7 @@ module Fixtures
  
     class Manifest < JSON::LD::Resource
       def self.open(file)
-        g = RDF::Repository.load(file, :format => :turtle)
+        g = RDF::Repository.load(file, format: :turtle)
         JSON::LD::API.fromRDF(g) do |expanded|
           JSON::LD::API.frame(expanded, FRAME) do |framed|
             yield Manifest.new(framed['@graph'].first)

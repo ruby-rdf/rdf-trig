@@ -13,7 +13,7 @@ describe RDF::NTriples::Reader do
             t.debug = [t.inspect, "source:", t.input]
 
             reader = RDF::NQuads::Reader.new(t.input,
-                :validate => true)
+                validate: true)
 
             repo = RDF::Repository.new
 

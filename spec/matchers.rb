@@ -4,7 +4,7 @@ require 'json'
 JSON_STATE = JSON::State.new(
    :indent       => "  ",
    :space        => " ",
-   :space_before => "",
+   space_before: "",
    :object_nl    => "\n",
    :array_nl     => "\n"
  )
@@ -13,12 +13,12 @@ JSON_STATE = JSON::State.new(
    case repo
    when RDF::Queryable then repo
    when IO, StringIO
-     RDF::Repository.new.load(repo, :base_uri => @info.about)
+     RDF::Repository.new.load(repo, base_uri: @info.about)
    else
      # Figure out which parser to use
      g = RDF::Repository.new
-     reader_class = RDF::Reader.for(:sample => repo)
-     reader_class.new(repo, :base_uri => @info.about).each {|s| g << s}
+     reader_class = RDF::Reader.for(sample: repo)
+     reader_class.new(repo, base_uri: @info.about).each {|s| g << s}
      g
    end
  end
@@ -30,14 +30,14 @@ RSpec::Matchers.define :be_equivalent_dataset do |expected, info|
     @info = if info.respond_to?(:input)
       info
     elsif info.is_a?(Hash)
-      identifier = info[:identifier] || expected.is_a?(RDF::Graph) ? expected.context : info[:about]
+      identifier = info[:identifier] || expected.is_a?(RDF::Graph) ? expected.graph_name : info[:about]
       debug = info[:debug]
       if debug.is_a?(Array)
         debug = debug.map {|s| s.dup.force_encoding(Encoding::UTF_8)}.join("\n")
       end
       Info.new(identifier, info[:comment] || "", debug)
     else
-      Info.new(expected.is_a?(RDF::Enumerable) ? expected.context : info, "", info.to_s)
+      Info.new(expected.is_a?(RDF::Enumerable) ? expected.graph_name : info, "", info.to_s)
     end
     @expected = normalize(expected)
     @actual = normalize(actual)
@@ -68,14 +68,14 @@ RSpec::Matchers.define :match_re do |expected, info|
     @info = if info.respond_to?(:about)
       info
     #elsif info.is_a?(Hash)
-    #  identifier = info[:identifier] || expected.is_a?(RDF::Graph) ? expected.context : info[:about]
+    #  identifier = info[:identifier] || expected.is_a?(RDF::Graph) ? expected.graph_name : info[:about]
     #  trace = info[:trace]
     #  if trace.is_a?(Array)
     #    trace = trace.map {|s| s.dup.force_encoding(Encoding::UTF_8)}.join("\n")
     #  end
     #  Info.new(identifier, info[:comment] || "", trace)
     else
-      Info.new(expected.is_a?(RDF::Graph) ? expected.context : info, info.to_s)
+      Info.new(expected.is_a?(RDF::Graph) ? expected.graph_name : info, info.to_s)
     end
     @expected = expected
     @actual = actual
