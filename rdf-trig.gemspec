@@ -34,7 +34,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec-its',       '~> 1.0'
   gem.add_development_dependency 'rdf-isomorphic',  '~> 1.1'
   gem.add_development_dependency 'yard' ,           '~> 0.8'
-  gem.add_development_dependency 'rdf-spec',        '~> 1.1'
+  gem.add_development_dependency 'rdf-spec',        '~> 1.99'
   gem.add_development_dependency 'rake',            '~> 10'
 
   gem.post_install_message  = nil
