@@ -42,7 +42,7 @@ describe RDF::TriG::Reader do
                 end
 
                 if t.evaluate? && t.positive_test?
-                  output_repo = RDF::Repository.load(t.result, :format => :nquads, :base_uri => t.base)
+                  output_repo = RDF::Repository.load(t.result, format: :nquads, base_uri: t.base)
                   expect(repo).to be_equivalent_dataset(output_repo, t)
                 elsif !t.evaluate?
                   expect(repo).to be_a(RDF::Enumerable)

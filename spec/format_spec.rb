@@ -12,7 +12,7 @@ describe RDF::TriG::Format do
       :trig,
       'etc/doap.trig',
       {:file_name      => 'etc/doap.trig'},
-      {:file_extension => 'trig'},
+      {file_extension: 'trig'},
       {:content_type   => 'application/trig'},
       {:content_type   => 'application/x-trig'},
     ].each do |arg|
@@ -72,11 +72,11 @@ describe RDF::TriG::Format do
       :STRING_LITERAL_LONG1  => %(<a> <b> '''\nliteral\n''' .),
       :STRING_LITERAL_LONG2  => %(<a> <b> """\nliteral\n""" .),
       :n3             => "@prefix foo: <bar> .\nfoo:bar = {<a> <b> <c>} .",
-      :nquads => "<a> <b> <c> <d> . ",
-      :rdfxml => '<rdf:RDF about="foo"></rdf:RDF>',
-      :jsonld => '{"@context" => "foo"}',
+      nquads: "<a> <b> <c> <d> . ",
+      rdfxml: '<rdf:RDF about="foo"></rdf:RDF>',
+      jsonld: '{"@context" => "foo"}',
       :rdfa   => '<div about="foo"></div>',
-      :microdata => '<div itemref="bar"></div>',
+      microdata: '<div itemref="bar"></div>',
     }.each do |sym, str|
       it "does not detect #{sym}" do
         expect(described_class.detect(str)).to be_falsey

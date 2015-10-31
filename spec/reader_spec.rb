@@ -4,8 +4,6 @@ require 'spec_helper'
 require 'rdf/spec/reader'
 
 describe "RDF::TriG::Reader" do
-  before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
-  after(:each) {$stderr = @old_stderr}
   let!(:doap) {File.expand_path("../../etc/doap.trig", __FILE__)}
   let!(:doap_nq) {File.expand_path("../../etc/doap.nq", __FILE__)}
   let!(:doap_count) {File.open(doap_nq).each_line.to_a.length}
@@ -22,7 +20,7 @@ describe "RDF::TriG::Reader" do
       :trig,
       'etc/doap.trig',
       {:file_name      => 'etc/doap.trig'},
-      {:file_extension => 'trig'},
+      {file_extension: 'trig'},
       {:content_type   => 'application/trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
@@ -51,7 +49,7 @@ describe "RDF::TriG::Reader" do
     
     it "should not raise errors" do
       expect {
-        RDF::TriG::Reader.new(subject, :validate => true)
+        RDF::TriG::Reader.new(subject, validate: true)
       }.to_not raise_error
     end
 
@@ -80,7 +78,7 @@ describe "RDF::TriG::Reader" do
     context "simple triple" do
       before(:each) do
         trig = %({<http://example.org/> <http://xmlns.com/foaf/0.1/name> "Gregg Kellogg" .})
-        @graph = parse(trig, :validate => true)
+        @graph = parse(trig, validate: true)
         @statement = @graph.statements.to_a.first
       end
       
@@ -123,7 +121,7 @@ describe "RDF::TriG::Reader" do
         "tab:\t"         => '{<a> <b>  "tab:\\t" .}',
       }.each_pair do |contents, triple|
         specify "test #{triple}" do
-          graph = parse(triple, :prefixes => {nil => ''})
+          graph = parse(triple, prefixes: {nil => ''})
           statement = graph.statements.to_a.first
           expect(graph.size).to eq 1
           expect(statement.object.value).to eq contents
@@ -137,7 +135,7 @@ describe "RDF::TriG::Reader" do
         "resumé" => '{:a :resume  "resumé" .}',
       }.each_pair do |contents, triple|
         specify "test #{triple}" do
-          graph = parse(triple, :prefixes => {nil => ''})
+          graph = parse(triple, prefixes: {nil => ''})
           statement = graph.statements.to_a.first
           expect(graph.size).to eq 1
           expect(statement.object.value).to eq contents
@@ -211,12 +209,12 @@ describe "RDF::TriG::Reader" do
 
     it "raises error with anonymous predicate" do
       expect {
-        parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", :validate => true)
+        parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", validate: true)
       }.to raise_error RDF::ReaderError
     end
 
     it "ignores anonymous predicate" do
-      g = parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", :validate => false)
+      g = parse("{<http://example.org/resource2> _:anon <http://example.org/object> .}", validate: false)
       expect(g).to be_empty
     end
 
@@ -232,7 +230,7 @@ describe "RDF::TriG::Reader" do
 
     it "should allow mixed-case language" do
       trig = %({:x2 :p "xyz"@EN .})
-      statement = parse(trig, :prefixes => {nil => ''}).statements.to_a.first
+      statement = parse(trig, prefixes: {nil => ''}).statements.to_a.first
       expect(statement.object.to_ntriples).to eq %("xyz"@EN)
     end
 
@@ -292,7 +290,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
           begin
-            expect(parse(trig, :prefixes => {nil => ''})).to be_equivalent_dataset(nt, errors: @errors, debug: @debug)
+            expect(parse(trig, prefixes: {nil => ''})).to be_equivalent_dataset(nt, errors: @errors, debug: @debug)
           rescue
             if defined?(::Encoding)
               raise
@@ -321,7 +319,7 @@ describe "RDF::TriG::Reader" do
         %(``),
       ].each do |uri|
         it "rejects #{uri.inspect}" do
-          expect {parse(%({<#{uri}> <uri> "#{uri} .}"), :validate => true)}.to raise_error RDF::ReaderError
+          expect {parse(%({<#{uri}> <uri> "#{uri} .}"), validate: true)}.to raise_error RDF::ReaderError
         end
       end
     end
@@ -344,7 +342,7 @@ describe "RDF::TriG::Reader" do
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
-        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
       end
 
       it "alternating graphs" do
@@ -450,13 +448,13 @@ describe "RDF::TriG::Reader" do
     describe "@prefix" do
       it "raises an error when validating if not defined" do
         trig = %({<a> a :a .})
-        expect {parse(trig, :validate => true)}.to raise_error(RDF::ReaderError)
+        expect {parse(trig, validate: true)}.to raise_error(RDF::ReaderError)
       end
       
       it "allows undefined empty prefix if not validating" do
         trig = %({:a :b :c .})
         nq = %(<a> <b> <c> .)
-        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
       end
 
       it "empty relative-IRI" do
@@ -483,8 +481,8 @@ describe "RDF::TriG::Reader" do
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <p> .
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <q> .
         )
-        expect {parse(trig, :validate => true)}.to raise_error(RDF::ReaderError)
-        expect(parse(trig, :validate => false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect {parse(trig, validate: true)}.to raise_error(RDF::ReaderError)
+        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
       end
 
       it "redefine" do
@@ -516,8 +514,8 @@ describe "RDF::TriG::Reader" do
         reader = RDF::TriG::Reader.new(trig)
         reader.each {|statement|}
         expect(reader.prefixes).to eq({
-          :rdf => "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-          :rdfs => "http://www.w3.org/2000/01/rdf-schema#",
+          rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+          rdfs: "http://www.w3.org/2000/01/rdf-schema#",
           nil => "http://test/"})
       end
     end
@@ -807,7 +805,7 @@ describe "RDF::TriG::Reader" do
         it "raises an error if valiating" do
           expect {
             parse(input, validate: true)
-          }.to raise_error
+          }.to raise_error RDF::ReaderError
         end
         
         it "continues after an error" do

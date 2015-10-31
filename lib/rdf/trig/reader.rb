@@ -17,8 +17,8 @@ module RDF::TriG
     terminal(:INTEGER,                          INTEGER)
     terminal(:PNAME_LN,                         PNAME_LN, unescape:  true)
     terminal(:PNAME_NS,                         PNAME_NS)
-    terminal(:STRING_LITERAL_LONG_SINGLE_QUOTE, STRING_LITERAL_LONG_SINGLE_QUOTE, unescape:  true)
-    terminal(:STRING_LITERAL_LONG_QUOTE,        STRING_LITERAL_LONG_QUOTE,        unescape:  true)
+    terminal(:STRING_LITERAL_LONG_SINGLE_QUOTE, STRING_LITERAL_LONG_SINGLE_QUOTE, unescape:  true, partial_regexp: /^'''/)
+    terminal(:STRING_LITERAL_LONG_QUOTE,        STRING_LITERAL_LONG_QUOTE,        unescape:  true, partial_regexp: /^"""/)
     terminal(:STRING_LITERAL_QUOTE,             STRING_LITERAL_QUOTE,             unescape:  true)
     terminal(:STRING_LITERAL_SINGLE_QUOTE,      STRING_LITERAL_SINGLE_QUOTE,      unescape:  true)
  
@@ -65,11 +65,11 @@ module RDF::TriG
     ##
     # Iterates the given block for each RDF quad in the input.
     #
-    # @yield  [subject, predicate, object, context]
+    # @yield  [subject, predicate, object, graph_name]
     # @yieldparam [RDF::Resource] subject
     # @yieldparam [RDF::URI]      predicate
     # @yieldparam [RDF::Value]    object
-    # @yieldparam [RDF::URI]      context
+    # @yieldparam [RDF::URI]      graph_name
     # @return [void]
     def each_quad(&block)
       if block_given?
@@ -88,7 +88,7 @@ module RDF::TriG
     # @raise [RDF::ReaderError] Checks parameter types and raises if they are incorrect if parsing mode is _validate_.
     def add_statement(production, statement)
       error("Statement is invalid: #{statement.inspect.inspect}", production: produciton) if validate? && statement.invalid?
-      statement.context = @graph_name if @graph_name
+      statement.graph_name = @graph_name if @graph_name
       @callback.call(statement) if statement.subject &&
                                    statement.predicate &&
                                    statement.object &&

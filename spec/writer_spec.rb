@@ -3,20 +3,16 @@ require 'spec_helper'
 require 'rdf/spec/writer'
 
 describe RDF::TriG::Writer do
-  before(:each) {$stderr, @old_stderr = StringIO.new, $stderr}
-  after(:each) {$stderr = @old_stderr}
-  
   it_behaves_like 'an RDF::Writer' do
     let(:writer) {RDF::TriG::Writer.new}
   end
 
-  # XXX This should work for Ruby 1.8, but don't have time to investigate further right now
   describe ".for" do
     [
       :trig,
       'etc/doap.trig',
       {:file_name      => 'etc/doap.trig'},
-      {:file_extension => 'trig'},
+      {file_extension: 'trig'},
       {:content_type   => 'application/trig'},
     ].each do |arg|
       it "discovers with #{arg.inspect}" do
@@ -149,7 +145,7 @@ describe RDF::TriG::Writer do
             specify "#{t.name}: #{t.comment} (stream)" do
               pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
-              trig = serialize(repo, t.base, [], :stream => true, base_uri: t.base, standard_prefixes: true)
+              trig = serialize(repo, t.base, [], stream: true, base_uri: t.base, standard_prefixes: true)
               @debug += [t.inspect, "source:", t.expected, "result:", trig]
               g2 = parse(trig, base_uri: t.base)
               expect(g2).to be_equivalent_dataset(repo, debug: @debug)
