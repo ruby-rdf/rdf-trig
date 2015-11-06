@@ -87,9 +87,9 @@ module RDF::TriG
       ##
       # Proxy Repository#query_pattern
       # @see RDF::Repository#query_pattern
-      def query_pattern(pattern, &block)
+      def query_pattern(pattern, options = {}, &block)
         pattern.graph_name = @graph_name || false
-        @repo.send(:query_pattern, pattern, &block)
+        @repo.send(:query_pattern, pattern, options, &block)
       end
     end
 

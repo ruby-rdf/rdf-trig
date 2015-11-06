@@ -380,10 +380,10 @@ describe "RDF::TriG::Reader" do
       end
 
       it "no closing ." do
-        trig = %({<a> <b> <c>, "2" .})
+        trig = %({<a> <b> <c>, "2"})
         nq = %(
           <a> <b> <c> .
-          <a> <b> "2"
+          <a> <b> "2" .
         )
         expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
       end
