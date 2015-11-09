@@ -189,7 +189,7 @@ module RDF::TriG
           @depth = ctx ? 2 : 0
 
           if ctx
-            @output.write("\n#{format_value(ctx)} {")
+            @output.write("\n#{format_term(ctx)} {")
           end
 
           # Restrict view to the particular context
