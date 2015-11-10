@@ -122,7 +122,6 @@ module RDF::TriG
     # @yield  [writer]
     # @yieldparam [RDF::Writer] writer
     def initialize(output = $stdout, options = {}, &block)
-      reset
       super do
         # Set both @repo and @graph to a new repository.
         # When serializing a named graph, @graph is changed
@@ -178,15 +177,15 @@ module RDF::TriG
 
         reset
 
-        debug {"\nserialize: repo: #{@repo.size}"}
+        log_debug {"\nserialize: repo: #{@repo.size}"}
 
         preprocess
         start_document
 
         order_graphs.each do |ctx|
-          debug {"graph_name: #{ctx.inspect}"}
+          log_debug {"graph_name: #{ctx.inspect}"}
           reset
-          @depth = ctx ? 2 : 0
+          @options[:log_depth] = ctx ? 1 : 0
 
           if ctx
             @output.write("\n#{format_term(ctx)} {")
@@ -228,7 +227,7 @@ module RDF::TriG
 
     # Order graphs for output
     def order_graphs
-      debug("order_graphs") {@repo.graph_names.to_a.inspect}
+      log_debug("order_graphs") {@repo.graph_names.to_a.inspect}
       graph_names = @repo.graph_names.to_a.sort
       
       # include default graph, if necessary

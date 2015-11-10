@@ -261,7 +261,7 @@ describe "RDF::TriG::Reader" do
           %(<http://a/joe> <http://a/b/knows> <http://a/b/jane> .),
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
-          expect(parse(trig)).to be_equivalent_dataset(nt, errors: @errors, debug: @debug)
+          expect(parse(trig)).to be_equivalent_graph(nt, logger: @logger)
         end
       end
 
@@ -273,7 +273,7 @@ describe "RDF::TriG::Reader" do
         }.each_pair do |trig, nt|
           it "for '#{trig}'" do
             begin
-              expect(parse(trig)).to be_equivalent_dataset(nt, errors: @errors, debug: @debug)
+              expect(parse(trig)).to be_equivalent_graph(nt, logger: @logger)
             rescue
               if defined?(::Encoding)
                 raise
@@ -290,7 +290,7 @@ describe "RDF::TriG::Reader" do
       }.each_pair do |trig, nt|
         it "for '#{trig}'" do
           begin
-            expect(parse(trig, prefixes: {nil => ''})).to be_equivalent_dataset(nt, errors: @errors, debug: @debug)
+            expect(parse(trig, prefixes: {nil => ''})).to be_equivalent_graph(nt, logger: @logger)
           rescue
             if defined?(::Encoding)
               raise
@@ -330,19 +330,19 @@ describe "RDF::TriG::Reader" do
       it "iri" do
         trig = %(<C> {<a> <b> <c> .})
         nq = %(<a> <b> <c> <C>.)
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "BNode" do
         trig = %(_:graph {<a> <b> <c> .})
         nq = RDF::Repository.new << RDF::NQuads::Reader.new(%(<a> <b> <c> _:graph .))
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "undefined prefix" do
         trig = %(:C {:a :b :c .})
         nq = %(<a> <b> <c> <C>.)
-        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig, validate: false)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "alternating graphs" do
@@ -359,7 +359,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <e> .
           <a> <b> <f> <G> .
         ))
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "alternating graphs (BNodes)" do
@@ -376,7 +376,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <e> .
           <a> <b> <f> _:G .
         ))
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "no closing ." do
@@ -385,7 +385,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2" .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
     end
 
@@ -419,7 +419,7 @@ describe "RDF::TriG::Reader" do
       }.each do |trig, nq|
         it "generates #{nq} from #{trig}" do
           res = RDF::Repository.new << RDF::NQuads::Reader.new(nq)
-          expect(parse(trig)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+          expect(parse(trig)).to be_equivalent_graph(res, logger: @logger)
         end
       end
     end
@@ -440,7 +440,7 @@ describe "RDF::TriG::Reader" do
       }.each do |trig, nq|
         it "generates #{nq} from #{trig}" do
           res = RDF::Repository.new << RDF::NQuads::Reader.new(nq)
-          expect(parse(trig)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+          expect(parse(trig)).to be_equivalent_graph(res, logger: @logger)
         end
       end
     end
@@ -454,13 +454,13 @@ describe "RDF::TriG::Reader" do
       it "allows undefined empty prefix if not validating" do
         trig = %({:a :b :c .})
         nq = %(<a> <b> <c> .)
-        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig, validate: false)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "empty relative-IRI" do
         trig = %(@prefix foo: <> . {<a> a foo:a.})
         nq = %(<a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <a> .)
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "<#> as a prefix and as a triple node" do
@@ -468,7 +468,7 @@ describe "RDF::TriG::Reader" do
         nq = %(
         <#> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <#a> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
       
       it "ignores _ as prefix identifier" do
@@ -482,7 +482,7 @@ describe "RDF::TriG::Reader" do
         _:a <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <q> .
         )
         expect {parse(trig, validate: true)}.to raise_error(RDF::ReaderError)
-        expect(parse(trig, validate: false)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig, validate: false)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "redefine" do
@@ -497,7 +497,7 @@ describe "RDF::TriG::Reader" do
         <http://host/A#b> <http://host/A#p> <http://host/A#v> .
         <http://host/Z#b> <http://host/Z#p> <http://host/Z#v> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "returns defined prefixes" do
@@ -527,7 +527,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
       
       it "sets absolute base (trailing /)" do
@@ -536,7 +536,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar/> <http://foo/bar/a> <http://foo/bar/b> .
         <http://foo/bar/#c> <http://foo/bar/d> <http://foo/e> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
       
       it "should set absolute base (trailing #)" do
@@ -545,7 +545,7 @@ describe "RDF::TriG::Reader" do
         <http://foo/bar#> <http://foo/a> <http://foo/b> .
         <http://foo/bar#c> <http://foo/d> <http://foo/e> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
       
       it "sets a relative base" do
@@ -565,7 +565,7 @@ describe "RDF::TriG::Reader" do
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/d> .
         <http://example.org/products/> <http://example.org/products/a> <http://example.org/products/#e> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
       
       it "redefine" do
@@ -582,7 +582,7 @@ describe "RDF::TriG::Reader" do
         <http://example.com/path/DIFFERENT/a2> <http://example.com/path/DIFFERENT/b2> <http://example.com/path/DIFFERENT/foo/bar#baz2> .
         <http://example.com/path/DIFFERENT/d3> <http://example.com/path/DIFFERENT/#b3> <http://example.com/path/DIFFERENT/e3> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
     end
     
@@ -593,7 +593,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> <d> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "literals" do
@@ -602,7 +602,7 @@ describe "RDF::TriG::Reader" do
           <a> <b> "1" .
           <a> <b> "2" .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "mixed" do
@@ -611,16 +611,16 @@ describe "RDF::TriG::Reader" do
           <a> <b> <c> .
           <a> <b> "2" .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "optional closing ," do
-        trig = %({<a> <b> <c>, "2" .})
+        trig = %({<a> <b> <c>, "2",})
         nq = %(
           <a> <b> <c> .
-          <a> <b> "2",
+          <a> <b> "2" .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
     end
     
@@ -640,16 +640,16 @@ describe "RDF::TriG::Reader" do
         <http://foo/a#b> <http://foo/a#p2> <http://foo/a#v1> .
         <http://foo/a#b> <http://foo/a#p3> <http://foo/a#v2> .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
 
       it "optional closing ;" do
-        trig = %({<a> <b> <c>, "2" .})
+        trig = %({<a> <b> <c>, "2";})
         nq = %(
           <a> <b> <c> .
-          <a> <b> "2" ;
+          <a> <b> "2" .
         )
-        expect(parse(trig)).to be_equivalent_dataset(nq, errors: @errors, debug: @debug)
+        expect(parse(trig)).to be_equivalent_graph(nq, logger: @logger)
       end
     end
     
@@ -695,7 +695,7 @@ describe "RDF::TriG::Reader" do
       }.each do |name, (trig, nq)|
         it name do
           res = RDF::Repository.new << RDF::NQuads::Reader.new(nq)
-          expect(parse(trig)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+          expect(parse(trig)).to be_equivalent_graph(res, logger: @logger)
         end
       end
     end
@@ -705,11 +705,11 @@ describe "RDF::TriG::Reader" do
     let(:errors) {[]}
     {
       %({<a> <b> "xyz"^^<http://www.w3.org/2001/XMLSchema#integer> .}) => %r("xyz" is not a valid .*),
-      %(GRAPH {<s> <p> <o>}) => %r(\(found "{"\), production = :block),
-      %(GRAPH <g> {<s> <p> <o>} .) => %r(found "."),
-      %(GRAPH <g> <s> <p> <o> .) => %r(\(found "<s>"\(IRIREF\)\), production = :block),
-      %(GRAPH <s> <p> <o> .) => %r(\(found "<p>"\(IRIREF\)\), production = :block),
-      %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(\(found "<g2>"\(IRIREF\)\), production = :block),
+      %(GRAPH {<s> <p> <o>}) => %r(Expected label or subject),
+      %(GRAPH <g> {<s> <p> <o>} .) => %r(Unexpected token),
+      %(GRAPH <g> <s> <p> <o> .) => %r(Expected wrappedGraph),
+      %(GRAPH <s> <p> <o> .) => %r(Expected wrappedGraph),
+      %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(Expected wrappedGraph),
       %(GRAPH <g1> {<s> <p> <o>) => %r(Expected '}' following triple),
       %(GRAPH <g> {
         <s> <p> <o> .
@@ -721,22 +721,24 @@ describe "RDF::TriG::Reader" do
         prefix x: <http://example/x#>
         x:s1 x:p1 x:o1
       }) => RDF::ReaderError,
-      %(GRAPH () { :s :p :o }) => %r(\(found "\("\), production = :block),
-      %(GRAPH (1 2) { :s :p :o }) => %r(\(found "\("\), production = :block),
+      %(GRAPH () { :s :p :o }) => %r(Expected label or subject),
+      %(GRAPH (1 2) { :s :p :o }) => %r(Expected label or subject),
       %(<a> <b> <c>) => %r(Expected '.' following triple),
       %([:p1 :o1] {:s :p :o}) => %r(Expected '.' following triple),
       %((123) .) => %r(Expected predicateObjectList after collection subject),
     }.each_pair do |trig, error|
       context trig do
         it "should raise '#{error}' for '#{trig}'" do
+          logger = RDF::Spec.logger
+          logger.level = Logger::ERROR
           expect {
             parse("@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . #{trig}",
               base_uri: "http://a/b",
-              errors: errors,
+              logger: logger,
               validate: true)
           }.to raise_error(RDF::ReaderError)
 
-          expect(errors.join("")).to match(error) if error.is_a?(Regexp)
+          expect(logger.to_s).to match(error) if error.is_a?(Regexp)
         end
       end
     end
@@ -809,7 +811,7 @@ describe "RDF::TriG::Reader" do
         end
         
         it "continues after an error" do
-          expect(parse(input, validate: false)).to be_equivalent_dataset(expected, errors: @errors, debug: @debug)
+          expect(parse(input, validate: false)).to be_equivalent_graph(expected, logger: @logger)
         end
       end
     end
@@ -924,17 +926,15 @@ describe "RDF::TriG::Reader" do
     }.each do |name, (input, expected)|
       it "matches TriG spec #{name}" do
         res = RDF::Repository.new << RDF::NQuads::Reader.new(expected)
-        expect(parse(input)).to be_equivalent_dataset(res, errors: @errors, debug: @debug)
+        expect(parse(input)).to be_equivalent_graph(res, logger: @logger)
       end
     end
   end
 
   def parse(input, options = {})
-    @debug = []
-    @errors = []
+    @logger = RDF::Spec.logger
     options = {
-      debug: @debug,
-      errors: @errors,
+      logger: @logger,
       validate: false,
       canonicalize: false,
     }.merge(options)

@@ -4,6 +4,7 @@ $:.unshift File.dirname(__FILE__)
 require "bundler/setup"
 require 'rspec'
 require 'matchers'
+require 'rdf'
 require 'rdf/nquads'
 require 'rdf/spec'
 require 'rdf/spec/matchers'
