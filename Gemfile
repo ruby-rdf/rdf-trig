@@ -16,8 +16,8 @@ group :development, :test do
   gem "redcarpet", platform: :ruby
   gem 'rdf-spec',   git: "git://github.com/ruby-rdf/rdf-spec.git", branch: "develop"
   gem 'json-ld', git: "git://github.com/ruby-rdf/json-ld.git", branch: "develop"
-  gem 'simplecov',  require: false, platform: :mri_21 # Travis doesn't undertand 22 yet.
-  gem 'coveralls',  require: false, platform: :mri_21 # Travis doesn't undertand 22 yet.
+  gem 'simplecov',  require: false, platform: :mri_21 # Travis doesn't understand 22 yet.
+  gem 'coveralls',  require: false, platform: :mri_21 # Travis doesn't understand 22 yet.
 end
 
 platforms :rbx do
