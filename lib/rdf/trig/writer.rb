@@ -59,40 +59,6 @@ module RDF::TriG
     include StreamingWriter
     format RDF::TriG::Format
     
-    class GraphFilteredRepo
-      include RDF::Queryable
-
-      def initialize(repo, graph_name)
-        @repo = repo
-        @graph_name = graph_name
-      end
-      
-      # Filter statements in repository to those having the specified graph_name
-      # Returns each statement having the specified graph_name, `false` for default graph
-      # @yield statement
-      # @yieldparam [RDF::Statement] statement
-      # @return [void]
-      # @see [RDF::Queryable]
-      def each
-        @repo.each_statement do |st|
-          case @graph_name
-          when false
-            yield st if !st.graph_name
-          else
-            yield st if st.graph_name == @graph_name
-          end
-        end
-      end
-      
-      ##
-      # Proxy Repository#query_pattern
-      # @see RDF::Repository#query_pattern
-      def query_pattern(pattern, options = {}, &block)
-        pattern.graph_name = @graph_name || false
-        @repo.send(:query_pattern, pattern, options, &block)
-      end
-    end
-
     ##
     # Initializes the TriG writer instance.
     #
@@ -124,8 +90,6 @@ module RDF::TriG
     def initialize(output = $stdout, options = {}, &block)
       super do
         # Set both @repo and @graph to a new repository.
-        # When serializing a named graph, @graph is changed
-        # to a GraphFilteredRepo
         @repo = @graph = RDF::Repository.new
         if block_given?
           case block.arity
@@ -143,6 +107,10 @@ module RDF::TriG
     # @return [void]
     def write_statement(statement)
       case
+      when statement.incomplete?
+        log_error "Statement #{statement.inspect} is incomplete"
+      when validate? && statement.invalid?
+        log_error "Statement #{statement.inspect} is invalid"
       when @options[:stream]
         stream_statement(statement)
       else
@@ -177,34 +145,37 @@ module RDF::TriG
 
         reset
 
-        log_debug {"\nserialize: repo: #{@repo.size}"}
+        log_debug {"serialize: repo: #{@repo.size}"}
 
         preprocess
         start_document
 
-        order_graphs.each do |ctx|
-          log_debug {"graph_name: #{ctx.inspect}"}
-          reset
-          @options[:log_depth] = ctx ? 1 : 0
+        order_graphs.each do |graph_name|
+          log_depth do
+            log_debug {"graph_name: #{graph_name.inspect}"}
+            reset
+            @options[:log_depth] = graph_name ? 1 : 0
 
-          if ctx
-            @output.write("\n#{format_term(ctx)} {")
-          end
-
-          # Restrict view to the particular graph
-          @graph = GraphFilteredRepo.new(@repo, ctx)
-
-          # Pre-process statements again, but in the specified graph
-          @graph.each {|st| preprocess_statement(st)}
-          order_subjects.each do |subject|
-            unless is_done?(subject)
-              statement(subject)
+            if graph_name
+              @output.write("\n#{format_term(graph_name)} {")
             end
-          end
 
-          @output.puts("}") if ctx
+            # Restrict view to the particular graph
+            @graph = @repo.project_graph(graph_name)
+
+            # Pre-process statements again, but in the specified graph
+            @graph.each {|st| preprocess_statement(st)}
+            order_subjects.each do |subject|
+              unless is_done?(subject)
+                statement(subject)
+              end
+            end
+
+            @output.puts("}") if graph_name
+          end
         end
       end
+      raise RDF::WriterError, "Errors found during processing" if log_statistics[:error]
     end
 
     protected
