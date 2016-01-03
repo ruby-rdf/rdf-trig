@@ -58,9 +58,9 @@ There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient f
       
 ## Dependencies
 
-* [Ruby](http://ruby-lang.org/) (>= 1.9.3)
-* [RDF.rb](http://rubygems.org/gems/rdf) (~> 1.1)
-* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (~> 1.1, >= 1.1.8)
+* [Ruby](http://ruby-lang.org/) (>= 2.0)
+* [RDF.rb](http://rubygems.org/gems/rdf) (~> 2.0)
+* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (~> 2.0)
 
 ## Installation
 

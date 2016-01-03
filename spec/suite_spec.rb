@@ -11,7 +11,6 @@ describe RDF::TriG::Reader do
         describe m.comment do
           m.entries.each do |t|
             specify "#{t.name}: #{t.comment}" do
-              pending("Invalid IRI") if t.name == 'localName_with_assigned_nfc_PN_CHARS_BASE_character_boundaries'
               case t.name
               when false
               else
