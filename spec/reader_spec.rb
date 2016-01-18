@@ -229,9 +229,9 @@ describe "RDF::TriG::Reader" do
     end
 
     it "should allow mixed-case language" do
-      trig = %({:x2 :p "xyz"@EN .})
+      trig = %({:x2 :p "xyz"@en .})
       statement = parse(trig, prefixes: {nil => ''}).statements.to_a.first
-      expect(statement.object.to_ntriples).to eq %("xyz"@EN)
+      expect(statement.object.to_ntriples).to eq %("xyz"@en)
     end
 
     it "should create typed literals" do

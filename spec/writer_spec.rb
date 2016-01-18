@@ -165,7 +165,7 @@ describe RDF::TriG::Writer do
 
   def parse(input, options = {})
     reader = RDF::Reader.for(options.fetch(:format, :trig))
-    RDF::Repository.new << reader.new(input, options)
+    reader.new(input, options, &:each).to_a.extend(RDF::Enumerable)
   end
 
   # Serialize ntstr to a string and compare against regexps
@@ -183,7 +183,7 @@ describe RDF::TriG::Writer do
     end
     
     regexps.each do |re|
-      expect(result).to match_re(re, about: base, debug: @debug, input: ntstr)
+      expect(result).to match_re(re, about: base, logger: logger, input: ntstr)
     end
     
     result
