@@ -102,19 +102,18 @@ module RDF::TriG
 
 
     ##
-    # Adds a statement to be serialized
-    # @param  [RDF::Statement] statement
+    # Adds a triple to be serialized
+    # @param  [RDF::Resource] subject
+    # @param  [RDF::URI]      predicate
+    # @param  [RDF::Value]    object
+    # @param  [RDF::Resource] graph_name
     # @return [void]
-    def write_statement(statement)
-      case
-      when statement.incomplete?
-        log_error "Statement #{statement.inspect} is incomplete"
-      when validate? && statement.invalid?
-        log_error "Statement #{statement.inspect} is invalid"
-      when @options[:stream]
+    def write_quad(subject, predicate, object, graph_name)
+      statement = RDF::Statement.new(subject, predicate, object, graph_name: graph_name)
+      if @options[:stream]
         stream_statement(statement)
       else
-        super
+        @graph.insert(statement)
       end
     end
 
