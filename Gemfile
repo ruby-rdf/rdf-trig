@@ -2,9 +2,9 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'rdf',        git: "git://github.com/ruby-rdf/rdf.git", branch: "develop"
-gem 'rdf-turtle', git: "git://github.com/ruby-rdf/rdf-turtle.git", branch: "develop"
-gem 'ebnf',       git: "git://github.com/gkellogg/ebnf.git", branch: "develop"
+gem 'rdf',        github: "ruby-rdf/rdf",  branch: "develop"
+gem 'rdf-turtle', github: "ruby-rdf/rdf-turtle",  branch: "develop"
+gem 'ebnf',       github: "gkellogg/ebnf", branch: "develop"
 
 group :development do
   gem "wirble"
@@ -13,11 +13,14 @@ group :development do
 end
 
 group :development, :test do
-  gem "redcarpet",  platform: :ruby
-  gem 'rdf-spec',   git: "git://github.com/ruby-rdf/rdf-spec.git", branch: "develop"
-  gem 'json-ld',    git: "git://github.com/ruby-rdf/json-ld.git", branch: "develop"
-  gem 'simplecov',  require: false, platform: :mri
-  gem 'coveralls',  require: false, platform: :mri
+  gem 'json-ld',        github: "ruby-rdf/json-ld",         branch: "develop"
+  gem 'rdf-spec',       github: "ruby-rdf/rdf-spec",        branch: "develop"
+  gem 'rdf-isomorphic', github: "ruby-rdf/rdf-isomorphic",  branch: "develop"
+  gem 'rdf-vocab',      github: "ruby-rdf/rdf-vocab",       branch: "develop"
+  gem 'sxp',            github: "gkellogg/sxp-ruby"
+  gem "redcarpet",      platform: :ruby
+  gem 'simplecov',      require: false, platform: :mri
+  gem 'coveralls',      require: false, platform: :mri
 end
 
 platforms :rbx do
