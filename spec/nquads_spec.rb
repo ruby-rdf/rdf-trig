@@ -10,10 +10,11 @@ describe RDF::NTriples::Reader do
       describe m.comment do
         m.entries.each do |t|
           specify "#{t.name}: #{t.comment}" do
-            t.debug = [t.inspect, "source:", t.input]
+            t.logger = RDF::Spec.logger
+            t.logger.info t.inspect
+            t.logger.info "source:\n#{t.input}"
 
-            reader = RDF::NQuads::Reader.new(t.input,
-                validate: true)
+            reader = RDF::NQuads::Reader.new(t.input, logger: t.logger, validate: true)
 
             repo = RDF::Repository.new
 
@@ -21,7 +22,7 @@ describe RDF::NTriples::Reader do
               begin
                 repo << reader
               rescue Exception => e
-                expect(e.message).to produce("Not exception #{e.inspect}", t.debug)
+                expect(e.message).to produce("Not exception #{e.inspect}", t.logger)
               end
             else
               expect {repo << reader}.to raise_error(RDF::ReaderError)

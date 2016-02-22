@@ -49,14 +49,8 @@ module RDF::TriG
           # Terminate loop if EOF found while recovering
         end
 
-        if validate?
-          if !warnings.empty? && !@options[:warnings]
-            $stderr.puts "Warnings: #{warnings.join("\n")}"
-          end
-          if !errors.empty?
-            $stderr.puts "Errors: #{errors.join("\n")}" unless @options[:errors]
-            raise RDF::ReaderError, "Errors found during processing"
-          end
+        if validate? && log_statistics[:error]
+          raise RDF::ReaderError, "Errors found during processing"
         end
       end
       enum_for(:each_statement)
@@ -123,7 +117,7 @@ module RDF::TriG
         when nil
           # End of input
         else
-          error("Unexpected token", production: :block, token: @lexer.first)
+          error("Unexpected token: #{@lexer.first.inspect}", production: :block, token: @lexer.first)
         end
       end
     end
@@ -217,8 +211,10 @@ module RDF::TriG
     def read_triplesBlock
       prod(:triplesBlock, %w(.)) do
         while (token = @lexer.first) && token.value != '}' && read_triples
-          break unless @lexer.first === '.'
-          @lexer.shift
+          unless log_recovering?
+            break unless @lexer.first === '.'
+            @lexer.shift
+          end
         end
       end
     end

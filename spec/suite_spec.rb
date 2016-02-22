@@ -14,17 +14,15 @@ describe RDF::TriG::Reader do
               case t.name
               when false
               else
-                t.debug = [t.inspect, "source:", t.input]
-                t.warnings = []
-                t.errors = []
+                t.logger = RDF::Spec.logger
+                t.logger.info t.inspect
+                t.logger.info "source:\n#{t.input}"
 
                 reader = RDF::TriG::Reader.new(t.input,
                     base_uri: t.base,
-                    errors: t.errors,
-                    warnings: t.warnings,
                     canonicalize: false,
-                    validate: true,
-                    debug: t.debug)
+                    validate:  true,
+                    logger: t.logger)
 
                 repo = RDF::Repository.new
 
@@ -43,7 +41,7 @@ describe RDF::TriG::Reader do
 
                 if t.evaluate? && t.positive_test?
                   output_repo = RDF::Repository.load(t.result, format: :nquads, base_uri: t.base)
-                  expect(repo).to be_equivalent_dataset(output_repo, t)
+                  expect(repo).to be_equivalent_graph(output_repo, t)
                 elsif !t.evaluate?
                   expect(repo).to be_a(RDF::Enumerable)
                 end

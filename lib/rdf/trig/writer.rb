@@ -59,40 +59,6 @@ module RDF::TriG
     include StreamingWriter
     format RDF::TriG::Format
     
-    class GraphFilteredRepo
-      include RDF::Queryable
-
-      def initialize(repo, graph_name)
-        @repo = repo
-        @graph_name = graph_name
-      end
-      
-      # Filter statements in repository to those having the specified graph_name
-      # Returns each statement having the specified graph_name, `false` for default graph
-      # @yield statement
-      # @yieldparam [RDF::Statement] statement
-      # @return [void]
-      # @see [RDF::Queryable]
-      def each
-        @repo.each_statement do |st|
-          case @graph_name
-          when false
-            yield st if !st.graph_name
-          else
-            yield st if st.graph_name == @graph_name
-          end
-        end
-      end
-      
-      ##
-      # Proxy Repository#query_pattern
-      # @see RDF::Repository#query_pattern
-      def query_pattern(pattern, &block)
-        pattern.graph_name = @graph_name || false
-        @repo.send(:query_pattern, pattern, &block)
-      end
-    end
-
     ##
     # Initializes the TriG writer instance.
     #
@@ -122,11 +88,8 @@ module RDF::TriG
     # @yield  [writer]
     # @yieldparam [RDF::Writer] writer
     def initialize(output = $stdout, options = {}, &block)
-      reset
       super do
         # Set both @repo and @graph to a new repository.
-        # When serializing a named graph, @graph is changed
-        # to a GraphFilteredRepo
         @repo = @graph = RDF::Repository.new
         if block_given?
           case block.arity
@@ -139,15 +102,18 @@ module RDF::TriG
 
 
     ##
-    # Adds a statement to be serialized
-    # @param  [RDF::Statement] statement
+    # Adds a triple to be serialized
+    # @param  [RDF::Resource] subject
+    # @param  [RDF::URI]      predicate
+    # @param  [RDF::Value]    object
+    # @param  [RDF::Resource] graph_name
     # @return [void]
-    def write_statement(statement)
-      case
-      when @options[:stream]
+    def write_quad(subject, predicate, object, graph_name)
+      statement = RDF::Statement.new(subject, predicate, object, graph_name: graph_name)
+      if @options[:stream]
         stream_statement(statement)
       else
-        super
+        @graph.insert(statement)
       end
     end
 
@@ -178,34 +144,37 @@ module RDF::TriG
 
         reset
 
-        debug {"\nserialize: repo: #{@repo.size}"}
+        log_debug {"serialize: repo: #{@repo.size}"}
 
         preprocess
         start_document
 
-        order_graphs.each do |ctx|
-          debug {"graph_name: #{ctx.inspect}"}
-          reset
-          @depth = ctx ? 2 : 0
+        order_graphs.each do |graph_name|
+          log_depth do
+            log_debug {"graph_name: #{graph_name.inspect}"}
+            reset
+            @options[:log_depth] = graph_name ? 1 : 0
 
-          if ctx
-            @output.write("\n#{format_term(ctx)} {")
-          end
-
-          # Restrict view to the particular graph
-          @graph = GraphFilteredRepo.new(@repo, ctx)
-
-          # Pre-process statements again, but in the specified graph
-          @graph.each {|st| preprocess_statement(st)}
-          order_subjects.each do |subject|
-            unless is_done?(subject)
-              statement(subject)
+            if graph_name
+              @output.write("\n#{format_term(graph_name)} {")
             end
-          end
 
-          @output.puts("}") if ctx
+            # Restrict view to the particular graph
+            @graph = @repo.project_graph(graph_name)
+
+            # Pre-process statements again, but in the specified graph
+            @graph.each {|st| preprocess_statement(st)}
+            order_subjects.each do |subject|
+              unless is_done?(subject)
+                statement(subject)
+              end
+            end
+
+            @output.puts("}") if graph_name
+          end
         end
       end
+      raise RDF::WriterError, "Errors found during processing" if log_statistics[:error]
     end
 
     protected
@@ -228,7 +197,7 @@ module RDF::TriG
 
     # Order graphs for output
     def order_graphs
-      debug("order_graphs") {@repo.graph_names.to_a.inspect}
+      log_debug("order_graphs") {@repo.graph_names.to_a.inspect}
       graph_names = @repo.graph_names.to_a.sort
       
       # include default graph, if necessary

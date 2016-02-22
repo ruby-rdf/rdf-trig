@@ -25,8 +25,5 @@ module RDF
     autoload :Reader,     'rdf/trig/reader'
     autoload :VERSION,    'rdf/trig/version'
     autoload :Writer,     'rdf/trig/writer'
-
-    def self.debug?; @debug; end
-    def self.debug=(value); RDF::Turtle.debug = @debug = value; end
   end
 end

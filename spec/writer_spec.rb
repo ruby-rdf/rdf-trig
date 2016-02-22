@@ -3,6 +3,9 @@ require 'spec_helper'
 require 'rdf/spec/writer'
 
 describe RDF::TriG::Writer do
+  let(:logger) {RDF::Spec.logger}
+  after(:each) {|example| puts logger.to_s if example.exception}
+
   it_behaves_like 'an RDF::Writer' do
     let(:writer) {RDF::TriG::Writer.new}
   end
@@ -137,18 +140,22 @@ describe RDF::TriG::Writer do
               pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], base_uri: t.base, standard_prefixes: true)
-              @debug += [t.inspect, "source:", t.expected, "result:", trig]
-              g2 = parse(trig, base_uri: t.base, debug: @debug)
-              expect(g2).to be_equivalent_dataset(repo, debug: @debug)
+              logger.info t.inspect
+              logger.info "source: #{t.expected}"
+              logger.info "serialized: #{trig}"
+              g2 = parse(trig, base_uri: t.base)
+              expect(g2).to be_equivalent_graph(repo, logger: logger)
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
               pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, t.base, [], stream: true, base_uri: t.base, standard_prefixes: true)
-              @debug += [t.inspect, "source:", t.expected, "result:", trig]
+              logger.info t.inspect
+              logger.info "source: #{t.expected}"
+              logger.info "serialized: #{trig}"
               g2 = parse(trig, base_uri: t.base)
-              expect(g2).to be_equivalent_dataset(repo, debug: @debug)
+              expect(g2).to be_equivalent_graph(repo, logger: logger)
             end
           end
         end
@@ -158,16 +165,16 @@ describe RDF::TriG::Writer do
 
   def parse(input, options = {})
     reader = RDF::Reader.for(options.fetch(:format, :trig))
-    RDF::Repository.new << reader.new(input, options)
+    reader.new(input, options, &:each).to_a.extend(RDF::Enumerable)
   end
 
   # Serialize ntstr to a string and compare against regexps
   def serialize(ntstr, base = nil, regexps = [], options = {})
     prefixes = options[:prefixes] || {}
-    repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, base_uri: base, prefixes: prefixes, validate: false)
-    @debug = []
+    repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, base_uri: base, prefixes: prefixes, validate: false, logger: [])
+    logger.info "serialized: #{ntstr}"
     result = RDF::TriG::Writer.buffer(options.merge(
-      debug: @debug,
+      logger:   logger,
       base_uri: base,
       prefixes: prefixes,
       encoding: Encoding::UTF_8
@@ -176,7 +183,7 @@ describe RDF::TriG::Writer do
     end
     
     regexps.each do |re|
-      expect(result).to match_re(re, about: base, debug: @debug, input: ntstr)
+      expect(result).to match_re(re, about: base, logger: logger, input: ntstr)
     end
     
     result
