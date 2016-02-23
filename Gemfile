@@ -2,9 +2,9 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'rdf',        github: "ruby-rdf/rdf",  branch: "develop"
+gem 'rdf',        github: "ruby-rdf/rdf",         branch: "develop"
 gem 'rdf-turtle', github: "ruby-rdf/rdf-turtle",  branch: "develop"
-gem 'ebnf',       github: "gkellogg/ebnf", branch: "develop"
+gem 'ebnf',       github: "gkellogg/ebnf",        branch: "develop"
 
 group :development do
   gem "wirble"
