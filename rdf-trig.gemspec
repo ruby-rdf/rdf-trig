@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
 
   gem.name                  = "rdf-trig"
   gem.homepage              = "http://ruby-rdf.github.com/rdf-trig"
-  gem.license               = 'Public Domain' if gem.respond_to?(:license=)
+  gem.license               = 'Unlicense'
   gem.summary               = "TriG reader/writer for Ruby."
   gem.description           = %q{RDF::TriG is an TriG reader/writer for the RDF.rb library suite.}
   gem.rubyforge_project     = 'rdf-trig'
@@ -27,7 +27,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 2.0'
   gem.requirements          = []
   gem.add_runtime_dependency     'rdf',             '>= 2.0.0.beta', '< 3'
-  gem.add_runtime_dependency     'ebnf',            '~> 1.0', '>= 1.0.1'
+  gem.add_runtime_dependency     'ebnf',            '~> 1.0', '>= 1.0.1.beta'
   gem.add_runtime_dependency     'rdf-turtle',      '>= 2.0.0.beta', '< 3'
   gem.add_development_dependency 'json-ld',         '>= 2.0.0.beta', '< 3'
   gem.add_development_dependency 'rspec',           '~> 3.2'
