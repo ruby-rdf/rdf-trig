@@ -10,7 +10,6 @@ Gem::Specification.new do |gem|
   gem.license               = 'Unlicense'
   gem.summary               = "TriG reader/writer for Ruby."
   gem.description           = %q{RDF::TriG is an TriG reader/writer for the RDF.rb library suite.}
-  gem.rubyforge_project     = 'rdf-trig'
 
   gem.authors               = ['Gregg Kellogg']
   gem.email                 = 'public-rdf-ruby@w3.org'
@@ -24,18 +23,23 @@ Gem::Specification.new do |gem|
   gem.test_files            = %w()
   gem.has_rdoc              = false
 
-  gem.required_ruby_version = '>= 2.0'
+  gem.required_ruby_version = '>= 2.2.2'
   gem.requirements          = []
-  gem.add_runtime_dependency     'rdf',             '~> 2.0'
+  #gem.add_runtime_dependency     'rdf',             '~> 3.0'
+  gem.add_runtime_dependency     'rdf',             '>= 2.2', '< 4.0'
   gem.add_runtime_dependency     'ebnf',            '~> 1.0', '>= 1.0.1'
-  gem.add_runtime_dependency     'rdf-turtle',      '~> 2.0'
-  gem.add_development_dependency 'json-ld',         '~> 2.0'
-  gem.add_development_dependency 'rspec',           '~> 3.2'
-  gem.add_development_dependency 'rspec-its',       '~> 1.0'
-  gem.add_development_dependency 'rdf-isomorphic',  '~> 2.0'
-  gem.add_development_dependency 'yard' ,           '~> 0.8'
-  gem.add_development_dependency 'rdf-spec',        '~> 2.0'
-  gem.add_development_dependency 'rake',            '~> 10'
+  #gem.add_runtime_dependency     'rdf-turtle',      '~> 3.0'
+  #gem.add_development_dependency 'json-ld',         '~> 3.0'
+  gem.add_runtime_dependency     'rdf-turtle',      '>= 2.2', '< 4.0'
+  gem.add_development_dependency 'json-ld',         '>= 2.1', '< 4.0'
+  gem.add_development_dependency 'rspec',           '~> 3.7'
+  gem.add_development_dependency 'rspec-its',       '~> 1.2'
+  #gem.add_development_dependency 'rdf-isomorphic',  '~> 3.0'
+  gem.add_development_dependency 'rdf-isomorphic',  '>= 2.0', '< 4.0'
+  gem.add_development_dependency 'yard' ,           '~> 0.9'
+  #gem.add_development_dependency 'rdf-spec',        '~> 3.0'
+  gem.add_development_dependency 'rdf-spec',        '>= 2.2', '< 4.0'
+  gem.add_development_dependency 'rake',            '~> 12.0'
 
   gem.post_install_message  = nil
 end

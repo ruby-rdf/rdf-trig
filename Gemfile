@@ -2,22 +2,21 @@ source "http://rubygems.org"
 
 gemspec
 
-gem 'rdf',        github: "ruby-rdf/rdf",         branch: "develop"
-gem 'rdf-turtle', github: "ruby-rdf/rdf-turtle",  branch: "develop"
-gem 'ebnf',       github: "gkellogg/ebnf",        branch: "develop"
+gem 'rdf',        git: "https://github.com/ruby-rdf/rdf",         branch: "develop"
+gem 'rdf-turtle', git: "https://github.com/ruby-rdf/rdf-turtle",  branch: "develop"
+gem 'ebnf',       git: "https://github.com/gkellogg/ebnf",        branch: "develop"
 
 group :development do
-  gem "wirble"
   gem "byebug",   platforms: :mri
   gem 'psych',    platforms: [:mri, :rbx]
 end
 
 group :development, :test do
-  gem 'json-ld',        github: "ruby-rdf/json-ld",         branch: "develop"
-  gem 'rdf-spec',       github: "ruby-rdf/rdf-spec",        branch: "develop"
-  gem 'rdf-isomorphic', github: "ruby-rdf/rdf-isomorphic",  branch: "develop"
-  gem 'rdf-vocab',      github: "ruby-rdf/rdf-vocab",       branch: "develop"
-  gem 'sxp',            github: "gkellogg/sxp-ruby",        branch: "develop"
+  gem 'json-ld',        git: "https://github.com/ruby-rdf/json-ld",         branch: "develop"
+  gem 'rdf-spec',       git: "https://github.com/ruby-rdf/rdf-spec",        branch: "develop"
+  gem 'rdf-isomorphic', git: "https://github.com/ruby-rdf/rdf-isomorphic",  branch: "develop"
+  gem 'rdf-vocab',      git: "https://github.com/ruby-rdf/rdf-vocab",       branch: "develop"
+  gem 'sxp',            git: "https://github.com/dryruby/sxp.rb",           branch: "develop"
   gem "redcarpet",      platform: :ruby
   gem 'simplecov',      require: false, platform: :mri
   gem 'coveralls',      require: false, platform: :mri
