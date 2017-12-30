@@ -4,7 +4,7 @@ gemspec
 
 gem 'rdf',        git: "https://github.com/ruby-rdf/rdf",         branch: "develop"
 gem 'rdf-turtle', git: "https://github.com/ruby-rdf/rdf-turtle",  branch: "develop"
-gem 'ebnf',       git: "https://github.com/gkellogg/ebnf",        branch: "develop"
+gem 'ebnf',       git: "https://github.com/dryruby/ebnf",         branch: "develop"
 
 group :development do
   gem "byebug",   platforms: :mri
