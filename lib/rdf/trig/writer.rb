@@ -164,6 +164,16 @@ module RDF::TriG
 
             # Pre-process statements again, but in the specified graph
             @graph.each {|st| preprocess_statement(st)}
+
+            # Remove lists that are referenced and have non-list properties,
+            # or are present in more than one graph, or have elements
+            # that are present in more than one graph;
+            # these are legal, but can't be serialized as lists
+            @lists.reject! do |node, list|
+              ref_count(node) > 0 && non_list_prop_count(node) > 0 ||
+              list.subjects.any? {|elt| !resource_in_single_graph?(elt)}
+            end
+
             order_subjects.each do |subject|
               unless is_done?(subject)
                 statement(subject)
@@ -180,13 +190,8 @@ module RDF::TriG
     protected
 
     # Add additional constraint that the resource must be in a single graph
-    def blankNodePropertyList?(subject)
+    def blankNodePropertyList?(subject, position)
       super && resource_in_single_graph?(subject)
-    end
-
-    # Add additional constraint that the resource must be in a single graph
-    def p_squared?(resource, position)
-      super && resource_in_single_graph?(resource)
     end
 
     def resource_in_single_graph?(resource)
