@@ -112,7 +112,11 @@ describe RDF::TriG::Writer do
           %r(^<a> <b> \[ a <Class>\] \.)m,
           %r(^<C> \{\s*<d> <e> \[ a <Class>\] \.\s*\})m
         ],
-        []
+        [
+          %r(^<a> <b> _:c \.)m,
+          %r(^\s+_:c a <Class> \.)m,
+          %r(^<C> \{\s*<d> <e> _:f \.\s+_:f a <Class>\s*\})m
+        ]
       ],
     }.each_pair do |title, (input, matches, matches_stream)|
       it title do

@@ -15,16 +15,16 @@ module RDF::TriG
         end
         @streaming_graph, @streaming_subject, @streaming_predicate = statement.graph_name, statement.subject, statement.predicate
         @output.write "#{format_term(statement.subject, options)} "
-        @output.write "#{format_term(statement.predicate, options)} "
+        @output.write "#{statement.predicate == RDF.type ? 'a' : format_term(statement.predicate, options)} "
       elsif statement.subject != @streaming_subject
         @output.puts " ." if @previous_statement
         @output.write "#{indent(@streaming_subject ? 1 : 0)}"
         @streaming_subject, @streaming_predicate = statement.subject, statement.predicate
         @output.write "#{format_term(statement.subject, options)} "
-        @output.write "#{format_term(statement.predicate, options)} "
+        @output.write "#{statement.predicate == RDF.type ? 'a' : format_term(statement.predicate, options)} "
       elsif statement.predicate != @streaming_predicate
         @streaming_predicate = statement.predicate
-        @output.write ";\n#{indent(@streaming_subject ? 2 : 1)}#{format_term(statement.predicate, options)} "
+        @output.write ";\n#{indent(@streaming_subject ? 2 : 1)}#{statement.predicate == RDF.type ? 'a' : format_term(statement.predicate, options)} "
       else
         @output.write ",\n#{indent(@streaming_subject ? 3 : 2)}"
       end
