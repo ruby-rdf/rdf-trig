@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.requirements          = []
   gem.add_runtime_dependency     'rdf',             '~> 3.0'
   gem.add_runtime_dependency     'ebnf',            '~> 1.1'
-  gem.add_runtime_dependency     'rdf-turtle',      '~> 3.0', '>= 3.0.2'
+  gem.add_runtime_dependency     'rdf-turtle',      '~> 3.0', '>= 3.0.3'
   gem.add_development_dependency 'json-ld',         '~> 3.0'
   gem.add_development_dependency 'rspec',           '~> 3.7'
   gem.add_development_dependency 'rspec-its',       '~> 1.2'

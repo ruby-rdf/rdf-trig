@@ -75,6 +75,12 @@ describe RDF::TriG::Writer do
           %r(<C> \{\s*<a> <b> <c> \.?\s*\})m
         ]
       ],
+      "named w/bnode" => [
+        %q(_:C {<a> <b> <c> .}),
+        [
+          %r(_:C \{\s*<a> <b> <c> \.?\s*\})m
+        ]
+      ],
       "combo" => [
         %q(
           <a> <b> <c> .
@@ -99,7 +105,7 @@ describe RDF::TriG::Writer do
           %r(^<C> \{\s*<a> <b> <c> \s*\})m
         ]
       ],
-      "combo with chained blankNodePropertyList " => [
+      "combo with chained blankNodePropertyList" => [
         %q(
           <a> <b> _:c .
           _:c a <Class> .
@@ -112,8 +118,32 @@ describe RDF::TriG::Writer do
           %r(^<a> <b> \[ a <Class>\] \.)m,
           %r(^<C> \{\s*<d> <e> \[ a <Class>\] \.\s*\})m
         ],
-        []
+        [
+          %r(^<a> <b> _:c \.)m,
+          %r(^\s+_:c a <Class> \.)m,
+          %r(^<C> \{\s*<d> <e> _:f \.\s+_:f a <Class>\s*\})m
+        ]
       ],
+      "combo with graph name reference" => [
+        %q(
+          <a> <b> <C> .
+          <C> {<d> <e> <f> .}
+        ),
+        [
+          %r(^<a> <b> <C> .)m,
+          %r(^<C> \{\s*<d> <e> <f> \.?\s*\})m
+        ]
+      ],
+      "combo with bnode graph name reference" => [
+        %q(
+          <a> <b> _:C .
+          _:C {<d> <e> <f> .}
+        ),
+        [
+          %r(^<a> <b> _:C .)m,
+          %r(^_:C \{\s*<d> <e> <f> \.?\s*\})m
+        ]
+      ]
     }.each_pair do |title, (input, matches, matches_stream)|
       it title do
         serialize(input, matches)

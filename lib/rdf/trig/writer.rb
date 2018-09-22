@@ -149,7 +149,8 @@ module RDF::TriG
         preprocess
         start_document
 
-        order_graphs.each do |graph_name|
+        @graph_names = order_graphs
+        @graph_names.each do |graph_name|
           log_depth do
             log_debug {"graph_name: #{graph_name.inspect}"}
             reset
@@ -170,7 +171,7 @@ module RDF::TriG
             # that are present in more than one graph;
             # these are legal, but can't be serialized as lists
             @lists.reject! do |node, list|
-              ref_count(node) > 0 && non_list_prop_count(node) > 0 ||
+              ref_count(node) > 0 && prop_count(node) > 0 ||
               list.subjects.any? {|elt| !resource_in_single_graph?(elt)}
             end
 
@@ -190,8 +191,9 @@ module RDF::TriG
     protected
 
     # Add additional constraint that the resource must be in a single graph
-    def blankNodePropertyList?(subject, position)
-      super && resource_in_single_graph?(subject)
+    # and must not be a graph name
+    def blankNodePropertyList?(resource, position)
+      super && resource_in_single_graph?(resource) && !@graph_names.include?(resource)
     end
 
     def resource_in_single_graph?(resource)
