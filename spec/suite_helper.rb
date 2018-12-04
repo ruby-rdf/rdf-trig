@@ -6,9 +6,9 @@ require 'json/ld'
 # For now, override RDF::Utils::File.open_file to look for the file locally before attempting to retrieve it
 module RDF::Util
   module File
-    REMOTE_PATH = "http://www.w3.org/2013/TriGTests/"
+    REMOTE_PATH = "http://w3c.github.io/rdf-tests/trig/"
     LOCAL_PATH = ::File.expand_path("../w3c-rdf/trig", __FILE__) + '/'
-    REMOTE_PATH_NQ = "http://www.w3.org/2013/N-QuadsTests/"
+    REMOTE_PATH_NQ = "http://w3c.github.io/rdf-tests/nquads/"
     LOCAL_PATH_NQ = ::File.expand_path("../w3c-rdf/nquads", __FILE__) + '/'
 
     class << self
@@ -106,8 +106,8 @@ end
 
 module Fixtures
   module SuiteTest
-    BASE = "http://www.w3.org/2013/TriGTests/"
-    NQBASE = "http://www.w3.org/2013/N-QuadsTests/"
+    BASE = "http://w3c.github.io/rdf-tests/trig/"
+    NQBASE = "http://w3c.github.io/rdf-tests/nquads/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
