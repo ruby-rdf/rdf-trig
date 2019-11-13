@@ -115,8 +115,8 @@ describe RDF::TriG::Writer do
           }
         ),
         [
-          %r(^<a> <b> \[ a <Class>\] \.)m,
-          %r(^<C> \{\s*<d> <e> \[ a <Class>\] \.\s*\})m
+          %r(^<a> <b> \[\s*a <Class>\s*\] \.)m,
+          %r(^<C> \{\s*<d> <e> \[\s*a <Class>\s*\] \.\s*\})m
         ],
         [
           %r(^<a> <b> _:c \.)m,

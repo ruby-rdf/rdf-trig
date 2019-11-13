@@ -100,7 +100,6 @@ module RDF::TriG
       end
     end
 
-
     ##
     # Adds a triple to be serialized
     # @param  [RDF::Resource] subject
