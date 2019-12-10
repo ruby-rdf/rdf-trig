@@ -43,7 +43,7 @@ def earl_preamble(options)
 )
 end
 
-def run_tc(tc, options)
+def run_tc(tc, **options)
   STDERR.write "run #{tc.name}"
 
   if options[:verbose]
@@ -63,7 +63,7 @@ def run_tc(tc, options)
       validate:  true
     }.merge(options)
 
-    reader = RDF::Reader.for(tc.action).new(tc.input, options)
+    reader = RDF::Reader.for(tc.action).new(tc.input, **options)
 
     graph = RDF::Repository.new
     result = nil

@@ -52,11 +52,11 @@ describe RDF::TriG::Writer do
       },
     }.each do |name, params|
       it name do
-        serialize(params[:input], params[:regexp], params)
+        serialize(params[:input], params[:regexp], **params)
       end
 
       it "#{name} (stream)" do
-        serialize(params[:input], params.fetch(:regexp_stream, params[:regexp]), params.merge(stream: true))
+        serialize(params[:input], params.fetch(:regexp_stream, params[:regexp]), stream: true, **params)
       end
     end
   end
@@ -341,9 +341,9 @@ describe RDF::TriG::Writer do
     end
   end unless ENV['CI']
 
-  def parse(input, options = {})
+  def parse(input, **options)
     reader = RDF::Reader.for(options.fetch(:format, :trig))
-    reader.new(input, options, &:each).to_a.extend(RDF::Enumerable)
+    reader.new(input, **options, &:each).to_a.extend(RDF::Enumerable)
   end
 
   # Serialize ntstr to a string and compare against regexps
@@ -351,12 +351,13 @@ describe RDF::TriG::Writer do
     prefixes = options[:prefixes] || {}
     repo = ntstr.is_a?(RDF::Enumerable) ? ntstr : parse(ntstr, base_uri: base_uri, prefixes: prefixes, validate: false, logger: [], **options)
     logger.info "serialized: #{ntstr}"
-    result = RDF::TriG::Writer.buffer(options.merge(
+    result = RDF::TriG::Writer.buffer(
       logger:   logger,
       base_uri: base_uri,
       prefixes: prefixes,
-      encoding: Encoding::UTF_8
-    )) do |writer|
+      encoding: Encoding::UTF_8,
+      **options
+    ) do |writer|
       writer << repo
     end
 

@@ -12,7 +12,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'json-ld',        git: "https://github.com/ruby-rdf/json-ld",         branch: "develop"
+  gem 'json-ld', path: '../json-ld'
+  #gem 'json-ld',        git: "https://github.com/ruby-rdf/json-ld",         branch: "develop"
   gem 'rdf-spec',       git: "https://github.com/ruby-rdf/rdf-spec",        branch: "develop"
   gem 'rdf-isomorphic', git: "https://github.com/ruby-rdf/rdf-isomorphic",  branch: "develop"
   gem 'rdf-vocab',      git: "https://github.com/ruby-rdf/rdf-vocab",       branch: "develop"

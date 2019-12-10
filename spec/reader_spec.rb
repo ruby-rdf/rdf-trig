@@ -931,7 +931,7 @@ describe "RDF::TriG::Reader" do
     end
   end
 
-  def parse(input, options = {})
+  def parse(input, **options)
     @logger = RDF::Spec.logger
     options = {
       logger: @logger,
@@ -939,7 +939,7 @@ describe "RDF::TriG::Reader" do
       canonicalize: false,
     }.merge(options)
     graph = options[:graph] || RDF::Repository.new
-    RDF::TriG::Reader.new(input, options).each do |statement|
+    RDF::TriG::Reader.new(input, **options).each do |statement|
       graph << statement
     end
     graph

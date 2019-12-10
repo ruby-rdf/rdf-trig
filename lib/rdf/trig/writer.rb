@@ -87,7 +87,7 @@ module RDF::TriG
     # @yieldreturn [void]
     # @yield  [writer]
     # @yieldparam [RDF::Writer] writer
-    def initialize(output = $stdout, options = {}, &block)
+    def initialize(output = $stdout, **options, &block)
       super do
         # Set both @repo and @graph to a new repository.
         @repo = @graph = RDF::Repository.new
