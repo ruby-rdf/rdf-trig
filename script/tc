@@ -12,7 +12,7 @@ require 'getoptlong'
 ASSERTOR = "http://greggkellogg.net/foaf#me"
 RUN_TIME = Time.now
 
-def earl_preamble(options)
+def earl_preamble(**options)
   options[:output].write File.read(File.expand_path("../../etc/doap#{'-nquads' if options[:nquads]}.ttl", __FILE__))
   options[:output].puts %(
 <> foaf:primaryTopic <http://rubygems.org/gems/rdf#{'-trig' unless options[:nquads]}> ;
@@ -142,7 +142,7 @@ opts = GetoptLong.new(
   ["--verbose", "-v", GetoptLong::NO_ARGUMENT]
 )
 
-def help(options)
+def help(**options)
   puts "Usage: #{$0} [options] [test-number ...]"
   puts "Options:"
   puts "      --debug:              Display detailed debug output"
@@ -159,7 +159,7 @@ end
 
 opts.each do |opt, arg|
   case opt
-  when '--help'             then help(options)
+  when '--help'             then help(**options)
   when '--dbg'              then logger.level = Logger::DEBUG
   when '--earl'
     options[:quiet] = options[:earl] = true
@@ -177,7 +177,7 @@ end
 
 manifests = (options[:nquads] ? [Fixtures::SuiteTest::NQBASE] : [Fixtures::SuiteTest::BASE]).map {|b| b + "manifest.ttl"}
 
-earl_preamble(options) if options[:earl]
+earl_preamble(**options) if options[:earl]
 
 result_count = {}
 
@@ -185,7 +185,7 @@ manifests.each do |manifest|
   Fixtures::SuiteTest::Manifest.open(manifest) do |m|
     m.entries.each do |tc|
       next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
-      run_tc(tc, options.merge(result_count: result_count))
+      run_tc(tc, result_count: result_count, **options)
     end
   end
 end
