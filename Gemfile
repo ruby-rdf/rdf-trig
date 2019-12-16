@@ -18,12 +18,6 @@ group :development, :test do
   gem 'rdf-vocab',      git: "https://github.com/ruby-rdf/rdf-vocab",       branch: "develop"
   gem 'sxp',            git: "https://github.com/dryruby/sxp.rb",           branch: "develop"
   gem "redcarpet",      platform: :ruby
-  gem 'simplecov',      require: false, platform: :mri
-  gem 'coveralls',      require: false, platform: :mri
-end
-
-platforms :rbx do
-  gem 'rubysl', '~> 2.0'
-  gem 'rubinius', '~> 2.0'
-  gem 'json'
+  gem 'simplecov',      platforms: :mri
+  gem 'coveralls',      '~> 0.8', platforms: :mri
 end

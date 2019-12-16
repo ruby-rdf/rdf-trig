@@ -87,7 +87,7 @@ module RDF::TriG
     # @yieldreturn [void]
     # @yield  [writer]
     # @yieldparam [RDF::Writer] writer
-    def initialize(output = $stdout, options = {}, &block)
+    def initialize(output = $stdout, **options, &block)
       super do
         # Set both @repo and @graph to a new repository.
         @repo = @graph = RDF::Repository.new
@@ -99,7 +99,6 @@ module RDF::TriG
         end
       end
     end
-
 
     ##
     # Adds a triple to be serialized
@@ -197,8 +196,8 @@ module RDF::TriG
     end
 
     def resource_in_single_graph?(resource)
-      graph_names = @repo.query(subject: resource).map(&:graph_name)
-      graph_names += @repo.query(object: resource).map(&:graph_name)
+      graph_names = @repo.query({subject: resource}).map(&:graph_name)
+      graph_names += @repo.query({object: resource}).map(&:graph_name)
       graph_names.uniq.length <= 1
     end
 
@@ -208,7 +207,7 @@ module RDF::TriG
       graph_names = @repo.graph_names.to_a.sort
       
       # include default graph, if necessary
-      graph_names.unshift(nil) unless @repo.query(graph_name: false).to_a.empty?
+      graph_names.unshift(nil) unless @repo.query({graph_name: false}).to_a.empty?
       
       graph_names
     end

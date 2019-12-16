@@ -9,7 +9,7 @@ require 'rdf/nquads'
 require 'ebnf/ll1/parser'
 require 'getoptlong'
 
-def run(input, options)
+def run(input, **options)
   if options[:profile]
     require 'profiler'
   end
@@ -33,15 +33,15 @@ def run(input, options)
       end
     end
   elsif options[:output_format] == :inspect
-    reader_class.new(input, options[:parser_options]).each do |statement|
+    reader_class.new(input, **options[:parser_options]).each do |statement|
       num += 1
       options[:output].puts statement.inspect
     end
   else
-    r = reader_class.new(input, options[:parser_options])
+    r = reader_class.new(input, **options[:parser_options])
     g = RDF::Repository.new << r
     num = g.count
-    options[:output].puts g.dump(options[:output_format], {:prefixes => r.prefixes}.merge(options[:writer_options]))
+    options[:output].puts g.dump(options[:output_format], prefixes: r.prefixes, **options[:writer_options])
   end
   if options[:profile]
     Profiler__::stop_profile
@@ -122,10 +122,10 @@ end
 
 if ARGV.empty?
   s = input ? input : $stdin.read
-  run(StringIO.new(s), options)
+  run(StringIO.new(s), **options)
 else
   ARGV.each do |test_file|
-    run(Kernel.open(test_file), options)
+    run(Kernel.open(test_file), **options)
   end
 end
 puts
