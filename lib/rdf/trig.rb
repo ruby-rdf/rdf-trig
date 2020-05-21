@@ -15,11 +15,11 @@ module RDF
   #     end
   #   end
   #
-  # @see http://rubydoc.info/github/ruby-rdf/rdf-turtle/
-  # @see http://rubydoc.info/github/ruby-rdf/rdf/master/
-  # @see http://www.w3.org/TR/trig/
+  # @see https://rubydoc.info/github/ruby-rdf/rdf-turtle/
+  # @see https://rubydoc.info/github/ruby-rdf/rdf/master/
+  # @see https://www.w3.org/TR/trig/
   #
-  # @author [Gregg Kellogg](http://greggkellogg.net/)
+  # @author [Gregg Kellogg](https://greggkellogg.net/)
   module TriG
     require  'rdf/trig/format'
     autoload :Reader,     'rdf/trig/reader'
