@@ -26,7 +26,7 @@
   doap:category <http://dbpedia.org/resource/Resource_Description_Framework>,
     <http://dbpedia.org/resource/Ruby_(programming_language)>;
   doap:homepage <https://github.com/ruby-rdf/rdf-trig>;
-  doap:license <https://unlicense.org/>;
+  doap:license <https://unlicense.org/1.0/>;
   doap:wiki <https://github.com/ruby-rdf/rdf-trig/wiki> ;
   foaf:maker <https://greggkellogg.net/foaf#me> ;
   dc:date "2011-12-22"^^xsd:date;
