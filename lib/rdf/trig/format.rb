@@ -14,7 +14,7 @@ module RDF::TriG
   # @example Obtaining serialization format file extension mappings
   #     RDF::Format.file_extensions    #=> {trig: "application/trig"}
   #
-  # @see http://www.w3.org/TR/rdf-testcases/#ntriples
+  # @see https://www.w3.org/TR/rdf-testcases/#ntriples
   class Format < RDF::Format
     content_type     'application/trig',  extension: :trig, alias: 'application/x-trig;q=0.2'
     content_encoding 'utf-8'

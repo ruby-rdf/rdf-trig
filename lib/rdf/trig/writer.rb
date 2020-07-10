@@ -54,7 +54,7 @@ module RDF::TriG
   #     end
   #   end
   #
-  # @author [Gregg Kellogg](http://greggkellogg.net/)
+  # @author [Gregg Kellogg](https://greggkellogg.net/)
   class Writer < RDF::Turtle::Writer
     include StreamingWriter
     format RDF::TriG::Format

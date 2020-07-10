@@ -97,7 +97,7 @@ describe "RDF::TriG::Reader" do
       end
     end
     
-    # NTriple tests from http://www.w3.org/2000/10/rdf-tests/rdfcore/ntriples/test.nt
+    # NTriple tests from https://www.w3.org/2000/10/rdf-tests/rdfcore/ntriples/test.nt
     describe "with blank lines" do
       {
         "comment"                   => "# comment lines",

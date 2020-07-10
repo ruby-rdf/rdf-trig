@@ -2,10 +2,9 @@
 
 [TriG][] reader/writer for [RDF.rb][RDF.rb] .
 
-[![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](http://badge.fury.io/rb/rdf-trig)
-[![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](http://travis-ci.org/ruby-rdf/rdf-trig)
+[![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](https://badge.fury.io/rb/rdf-trig)
+[![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](https://travis-ci.org/ruby-rdf/rdf-trig)
 [![Coverage Status](https://coveralls.io/repos/ruby-rdf/rdf-trig/badge.svg)](https://coveralls.io/r/ruby-rdf/rdf-trig)
-[![Dependency Status](https://gemnasium.com/ruby-rdf/rdf-trig.png)](https://gemnasium.com/ruby-rdf/rdf-trig)
 
 ## Description
 This is a [Ruby][] implementation of a [TriG][] reader and writer for [RDF.rb][].
@@ -15,7 +14,7 @@ RDF::TriG parses [TriG][Trig] into statements or quads. It also serializes to Tr
 
 Install with `gem install rdf-trig`
 
-* 100% free and unencumbered [public domain](http://unlicense.org/) software.
+* 100% free and unencumbered [public domain](https://unlicense.org/) software.
 * Implements a complete parser and serializer for [TriG][].
 * Compatible with Ruby 2.x, and JRuby 1.7+.
 * Optional streaming writer, to serialize large graphs
@@ -58,22 +57,22 @@ There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient f
       
 ## Dependencies
 
-* [Ruby](http://ruby-lang.org/) (>= 2.2.2)
-* [RDF.rb](http://rubygems.org/gems/rdf) (~> 3.0)
-* [rdf-turtle](http://rubygems.org/gems/rdf-turtle) (~> 3.0)
+* [Ruby](https://ruby-lang.org/) (>= 2.2.2)
+* [RDF.rb](https://rubygems.org/gems/rdf) (~> 3.0)
+* [rdf-turtle](https://rubygems.org/gems/rdf-turtle) (~> 3.0)
 
 ## Installation
 
-The recommended installation method is via [RubyGems](http://rubygems.org/).
+The recommended installation method is via [RubyGems](https://rubygems.org/).
 To install the latest official release of the `RDF::TriG` gem, do:
 
     % [sudo] gem install rdf-trig
 
 ## Mailing List
-* <http://lists.w3.org/Archives/Public/public-rdf-ruby/>
+* <https://lists.w3.org/Archives/Public/public-rdf-ruby/>
 
 ## Author
-* [Gregg Kellogg](http://github.com/gkellogg) - <http://greggkellogg.net/>
+* [Gregg Kellogg](https://github.com/gkellogg) - <https://greggkellogg.net/>
 
 ## Contributing
 * Do your best to adhere to the existing coding conventions and idioms.
@@ -90,18 +89,18 @@ To install the latest official release of the `RDF::TriG` gem, do:
 
 ## License
 This is free and unencumbered public domain software. For more information,
-see <http://unlicense.org/> or the accompanying {file:UNLICENSE} file.
+see <https://unlicense.org/> or the accompanying {file:UNLICENSE} file.
 
-A copy of the [TriG EBNF][] and derived parser files are included in the repository, which are not covered under the UNLICENSE. These files are covered via the [W3C Document License](http://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231).
+A copy of the [TriG EBNF][] and derived parser files are included in the repository, which are not covered under the UNLICENSE. These files are covered via the [W3C Document License](https://www.w3.org/Consortium/Legal/2002/copyright-documents-20021231).
 
-[Ruby]:         http://ruby-lang.org/
-[RDF]:          http://www.w3.org/RDF/
-[YARD]:         http://yardoc.org/
-[YARD-GS]:      http://rubydoc.info/docs/yard/file/docs/GettingStarted.md
-[PDD]:          http://lists.w3.org/Archives/Public/public-rdf-ruby/2010May/0013.html
-[RDF.rb]:       http://rubydoc.info/github/ruby-rdf/rdf/master/frames
-[Backports]:    http://rubygems.org/gems/backports
-[TriG]:         http://www.w3.org/TR/trig/
-[TriG doc]:     http://rubydoc.info/github/ruby-rdf/rdf-trig/master/file/README.markdown
-[TriG EBNF]:    http://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf
-[Turtle doc]:   http://rubydoc.info/github/ruby-rdf/rdf-turtle/master/file/README.markdown
+[Ruby]:         https://ruby-lang.org/
+[RDF]:          https://www.w3.org/RDF/
+[YARD]:         https://yardoc.org/
+[YARD-GS]:      https://rubydoc.info/docs/yard/file/docs/GettingStarted.md
+[PDD]:          https://lists.w3.org/Archives/Public/public-rdf-ruby/2010May/0013.html
+[RDF.rb]:       https://rubydoc.info/github/ruby-rdf/rdf/master/frames
+[Backports]:    https://rubygems.org/gems/backports
+[TriG]:         https://www.w3.org/TR/trig/
+[TriG doc]:     https://rubydoc.info/github/ruby-rdf/rdf-trig/master/file/README.markdown
+[TriG EBNF]:    https://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf
+[Turtle doc]:   https://rubydoc.info/github/ruby-rdf/rdf-turtle/master/file/README.markdown
