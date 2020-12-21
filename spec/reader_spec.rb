@@ -710,7 +710,7 @@ describe "RDF::TriG::Reader" do
       %(GRAPH <g> <s> <p> <o> .) => %r(Expected wrappedGraph),
       %(GRAPH <s> <p> <o> .) => %r(Expected wrappedGraph),
       %(GRAPH <g1> <g2> {<s> <p> <o>}) => %r(Expected wrappedGraph),
-      %(GRAPH <g1> {<s> <p> <o>) => %r(Expected '}' following triple),
+      %(GRAPH <g1> {<s> <p> <o>) => RDF::ReaderError,
       %(GRAPH <g> {
         <s> <p> <o> .
         GRAPH <g1> { <s1> <p1> <o1>}
@@ -723,7 +723,7 @@ describe "RDF::TriG::Reader" do
       }) => RDF::ReaderError,
       %(GRAPH () { :s :p :o }) => %r(Expected label or subject),
       %(GRAPH (1 2) { :s :p :o }) => %r(Expected label or subject),
-      %(<a> <b> <c>) => %r(Expected '.' following triple),
+      %(<a> <b> <c>) => RDF::ReaderError,
       %([:p1 :o1] {:s :p :o}) => %r(Expected '.' following triple),
       %((123) .) => %r(Expected predicateObjectList after collection subject),
     }.each_pair do |trig, error|
