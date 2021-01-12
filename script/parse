@@ -95,6 +95,7 @@ opts = GetoptLong.new(
   ["--profile", GetoptLong::NO_ARGUMENT],
   ["--progress", GetoptLong::NO_ARGUMENT],
   ["--quiet", GetoptLong::NO_ARGUMENT],
+  ["--rdfstar", GetoptLong::NO_ARGUMENT],
   ["--validate", GetoptLong::NO_ARGUMENT],
   ["--verbose", GetoptLong::NO_ARGUMENT]
 )
@@ -115,6 +116,7 @@ opts.each do |opt, arg|
     options[:quiet] = options[:quiet].to_i + 1
     logger.level = Logger::FATAL
   when '--stream'       then writer_options[:stream] = true
+  when '--rdfstar'      then parser_options[:rdfstar] = true
   when '--validate'     then parser_options[:validate] = true
   when '--verbose'      then $verbose = true
   end

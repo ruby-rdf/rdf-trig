@@ -10,6 +10,8 @@ module RDF::Util
     LOCAL_PATH = ::File.expand_path("../w3c-rdf/trig", __FILE__) + '/'
     REMOTE_PATH_NQ = "http://w3c.github.io/rdf-tests/nquads/"
     LOCAL_PATH_NQ = ::File.expand_path("../w3c-rdf/nquads", __FILE__) + '/'
+    REMOTE_PATH_STAR = "https://w3c.github.io/rdf-star/"
+    LOCAL_PATH_STAR = ::File.expand_path("../w3c-rdf-star/", __FILE__) + '/'
 
     class << self
       alias_method :original_open_file, :open_file
@@ -83,6 +85,38 @@ module RDF::Util
         when /\.trig$/   then 'application/trig'
         when /\.nt$/     then 'application/n-triples'
         when /\.nq$/     then 'application/n-quads'
+        when /\.jsonld$/ then 'application/ld+json'
+        else                  'unknown'
+        end
+
+        document_options[:headers][:content_type] = response.content_type if response.respond_to?(:content_type)
+        # For overriding content type from test data
+        document_options[:headers][:content_type] = options[:contentType] if options[:contentType]
+
+        remote_document = RDF::Util::File::RemoteDocument.new(response.read, **document_options)
+        if block_given?
+          yield remote_document
+        else
+          remote_document
+        end
+      when (filename_or_url.to_s =~ %r{^#{REMOTE_PATH_STAR}} && Dir.exist?(LOCAL_PATH_STAR))
+        #puts "attempt to open #{filename_or_url} locally"
+        localpath = filename_or_url.to_s.sub(REMOTE_PATH_STAR, LOCAL_PATH_STAR)
+        response = begin
+          ::File.open(localpath)
+        rescue Errno::ENOENT => e
+          raise IOError, e.message
+        end
+        document_options = {
+          base_uri:     RDF::URI(filename_or_url),
+          charset:      Encoding::UTF_8,
+          code:         200,
+          headers:      {}
+        }
+        #puts "use #{filename_or_url} locally"
+        document_options[:headers][:content_type] = case filename_or_url.to_s
+        when /\.ttl$/    then 'text/turtle'
+        when /\.nt$/     then 'application/n-triples'
         when /\.jsonld$/ then 'application/ld+json'
         else                  'unknown'
         end

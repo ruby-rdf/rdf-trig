@@ -23,7 +23,15 @@ module RDF::TriG
     terminal(:STRING_LITERAL_SINGLE_QUOTE,      STRING_LITERAL_SINGLE_QUOTE,      unescape:  true)
  
     # String terminals
-    terminal(nil,                               %r([\{\}\(\),.;\[\]a]|\^\^|true|false))
+    terminal(nil,                               %r(
+                                                    [\(\),.;\[\]Aa]
+                                                  | \^\^
+                                                  | \{\|
+                                                  | \|\}
+                                                  | [\{\}]
+                                                  | true|false
+                                                  | <<|>>
+                                                )x)
 
     terminal(:GRAPH,                            /graph/i)
     terminal(:PREFIX,                           PREFIX)
@@ -112,7 +120,7 @@ module RDF::TriG
           read_triplesOrGraph || error("Expected triplesOrGraph", production: :block, token: @lexer.first)
         when '{'
           read_wrappedGraph || error("Expected wrappedGraph", production: :block, token: @lexer.first)
-        when '(', '['
+        when '(', '[', '<<'
           read_triples2 || error("Expected collection or blankNodePropertyList", production: :block, token: @lexer.first)
         when nil
           # End of input
@@ -169,6 +177,23 @@ module RDF::TriG
       when '('
         prod(:triples2) do
           subject = read_collection || error("Failed to parse read_collection", production: :triples2, token: @lexer.first)
+          token = @lexer.first
+          case token && (token.type || token.value)
+          when 'a', :IRIREF, :PNAME_LN, :PNAME_NS then read_predicateObjectList(subject)
+          else error("Expected predicateObjectList after collection subject", production: :triples2, token: token)
+          end
+          if !@recovering || @lexer.first === '.'
+            # If recovering, we will have eaten the closing '.'
+            token = @lexer.shift
+            unless token && token.value == '.'
+              error("Expected '.' following triple", production: :triples2, token: token)
+            end
+          end
+          true
+        end
+      when '<<'
+        prod(:triples2) do
+          subject = read_embTriple || error("Failed to parse embedded triple", production: :triples2, token: @lexer.first)
           token = @lexer.first
           case token && (token.type || token.value)
           when 'a', :IRIREF, :PNAME_LN, :PNAME_NS then read_predicateObjectList(subject)
