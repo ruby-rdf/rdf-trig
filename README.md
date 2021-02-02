@@ -3,8 +3,9 @@
 [TriG][] reader/writer for [RDF.rb][RDF.rb] .
 
 [![Gem Version](https://badge.fury.io/rb/rdf-trig.png)](https://badge.fury.io/rb/rdf-trig)
-[![Build Status](https://travis-ci.org/ruby-rdf/rdf-trig.png?branch=master)](https://travis-ci.org/ruby-rdf/rdf-trig)
-[![Coverage Status](https://coveralls.io/repos/ruby-rdf/rdf-trig/badge.svg)](https://coveralls.io/r/ruby-rdf/rdf-trig)
+[![Build Status](https://github.com/ruby-rdf/rdf-trig/workflows/CI/badge.svg?branch=develop)](https://github.com/ruby-rdf/rdf-trig/actions?query=workflow%3ACI)
+[![Coverage Status](https://coveralls.io/repos/ruby-rdf/rdf-trig/badge.svg?branch=develop)](https://coveralls.io/github/ruby-rdf/rdf-trig?branch=develop)
+[![Gitter chat](https://badges.gitter.im/ruby-rdf/rdf.png)](https://gitter.im/ruby-rdf/rdf)
 
 ## Description
 This is a [Ruby][] implementation of a [TriG][] reader and writer for [RDF.rb][].
@@ -85,7 +86,9 @@ To install the latest official release of the `RDF::TriG` gem, do:
   list in the the `README`. Alphabetical order applies.
 * Do note that in order for us to merge any non-trivial changes (as a rule
   of thumb, additions larger than about 15 lines of code), we need an
-  explicit [public domain dedication][PDD] on record from you.
+  explicit [public domain dedication][PDD] on record from you,
+  which you will be asked to agree to on the first commit to a repo within the organization.
+  Note that the agreement applies to all repos in the [Ruby RDF](https://github.com/ruby-rdf/) organization.
 
 ## License
 This is free and unencumbered public domain software. For more information,
@@ -97,7 +100,7 @@ A copy of the [TriG EBNF][] and derived parser files are included in the reposit
 [RDF]:          https://www.w3.org/RDF/
 [YARD]:         https://yardoc.org/
 [YARD-GS]:      https://rubydoc.info/docs/yard/file/docs/GettingStarted.md
-[PDD]:          https://lists.w3.org/Archives/Public/public-rdf-ruby/2010May/0013.html
+[PDD]:              https://unlicense.org/#unlicensing-contributions
 [RDF.rb]:       https://rubydoc.info/github/ruby-rdf/rdf/master/frames
 [Backports]:    https://rubygems.org/gems/backports
 [TriG]:         https://www.w3.org/TR/trig/
