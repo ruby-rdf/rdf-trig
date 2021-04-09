@@ -6,7 +6,7 @@ describe RDF::TriG::Reader do
   describe "rdfstar turtle tests" do
     require 'suite_helper'
 
-    %w(turtle/syntax turtle/eval).each do |man|
+    %w(turtle/syntax turtle/eval trig/syntax trig/eval).each do |man|
       Fixtures::SuiteTest::Manifest.open("https://w3c.github.io/rdf-star/tests/#{man}/manifest.ttl") do |m|
         describe [m.label, m.comment].compact.join(': ') do
           m.entries.each do |t|
@@ -32,7 +32,7 @@ describe RDF::TriG::Reader do
                 end
 
                 if t.evaluate?
-                  output_graph = RDF::Repository.load(t.result, format: :ntriples, rdfstar: true, base_uri:  t.base)
+                  output_graph = RDF::Repository.load(t.result, format: :nquads, rdfstar: true, base_uri:  t.base)
                   expect(graph).to be_equivalent_graph(output_graph, t)
                 else
                   expect(graph).to be_a(RDF::Enumerable)
@@ -40,7 +40,7 @@ describe RDF::TriG::Reader do
               else
                 expect {
                   graph << reader
-                  expect(graph.dump(:ntriples)).to produce("not this", t)
+                  expect(graph.dump(:nquads, rdfstar: true)).to produce("not this", t)
                 }.to raise_error(RDF::ReaderError)
               end
             end
