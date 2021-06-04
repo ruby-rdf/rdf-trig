@@ -6,7 +6,7 @@ describe RDF::TriG::Reader do
   describe "rdfstar turtle tests" do
     require 'suite_helper'
 
-    %w(turtle/syntax turtle/eval trig/syntax trig/eval).each do |man|
+    %w(nt/syntax turtle/syntax turtle/eval trig/syntax trig/eval).each do |man|
       Fixtures::SuiteTest::Manifest.open("https://w3c.github.io/rdf-star/tests/#{man}/manifest.ttl") do |m|
         describe [m.label, m.comment].compact.join(': ') do
           m.entries.each do |t|
