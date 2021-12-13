@@ -52,7 +52,7 @@
   foaf:weblog <https://greggkellogg.net> .
 
 <> foaf:primaryTopic <https://rubygems.org/gems/rdf-trig> ;
-  dc:issued "2021-07-07T12:54:46-07:00"^^xsd:dateTime ;
+  dc:issued "2021-12-02T13:43:35-08:00"^^xsd:dateTime ;
   foaf:maker <https://greggkellogg.net/foaf#me> .
 
 <https://greggkellogg.net/foaf#me> a foaf:Person, earl:Assertor;
@@ -75,7 +75,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -85,7 +85,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -95,7 +95,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -105,7 +105,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -115,7 +115,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -125,7 +125,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -135,7 +135,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -145,7 +145,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -155,7 +155,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -165,7 +165,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -175,7 +175,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -185,7 +185,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -195,357 +195,357 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-inside-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-inside-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-inside-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-inside-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-nested-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-nested-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-nested-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-nested-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-compound-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-compound-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bnode-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bnode-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bnode-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bnode-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-4>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-4>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-5>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-5>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-6>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-6>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-7>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-7>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-8>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-8>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-ann-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-ann-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-ann-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-ann-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-ann-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-ann-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#turtle-star-bad-ann-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#turtle-star-bad-ann-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-4>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-4>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-5>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-5>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bnode-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bnode-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bnode-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bnode-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-nested-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-nested-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-nested-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-nested-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bad-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bad-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bad-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bad-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bad-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bad-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/turtle/syntax#nt-ttl-star-bad-4>;
+  earl:test <https://w3c.github.io/rdf-star/tests#nt-ttl-star-bad-4>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -555,7 +555,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -565,7 +565,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -575,7 +575,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -585,7 +585,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -595,7 +595,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -605,7 +605,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -615,7 +615,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -625,7 +625,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -635,7 +635,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -645,7 +645,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -655,7 +655,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -665,227 +665,227 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-inside-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-inside-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-inside-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-nested-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-nested-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-nested-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-compound-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-compound-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bnode-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bnode-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bnode-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bnode-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-3>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-3>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-4>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-4>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-5>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-5>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-6>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-6>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-7>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-7>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-8>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-8>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-ann-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-ann-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-ann-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-1>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-ann-1>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
   earl:assertedBy <https://greggkellogg.net/foaf#me>;
   earl:subject <https://rubygems.org/gems/rdf-trig>;
-  earl:test <https://w3c.github.io/rdf-star/tests/trig/syntax#trig-star-bad-ann-2>;
+  earl:test <https://w3c.github.io/rdf-star/tests#trig-star-bad-ann-2>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -895,7 +895,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -905,7 +905,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -915,7 +915,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -925,7 +925,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -935,7 +935,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -945,7 +945,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -955,7 +955,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -965,7 +965,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -975,7 +975,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -985,7 +985,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -995,7 +995,7 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
 
 [ a earl:Assertion;
@@ -1005,5 +1005,5 @@
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
-    dc:date "2021-07-07T12:54:46-07:00"^^xsd:dateTime];
+    dc:date "2021-12-02T13:43:35-08:00"^^xsd:dateTime];
   earl:mode earl:automatic ] .
