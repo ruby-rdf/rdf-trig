@@ -315,7 +315,6 @@ describe RDF::TriG::Writer do
           m.entries.each do |t|
             next unless t.positive_test? && t.evaluate?
             specify "#{t.name}: #{t.comment}" do
-              pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, [], base_uri: t.base, standard_prefixes: true)
               logger.info t.inspect
@@ -326,7 +325,6 @@ describe RDF::TriG::Writer do
             end
 
             specify "#{t.name}: #{t.comment} (stream)" do
-              pending("native literals canonicalized") if t.name == "trig-subm-26"
               repo = parse(t.expected, format: :nquads)
               trig = serialize(repo, [], stream: true, base_uri: t.base, standard_prefixes: true)
               logger.info t.inspect

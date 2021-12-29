@@ -193,7 +193,7 @@ module RDF::TriG
         end
       when '<<'
         prod(:triples2) do
-          subject = read_embTriple || error("Failed to parse embedded triple", production: :triples2, token: @lexer.first)
+          subject = read_quotedTriple || error("Failed to parse embedded triple", production: :triples2, token: @lexer.first)
           token = @lexer.first
           case token && (token.type || token.value)
           when 'a', :IRIREF, :PNAME_LN, :PNAME_NS then read_predicateObjectList(subject)

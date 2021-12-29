@@ -38,6 +38,16 @@ Write a repository to a file:
 Note that reading and writing of graphs is also possible, but as graphs have only a single context,
 it is not particularly interesting for TriG.
 
+## RDF-star
+
+Both reader and writer include provisional support for [RDF-star][].
+
+Internally, an `RDF::Statement` is treated as another resource, along with `RDF::URI` and `RDF::Node`, which allows an `RDF::Statement` to have a `#subject` or `#object` which is also an `RDF::Statement`.
+
+Note that this requires the `rdfstar` option to be se.
+
+**Note: This feature is subject to change or elimination as the standards process progresses.**
+
 ## Documentation
 Full documentation available on [Rubydoc.info][TriG doc].
 
@@ -58,9 +68,9 @@ There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient f
       
 ## Dependencies
 
-* [Ruby](https://ruby-lang.org/) (>= 2.2.2)
-* [RDF.rb](https://rubygems.org/gems/rdf) (~> 3.0)
-* [rdf-turtle](https://rubygems.org/gems/rdf-turtle) (~> 3.0)
+* [Ruby](https://ruby-lang.org/) (>= 2.6)
+* [RDF.rb](https://rubygems.org/gems/rdf) (~> 3.2)
+* [rdf-turtle](https://rubygems.org/gems/rdf-turtle) (~> 3.2)
 
 ## Installation
 
@@ -103,6 +113,7 @@ A copy of the [TriG EBNF][] and derived parser files are included in the reposit
 [PDD]:              https://unlicense.org/#unlicensing-contributions
 [RDF.rb]:       https://rubydoc.info/github/ruby-rdf/rdf/master/frames
 [Backports]:    https://rubygems.org/gems/backports
+[RDF-star]:         https://w3c.github.io/rdf-star/rdf-star-cg-spec.html
 [TriG]:         https://www.w3.org/TR/trig/
 [TriG doc]:     https://rubydoc.info/github/ruby-rdf/rdf-trig/master/file/README.markdown
 [TriG EBNF]:    https://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf

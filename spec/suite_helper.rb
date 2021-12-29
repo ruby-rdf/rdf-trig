@@ -150,6 +150,7 @@ module Fixtures
         "mq": "http://www.w3.org/2001/sw/DataAccess/tests/test-query#",
         "rdft": "http://www.w3.org/ns/rdftest#",
     
+        "label": "rdfs:label",
         "comment": "rdfs:comment",
         "entries": {"@id": "mf:entries", "@container": "@list"},
         "name": "mf:name",
