@@ -10,6 +10,13 @@ Gem::Specification.new do |gem|
   gem.license               = 'Unlicense'
   gem.summary               = "TriG reader/writer for Ruby."
   gem.description           = %q{RDF::TriG is an TriG reader/writer for the RDF.rb library suite.}
+  gem.metadata           = {
+    "documentation_uri" => "https://ruby-rdf.github.io/rdf-trig",
+    "bug_tracker_uri"   => "https://github.com/ruby-rdf/rdf-trig/issues",
+    "homepage_uri"      => "https://github.com/ruby-rdf/rdf-trig",
+    "mailing_list_uri"  => "https://lists.w3.org/Archives/Public/public-rdf-ruby/",
+    "source_code_uri"   => "https://github.com/ruby-rdf/rdf-trig",
+  }
 
   gem.authors               = ['Gregg Kellogg']
   gem.email                 = 'public-rdf-ruby@w3.org'

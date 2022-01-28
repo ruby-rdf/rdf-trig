@@ -111,10 +111,10 @@ A copy of the [TriG EBNF][] and derived parser files are included in the reposit
 [YARD]:         https://yardoc.org/
 [YARD-GS]:      https://rubydoc.info/docs/yard/file/docs/GettingStarted.md
 [PDD]:              https://unlicense.org/#unlicensing-contributions
-[RDF.rb]:       https://rubydoc.info/github/ruby-rdf/rdf/master/frames
+[RDF.rb]:       https://ruby-rdf.github.io/rdf/master/frames
 [Backports]:    https://rubygems.org/gems/backports
 [RDF-star]:         https://w3c.github.io/rdf-star/rdf-star-cg-spec.html
 [TriG]:         https://www.w3.org/TR/trig/
-[TriG doc]:     https://rubydoc.info/github/ruby-rdf/rdf-trig/master/file/README.markdown
+[TriG doc]:     https://ruby-rdf.github.io/rdf-trig/master/file/README.markdown
 [TriG EBNF]:    https://dvcs.w3.org/hg/rdf/raw-file/default/trig/trig.bnf
-[Turtle doc]:   https://rubydoc.info/github/ruby-rdf/rdf-turtle/master/file/README.markdown
+[Turtle doc]:   https://ruby-rdf.github.io/rdf-turtle/master/file/README.markdown
