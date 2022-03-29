@@ -46,6 +46,10 @@ describe RDF::TriG::Format do
     specify {expect(described_class.to_sym).to eq :trig}
   end
 
+  describe "#to_uri" do
+    specify {expect(described_class.to_uri).to eq RDF::URI('http://www.w3.org/ns/formats/TriG')}
+  end
+
   describe ".detect" do
     {
       :statement        => "{<a> <b> <c> .}",
