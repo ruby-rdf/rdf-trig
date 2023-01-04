@@ -149,8 +149,8 @@ OPT_ARGS = [
 
 def usage(**options)
   STDERR.puts %{
-    Turtle version #{RDF::N3::VERSION}
-    Run Turtle tests.
+    TriG version #{RDF::TriG::VERSION}
+    Run TriG tests.
     
     Usage: #{$0} [options] [test-number ...]
   }.gsub(/^    /, '')
