@@ -6,10 +6,10 @@ require 'json/ld'
 # For now, override RDF::Utils::File.open_file to look for the file locally before attempting to retrieve it
 module RDF::Util
   module File
-    REMOTE_PATH = "http://w3c.github.io/rdf-tests/trig/"
-    LOCAL_PATH = ::File.expand_path("../w3c-rdf/trig", __FILE__) + '/'
-    REMOTE_PATH_NQ = "http://w3c.github.io/rdf-tests/nquads/"
-    LOCAL_PATH_NQ = ::File.expand_path("../w3c-rdf/nquads", __FILE__) + '/'
+    REMOTE_PATH = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-trig/"
+    LOCAL_PATH = ::File.expand_path("../w3c-rdf-tests/rdf/rdf11/rdf-trig", __FILE__) + '/'
+    REMOTE_PATH_NQ = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-n-quads/"
+    LOCAL_PATH_NQ = ::File.expand_path("../w3c-rdf/rdf/rdf11/rdf-n-quads", __FILE__) + '/'
     REMOTE_PATH_STAR = "https://w3c.github.io/rdf-star/"
     LOCAL_PATH_STAR = ::File.expand_path("../w3c-rdf-star/", __FILE__) + '/'
 
@@ -140,8 +140,8 @@ end
 
 module Fixtures
   module SuiteTest
-    BASE = "http://w3c.github.io/rdf-tests/trig/"
-    NQBASE = "http://w3c.github.io/rdf-tests/nquads/"
+    BASE = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-trig/"
+    NQBASE = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-n-quads/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",

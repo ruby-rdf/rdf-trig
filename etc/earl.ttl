@@ -1072,7 +1072,7 @@
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#langtagged_non_LONG>;
+  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#LANG_DIRged_non_LONG>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
@@ -1082,7 +1082,7 @@
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#langtagged_LONG>;
+  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#LANG_DIRged_LONG>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
@@ -1192,7 +1192,7 @@
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#trig-syntax-bad-LITERAL2_with_langtag_and_datatype>;
+  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#trig-syntax-bad-LITERAL2_with_LANG_DIR_and_datatype>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
@@ -1212,7 +1212,7 @@
 [ a earl:Assertion;
   earl:assertedBy <http://greggkellogg.net/foaf#me>;
   earl:subject <http://rubygems.org/gems/rdf-trig>;
-  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#langtagged_LONG_with_subtag>;
+  earl:test <http://www.w3.org/2013/TriGTests/manifest.ttl#LANG_DIRged_LONG_with_subtag>;
   earl:result [
     a earl:TestResult;
     earl:outcome earl:passed;
