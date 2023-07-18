@@ -140,8 +140,7 @@ end
 
 module Fixtures
   module SuiteTest
-    BASE = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-trig/"
-    NQBASE = "https://w3c.github.io/rdf-tests/rdf/rdf11/rdf-n-quads/"
+    BASE = "https://w3c.github.io/rdf-tests/rdf/"
     FRAME = JSON.parse(%q({
       "@context": {
         "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -187,7 +186,7 @@ module Fixtures
       attr_accessor :logger
 
       def base
-        BASE + action.split('/').last
+        RDF::URI(action)
       end
 
       # Alias data and query

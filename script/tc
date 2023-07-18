@@ -196,9 +196,9 @@ manifests = if options[:rdfstar]
     |man| "https://w3c.github.io/rdf-star/tests/#{man}/"
   end
 elsif options[:nquads]
-  [Fixtures::SuiteTest::NQBASE]
+  [Fixtures::SuiteTest::BASE + "rdf11/rdf-n-quads/"]
 else
-  [Fixtures::SuiteTest::BASE]
+  [Fixtures::SuiteTest::BASE + "rdf11/rdf-trig/"]
 end.map {|m| "#{m}manifest.ttl"}
 
 earl_preamble(**options) if options[:earl]
