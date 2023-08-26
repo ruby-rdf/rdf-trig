@@ -36,7 +36,7 @@ module RDF::TriG
     terminal(:GRAPH,                            /graph/i)
     terminal(:PREFIX,                           PREFIX)
     terminal(:BASE,                             BASE)
-    terminal(:LANG_DIR,                          LANG_DIR)
+    terminal(:LANG_DIR,                         LANG_DIR)
 
     ##
     # Iterates the given block for each RDF statement in the input.

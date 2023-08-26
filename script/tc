@@ -61,6 +61,7 @@ def run_tc(tc, **options)
     options = {
       base_uri:  tc.base,
       validate:  true,
+      rdfstar: true,
       logger: logger
     }.merge(options)
 
@@ -140,7 +141,6 @@ OPT_ARGS = [
   ["--nquads",          GetoptLong::NO_ARGUMENT, "Run N-Quads tests"],
   ["--output", "-o",    GetoptLong::REQUIRED_ARGUMENT, "Output to specified file"],
   ["--quiet", "-q",     GetoptLong::NO_ARGUMENT, "Minimal output"],
-  ["--rdfstar",         GetoptLong::NO_ARGUMENT, "Run RDF-star tests"],
   ["--skip-slow", "-s", GetoptLong::NO_ARGUMENT, "Avoid files taking too much time"],
   ["--validate",        GetoptLong::NO_ARGUMENT, "Validate input"],
   ["--verbose", "-v",   GetoptLong::NO_ARGUMENT, "Verbose output"],
@@ -183,7 +183,6 @@ opts.each do |opt, arg|
   when '--quiet'
     options[:quiet] = true
     options[:level] = Logger::FATAL
-  when '--rdfstar'          then options[:rdfstar] = true
   when '--skip-slow'        then options[:slow] = true
   when '--validate'         then options[:validate] = true
   when '--verbose'          then options[:verbose] = true
@@ -191,14 +190,14 @@ opts.each do |opt, arg|
   end
 end
 
-manifests = if options[:rdfstar]
-  %w{nt/syntax turtle/syntax turtle/eval trig/syntax trig/eval}.map do
-    |man| "https://w3c.github.io/rdf-star/tests/#{man}/"
-  end
-elsif options[:nquads]
+manifests = if options[:nquads]
   [Fixtures::SuiteTest::BASE + "rdf11/rdf-n-quads/"]
 else
-  [Fixtures::SuiteTest::BASE + "rdf11/rdf-trig/"]
+  [
+    Fixtures::SuiteTest::BASE + "rdf11/rdf-trig/",
+    Fixtures::SuiteTest::BASE + "rdf12/rdf-trig/syntax/",
+    Fixtures::SuiteTest::BASE + "rdf12/rdf-trig/eval/",
+  ]
 end.map {|m| "#{m}manifest.ttl"}
 
 earl_preamble(**options) if options[:earl]
