@@ -17,6 +17,6 @@ group :development, :test do
   gem 'rdf-vocab',      git: "https://github.com/ruby-rdf/rdf-vocab",       branch: "develop"
   gem 'sxp',            git: "https://github.com/dryruby/sxp.rb",           branch: "develop"
   gem "redcarpet",      platform: :ruby
-  gem 'simplecov',      '~> 0.21',  platforms: :mri
+  gem 'simplecov',      '~> 0.22',  platforms: :mri
   gem 'simplecov-lcov', '~> 0.8',  platforms: :mri
 end

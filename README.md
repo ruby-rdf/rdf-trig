@@ -17,7 +17,7 @@ Install with `gem install rdf-trig`
 
 * 100% free and unencumbered [public domain](https://unlicense.org/) software.
 * Implements a complete parser and serializer for [TriG][].
-* Compatible with Ruby 2.x, and JRuby 1.7+.
+* Compatible with Ruby 3.x, and JRuby 9+.
 * Optional streaming writer, to serialize large graphs
 
 ## Usage
