@@ -309,7 +309,7 @@ describe RDF::TriG::Writer do
   describe "w3c trig tests" do
     require 'suite_helper'
 
-    %w(manifest.ttl).each do |man|
+    %w(rdf11/rdf-trig/manifest.ttl).each do |man|
       Fixtures::SuiteTest::Manifest.open(Fixtures::SuiteTest::BASE + man) do |m|
         describe m.comment do
           m.entries.each do |t|
