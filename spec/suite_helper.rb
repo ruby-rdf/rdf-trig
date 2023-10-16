@@ -7,7 +7,7 @@ require 'json/ld'
 module RDF::Util
   module File
     REMOTE_PATH = "https://w3c.github.io/rdf-tests/rdf/"
-    LOCAL_PATH = ::File.expand_path("../w3c-rdf-tests/rdf/", __FILE__) + '/'
+    LOCAL_PATH = ::File.expand_path("../rdf-tests/rdf/", __FILE__) + '/'
 
     class << self
       alias_method :original_open_file, :open_file
@@ -111,17 +111,12 @@ module Fixtures
 
       def entries
         # Map entries to resources
-        attributes['entries'].map {|e| Entry.new(e, base_iri: attributes['baseIri'])}
+        attributes['entries'].map {|e| Entry.new(e)}
       end
     end
  
     class Entry < JSON::LD::Resource
       attr_accessor :logger
-
-      def initialize(json, base_iri:)
-        @base_iri = base_iri
-        super
-      end
 
       def base
         RDF::URI(@base_iri || action)

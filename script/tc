@@ -94,6 +94,9 @@ def run_tc(tc, **options)
       result ||= "passed"
     end
 
+    if options[:verbose] && result == "failed" && graph
+      puts "\nResult:\n" + graph.dump(:nquads)
+    end
   rescue Interrupt => e
     raise e
   rescue Exception => e
