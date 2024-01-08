@@ -146,7 +146,11 @@ module Fixtures
       def negative_test?
         !positive_test?
       end
-      
+
+      def c14n?
+        !!Array(attributes['@type']).join(" ").match(/C14N/)
+      end
+
       def inspect
         super.sub('>', "\n" +
         "  syntax?: #{syntax?.inspect}\n" +

@@ -90,6 +90,9 @@ def run_tc(tc, **options)
     if tc.evaluate? && result.nil?
       output_graph = RDF::Repository.load(tc.result, format: :nquads, base_uri: tc.base, rdfstar: true)
       result = graph.isomorphic_with?(output_graph) ? "passed" : "failed"
+    elsif tc.c14n? && result.nil?
+      c14n = RDF::NQuads::Writer.buffer {|w| w << graph}
+      result = c14n == tc.expected ? "passed" : "failed"
     else
       result ||= "passed"
     end
@@ -194,7 +197,11 @@ opts.each do |opt, arg|
 end
 
 manifests = if options[:nquads]
-  [Fixtures::SuiteTest::BASE + "rdf11/rdf-n-quads/"]
+  [
+    Fixtures::SuiteTest::BASE + "rdf11/rdf-n-quads/",
+    Fixtures::SuiteTest::BASE + "rdf12/rdf-n-quads/syntax/",
+    Fixtures::SuiteTest::BASE + "rdf12/rdf-n-quads/c14n/",
+  ]
 else
   [
     Fixtures::SuiteTest::BASE + "rdf11/rdf-trig/",
