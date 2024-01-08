@@ -30,6 +30,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency     'rdf',             '~> 3.3'
   gem.add_runtime_dependency     'ebnf',            '~> 2.4'
   gem.add_runtime_dependency     'rdf-turtle',      '~> 3.3'
+  gem.add_development_dependency 'getoptlong',      '~> 0.2'
   gem.add_development_dependency 'json-ld',         '~> 3.3'
   gem.add_development_dependency 'rspec',           '~> 3.12'
   gem.add_development_dependency 'rspec-its',       '~> 1.3'

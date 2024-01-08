@@ -65,7 +65,11 @@ The reader uses the [Turtle][Turtle doc] parser. The writer also is based on the
 The syntax is compatible with placing default triples within `{}`, but the writer does not use this for writing triples in the default graph.
 
 There is a new `:stream` option to {RDF::TriG::Writer} which is more efficient for streaming large datasets.
-      
+
+## Change Log
+
+See [Release Notes on GitHub](https://github.com/ruby-rdf/rdf-trig/releases)
+
 ## Dependencies
 
 * [Ruby](https://ruby-lang.org/) (>= 3.0)
