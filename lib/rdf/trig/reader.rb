@@ -24,7 +24,8 @@ module RDF::TriG
  
     # String terminals
     terminal(nil,                               %r(
-                                                    [\(\),.;\[\]Aa]
+                                                    <<\(|\)>>
+                                                  | [\(\),.;~\[\]Aa]
                                                   | \^\^
                                                   | \{\|
                                                   | \|\}
@@ -132,16 +133,19 @@ module RDF::TriG
 
     # @return [Object]
     def read_triplesOrGraph
-      while name = read_labelOrSubject
+      if name = read_labelOrSubject
         prod(:triplesOrGraph, %(} .)) do
+          # labelOrSubject ( wrappedGraph | predicateObjectList '.' )
           token = @lexer.first
           case token && token.value
           when '{'
+            # wrappedGraph
             @graph_name = name
             read_wrappedGraph || error("Expected wrappedGraph", production: :triplesOrGraph, token: @lexer.first)
             @graph_name = nil
             true
           else
+            # predicateObjectList '.'
             read_predicateObjectList(name) || error("Expected predicateObjectList", production: :triplesOrGraph, token: @lexer.first)
             unless @recovering
               # If recovering, we will have eaten the closing '.'
@@ -152,8 +156,20 @@ module RDF::TriG
             end
           end
         end
+      elsif name = read_reifiedTriple
+        prod(:triplesOrGraph, %(} .)) do
+          # reifiedTriple predicateObjectList? '.'
+          read_predicateObjectList(name)
+          unless @recovering
+            # If recovering, we will have eaten the closing '.'
+            token = @lexer.shift
+            unless token && token.value == '.'
+              error("Expected '.' following triple", production: :triplesOrGraph, token: token)
+            end
+          end
+        end
       end
-      true
+      !!name
     end
 
     # @return [Object]
@@ -161,6 +177,7 @@ module RDF::TriG
       token = @lexer.first
       case token && token.value
       when '['
+        # blankNodePropertyList predicateObjectList? '.'
         prod(:triples2) do
           # blankNodePropertyList predicateObjectList? 
           subject = read_blankNodePropertyList || error("Failed to parse blankNodePropertyList", production: :triples2, token: @lexer.first)
@@ -174,7 +191,21 @@ module RDF::TriG
           end
           true
         end
+      when '<<'
+        prod(:triples2) do
+          subject = read_reifiedTriple || error("Failed to parse reifiedTriple", production: :triples2, token: @lexer.first)
+          read_predicateObjectList(subject) || subject
+          if !@recovering || @lexer.first === '.'
+            # If recovering, we will have eaten the closing '.'
+            token = @lexer.shift
+            unless token && token.value == '.'
+              error("Expected '.' following triple", production: :triples2, token: token)
+            end
+          end
+          true
+        end
       when '('
+        # collection predicateObjectList '.'
         prod(:triples2) do
           subject = read_collection || error("Failed to parse read_collection", production: :triples2, token: @lexer.first)
           token = @lexer.first
@@ -191,23 +222,8 @@ module RDF::TriG
           end
           true
         end
-      when '<<'
-        prod(:triples2) do
-          subject = read_quotedTriple || error("Failed to parse embedded triple", production: :triples2, token: @lexer.first)
-          token = @lexer.first
-          case token && (token.type || token.value)
-          when 'a', :IRIREF, :PNAME_LN, :PNAME_NS then read_predicateObjectList(subject)
-          else error("Expected predicateObjectList after collection subject", production: :triples2, token: token)
-          end
-          if !@recovering || @lexer.first === '.'
-            # If recovering, we will have eaten the closing '.'
-            token = @lexer.shift
-            unless token && token.value == '.'
-              error("Expected '.' following triple", production: :triples2, token: token)
-            end
-          end
-          true
-        end
+      else
+        false
       end
     end
 

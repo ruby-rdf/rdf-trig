@@ -305,6 +305,248 @@ describe RDF::TriG::Writer do
     end
   end
 
+  context "triple terms" do
+    {
+      "object-iii":  {
+        input: RDF::Statement(
+          RDF::URI('http://example/s'),
+          RDF::URI('http://example/p'),
+          RDF::Statement(
+            RDF::URI('http://example/s1'),
+            RDF::URI('http://example/p1'),
+            RDF::URI('http://example/o1'),
+            tripleTerm: true)),
+        regexp: [%r(ex:s ex:p <<\(ex:s1 ex:p1 ex:o1\)>> .)]
+      },
+      "object-iib":  {
+        input: RDF::Statement(
+          RDF::URI('http://example/s'),
+          RDF::URI('http://example/p'),
+          RDF::Statement(
+            RDF::URI('http://example/s1'),
+            RDF::URI('http://example/p1'),
+            RDF::Node.new('o1'),
+            tripleTerm: true)),
+        regexp: [%r(ex:s ex:p <<\(ex:s1 ex:p1 _:o1\)>> .)]
+      },
+      "object-iil":  {
+        input: RDF::Statement(
+          RDF::URI('http://example/s'),
+          RDF::URI('http://example/p'),
+          RDF::Statement(
+            RDF::URI('http://example/s1'),
+            RDF::URI('http://example/p1'),
+            RDF::Literal('o1'),
+            tripleTerm: true)),
+        regexp: [%r(ex:s ex:p <<\(ex:s1 ex:p1 "o1"\)>> .)],
+      },
+      "recursive-object": {
+        input: RDF::Statement(
+          RDF::URI('http://example/s'),
+          RDF::URI('http://example/p'),
+          RDF::Statement(
+            RDF::URI('http://example/s1'),
+            RDF::URI('http://example/p1'),
+            RDF::Statement(
+              RDF::URI('http://example/s2'),
+              RDF::URI('http://example/p2'),
+              RDF::URI('http://example/o2'),
+              tripleTerm: true),
+            tripleTerm: true
+          )
+        ),
+        regexp: [
+          %r(ex:s ex:p <<\(\s*ex:s1 ex:p1 <<\(\s*ex:s2 ex:p2 ex:o2*\s*\)>>\s*\)>>)
+        ]
+      }
+    }.each do |name, params|
+      it name do
+        graph = RDF::Graph.new {|g| g << params[:input]}
+        serialize(graph, params.fetch(:regexp, []), prefixes: {ex: 'http://example/'}, **params)
+      end
+    end
+
+    context "reifiedTriples" do
+      {
+        "subject-iii":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            << :s1 :p1 :o1 >> :p :o .
+          ),
+          regexp: [%r(<<\s*ex:s1 ex:p1 ex:o1\s*>> ex:p ex:o .)]
+        },
+        "subject-iib":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            << :s1 :p1 _:o1 >> :p :o .
+          ),
+          regexp: [%r(<<\s*ex:s1 ex:p1 _:o1\s*>> ex:p ex:o .)]
+        },
+        "subject-iil":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            << :s1 :p1 "o1" >> :p :o .
+          ),
+          regexp: [%r(<<\s*ex:s1 ex:p1 "o1"\s*>> ex:p ex:o .)]
+        },
+        "subject-bn-no-prop":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            _:reif rdf:reifies <<( :s1 :p1 :o1 )>> .
+          ),
+          regexp: [%r(\[\s*rdf:reifies <<\(\s*ex:s1 ex:p1 ex:o1\s*\)>>\] .)]
+        },
+        "subject-iri-no-prop":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :reif rdf:reifies <<( :s1 :p1 :o1 )>> .
+          ),
+          regexp: [%r(ex:reif *rdf:reifies <<\(\s*ex:s1 ex:p1 ex:o1\s*\)>> .)]
+        },
+        "subject-bn-no-prop-multiple":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            _:reif rdf:reifies <<( :s1 :p1 :o1 )>>, <<( :s2 :p2 :o2 )>> .
+          ),
+          regexp: [%r(\[\s*rdf:reifies <<\(\s*ex:s1 ex:p1 ex:o1\s*\)>>,\s+<<\(\s*ex:s2 ex:p2 ex:o2\s*\)>>\] .)m]
+        },
+        "object-iii":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :s :p << :s1 :p1 :o1 >> .
+          ),
+          regexp: [%r(ex:s ex:p <<\s*ex:s1 ex:p1 ex:o1\s*>> .)]
+        },
+        "object-iib":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :s :p << :s1 :p1 _:o1 >> .
+          ),
+          regexp: [%r(ex:s ex:p <<\s*ex:s1 ex:p1 _:o1\s*>> .)]
+        },
+        "object-iil":  {
+          input: %(
+            PREFIX :    <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :s :p << :s1 :p1 "o1" >> .
+          ),
+          regexp: [%r(ex:s ex:p <<\s*ex:s1 ex:p1 "o1"\s*>> .)]
+        },
+        "bnode-01": {
+          # Bnode in two positions
+          input: %(
+            PREFIX : <http://example/>
+            _:a :p1 :o1 .
+            <<_:a :p2 :o2 >> :q 456 .
+          ),
+          regexp: [
+            %r(_:a ex:p1 ex:o1 .),
+            %r(<<\s*_:a ex:p2 ex:o2\s*>> ex:q 456 .)
+          ]
+        },
+        "recursive-object": {
+          input: %(
+            PREFIX : <http://example/>
+            :s :p << :s1 :p1 << :s2 :p2 :o2 >> >> .
+          ),
+          regexp: [
+            %r(ex:s ex:p <<\s*ex:s1 ex:p1 <<\s*ex:s2 ex:p2 ex:o2\s*>>\s*>> .)
+          ]
+        },
+        "recursive-subject": {
+          input: %(
+            PREFIX : <http://example/>
+            << << :s2 :p2 :o2 >> :p1 :o1 >> :p :o .
+          ),
+          regexp: [
+            %r(<<\s*<<\s*ex:s2 ex:p2 ex:o2\s*>> ex:p1 ex:o1\s*>> ex:p ex:o .)
+          ]
+        },
+        "explicit reifier as subject": {
+          input: %(
+            PREFIX : <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :r rdf:reifies <<( :s :p :o )>> .
+            :r :p1 :o1 .
+          ),
+          regexp: [
+            %r(<<\s*ex:s ex:p ex:o\s*~\s*ex:r\s*>>\s*ex:p1 ex:o1 .)
+          ]
+        },
+        "explicit reifier as object": {
+          input: %(
+            PREFIX : <http://example/>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            :r rdf:reifies <<( :s :p :o )>> .
+            :s1 :p1 :r .
+          ),
+          regexp: [
+            %r(ex:s1 ex:p1 <<\s*ex:s ex:p ex:o\s*~\s*ex:r\s*>>\s*.)
+          ]
+        },
+      }.each do |name, params|
+        it name do
+          graph = RDF::Graph.new {|g| g << parse(params[:input], rdfstar: true)}
+          serialize(graph, params.fetch(:regexp, []),
+            prefixes: {
+              ex: 'http://example/',
+              rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+            }, **params)
+        end
+      end
+    end
+
+    context "annotations" do
+      {
+        'turtle-star-annotation-1' => {
+          input: %(
+            PREFIX : <http://example/>
+            :s :p :o {| :r :z |} .
+          ),
+          regexp: [
+            %r(ex:s ex:p ex:o {\|\s+ex:r ex:z\s+\|} \.)m
+          ]
+        },
+        'turtle-star-annotation-2' => {
+          input: %(
+            PREFIX :       <http://example/>
+            PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+            :s :p :o {| :source [ :graph <http://host1/> ;
+                                  :date "2020-01-20"^^xsd:date
+                                ] ;
+                        :source [ :graph <http://host2/> ;
+                                  :date "2020-12-31"^^xsd:date
+                                ]
+                      |} .
+          ),
+          regexp: [
+            %r(ex:s ex:p ex:o {\|\s+ex:source \[)m,
+            %r(\s+ex:date "2020-01-20"\^\^<http://www.w3.org/2001/XMLSchema#date>;),
+            %r(\s+ex:graph <http://host1/>),
+            %r(\s+\], \[),
+            %r(\s+ex:date "2020-12-31"\^\^<http://www.w3.org/2001/XMLSchema#date>;),
+            %r(\s+ex:graph <http://host2/>),
+            %r(\s+\] \|} \.)
+          ]
+        }
+      }.each do |name, params|
+        it name do
+          graph = RDF::Graph.new {|g| g << parse(params[:input], rdfstar: true)}
+          serialize(graph, params.fetch(:regexp, []), prefixes: {ex: 'http://example/'}, **params)
+        end
+      end
+    end
+  end
+
   # W3C TriG Test suite
   describe "w3c trig tests" do
     require 'suite_helper'

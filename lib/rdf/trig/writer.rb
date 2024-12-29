@@ -215,7 +215,7 @@ module RDF::TriG
     # Perform any statement preprocessing required. This is used to perform reference counts and determine required
     # prefixes.
     # @param [Statement] statement
-    def preprocess_statement(statement)
+    def preprocess_statement(statement, as_subject: true)
       super
       get_pname(statement.graph_name) if statement.has_graph?
     end
