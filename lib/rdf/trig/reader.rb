@@ -37,6 +37,7 @@ module RDF::TriG
     terminal(:GRAPH,                            /graph/i)
     terminal(:PREFIX,                           PREFIX)
     terminal(:BASE,                             BASE)
+    terminal(:VERSION,                          RDF_VERSION)
     terminal(:LANG_DIR,                         LANG_DIR)
 
     ##

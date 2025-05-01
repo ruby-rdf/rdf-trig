@@ -8,6 +8,7 @@ require 'rdf/trig'
 require 'rdf/nquads'
 require 'ebnf/ll1/parser'
 require 'getoptlong'
+require 'amazing_print'
 
 def run(input, **options)
   if options[:profile]
@@ -101,11 +102,12 @@ OPT_ARGS = [
   ["--uri", GetoptLong::REQUIRED_ARGUMENT, "Default base URI"],
   ["--validate", GetoptLong::NO_ARGUMENT, "Run parser in strict validation mode"],
   ["--verbose", GetoptLong::NO_ARGUMENT, "Verbose output"],
+  ["--version", GetoptLong::REQUIRED_ARGUMENT, "Version of RDF (1.1, 1.2, or 1.2-basic)"],
 ]
 
 def usage
   STDERR.puts %{
-    RDF::Turtle version #{RDF::Turtle::VERSION}
+    RDF::TriG version #{RDF::Turtle::VERSION}
     
     Usage: #{$0} [options] file ...
   }.gsub(/^    /, '')
@@ -146,7 +148,8 @@ opts.each do |opt, arg|
   when '--stream'       then writer_options[:stream] = true
   when '--validate'     then parser_options[:validate] = true
   when '--verbose'      then $verbose = true
-  end
+  when '--version'      then writer_options[:version] = parser_options[:version] = arg
+   end
 end
 
 if ARGV.empty?

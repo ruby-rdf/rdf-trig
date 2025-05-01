@@ -16,6 +16,7 @@ group :development, :test do
   gem 'rdf-isomorphic', git: "https://github.com/ruby-rdf/rdf-isomorphic",  branch: "develop"
   gem 'rdf-vocab',      git: "https://github.com/ruby-rdf/rdf-vocab",       branch: "develop"
   gem 'sxp',            git: "https://github.com/dryruby/sxp.rb",           branch: "develop"
+  gem 'irb'
   gem "redcarpet",      platform: :ruby
   gem 'simplecov',      '~> 0.22',  platforms: :mri
   gem 'simplecov-lcov', '~> 0.8',  platforms: :mri

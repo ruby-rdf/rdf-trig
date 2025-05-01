@@ -8,6 +8,7 @@ require 'rdf/isomorphic'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", 'spec', 'spec_helper'))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", 'spec', 'suite_helper'))
 require 'getoptlong'
+require 'amazing_print'
 
 ASSERTOR = "https://greggkellogg.net/foaf#me"
 RUN_TIME = Time.now
@@ -130,7 +131,7 @@ def run_tc(tc, **options)
   options[:result_count][result] ||= 0
   options[:result_count][result] += 1
 
-  puts "#{"test result:" unless options[:quiet]} #{result}"
+  puts "#{" test result:" unless options[:quiet]} #{result}"
 end
 
 options = {
@@ -218,7 +219,7 @@ begin
   manifests.each do |manifest|
     Fixtures::SuiteTest::Manifest.open(manifest) do |m|
       m.entries.each do |tc|
-        next unless ARGV.empty? || ARGV.any? {|n| tc.name.match(/#{n}/)}
+        next unless ARGV.empty? || ARGV.any? {|n| tc.id.match?(/#{n}/) || tc.name.match(/#{n}/)}
         run_tc(tc, result_count: result_count, **options)
       end
     end

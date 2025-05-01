@@ -8,13 +8,16 @@ triplesOrGraph        ::= labelOrSubject ( wrappedGraph | predicateObjectList '.
 triples2              ::= blankNodePropertyList predicateObjectList? '.'
                         | collection predicateObjectList '.'
 wrappedGraph          ::= '{' triplesBlock? '}'
-triplesBlock          ::=   triples ( '.' triplesBlock? )?
+triplesBlock          ::= triples ( '.' triplesBlock? )?
 labelOrSubject        ::= iri | BlankNode
-directive             ::= prefixID | base | sparqlPrefix | sparqlBase
+directive             ::= prefixID | base | version | sparqlPrefix | sparqlBase | sparqlVersion
 prefixID              ::= '@prefix' PNAME_NS IRIREF '.'
 base                  ::= '@base' IRIREF '.'
+version               ::= '@version' VersionSpecifier  '.'
 sparqlPrefix          ::=	"PREFIX" PNAME_NS IRIREF
 sparqlBase            ::=	"BASE" IRIREF
+sparqlVersion         ::=	"VERSION" VersionSpecifier
+VersionSpecifier      ::= STRING_LITERAL_QUOTE | STRING_LITERAL_SINGLE_QUOTE
 triples               ::= subject predicateObjectList
                         | blankNodePropertyList predicateObjectList?
                         | reifiedTriple predicateObjectList?

@@ -6,7 +6,11 @@ describe RDF::TriG::Reader do
     require 'suite_helper'
 
     # TriG/manifest.ttl
-    %w(rdf11/rdf-trig/manifest.ttl).each do |man|
+    %w(
+      rdf11/rdf-trig/manifest.ttl
+      rdf12/rdf-trig/syntax/manifest.ttl
+      rdf12/rdf-trig/eval/manifest.ttl
+    ).each do |man|
       Fixtures::SuiteTest::Manifest.open(Fixtures::SuiteTest::BASE + man) do |m|
         describe m.comment do
           m.entries.each do |t|
@@ -22,6 +26,7 @@ describe RDF::TriG::Reader do
                     base_uri: t.base,
                     canonicalize: false,
                     validate:  true,
+                    rdfstar: true,
                     logger: t.logger)
 
                 repo = RDF::Repository.new
@@ -35,12 +40,12 @@ describe RDF::TriG::Reader do
                 else
                   expect {
                     repo << reader
-                    expect(repo.dump(:nquads)).to produce("not this", t)
+                    expect(repo.dump(:nquads, rdfstar: true)).to produce("not this", t)
                   }.to raise_error(RDF::ReaderError)
                 end
 
                 if t.evaluate? && t.positive_test?
-                  output_repo = RDF::Repository.load(t.result, format: :nquads, base_uri: t.base)
+                  output_repo = RDF::Repository.load(t.result, format: :nquads, rdfstar: true, base_uri: t.base)
                   expect(repo).to be_equivalent_graph(output_repo, t)
                 elsif !t.evaluate?
                   expect(repo).to be_a(RDF::Enumerable)
